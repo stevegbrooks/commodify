@@ -25,22 +25,22 @@ Our project is an innovation because existing resources deal mostly with individ
 
 1. [Current and historical agricultural commodities data from the USDA Foreign Agricultural Service](https://apps.fas.usda.gov/psdonline/app/index.html#/app/downloads)
 
-- Description: a dataset containing commodities and their prices around the world, including trading value at the beginning and end of each month.
+  * Description: a dataset containing commodities and their prices around the world, including trading value at the beginning and end of each month.
 
-- Size: ~200 MB with ~2 million rows and 12 features.
+  * Size: ~200 MB with ~2 million rows and 12 features.
 
-- A commodity is identified by "Commodity_Code", and also has location, time, and various attributes attached to its value.
+  * A commodity is identified by "Commodity_Code", and also has location, time, and various attributes attached to its value.
 
-- Summary statistics for numeric columns:
+  * Summary statistics for numeric columns:
 
-| Market_Year |Calendar_Year |   Unit_ID     |    Value        |
-|:------------|:-------------|:--------------|:----------------|
-|Min.   :1960 |Min.   :1959  |Min.   : 2.000 |Min.   :   -9510 |
-|1st Qu.:1979 |1st Qu.:2006  |1st Qu.: 8.000 |1st Qu.:       0 |
-|Median :1992 |Median :2006  |Median : 8.000 |Median :      15 |
-|Mean   :1992 |Mean   :2006  |Mean   : 9.833 |Mean   :   11937 |
-|3rd Qu.:2007 |3rd Qu.:2014  |3rd Qu.: 8.000 |3rd Qu.:     212 |
-|Max.   :2021 |Max.   :2021  |Max.   :29.000 |Max.   :42528700 |
+	| Market_Year |Calendar_Year |   Unit_ID     |    Value        |
+	|:------------|:-------------|:--------------|:----------------|
+	|Min.   :1960 |Min.   :1959  |Min.   : 2.000 |Min.   :   -9510 |
+	|1st Qu.:1979 |1st Qu.:2006  |1st Qu.: 8.000 |1st Qu.:       0 |
+	|Median :1992 |Median :2006  |Median : 8.000 |Median :      15 |
+	|Mean   :1992 |Mean   :2006  |Mean   : 9.833 |Mean   :   11937 |
+	|3rd Qu.:2007 |3rd Qu.:2014  |3rd Qu.: 8.000 |3rd Qu.:     212 |
+	|Max.   :2021 |Max.   :2021  |Max.   :29.000 |Max.   :42528700 |
 
 
 
