@@ -1,23 +1,25 @@
-# CIS 550 Final Project Proposal
+# Commodify
 
-## Spring 2021
+## CIS 550 Final Project Proposal
 
 To create the PDF for submission, open in Word and then export as ".pdf".
 
 ### Team Members
 
-- Iris Tiong: email = iristyx@seas.upenn.edu; github = "iristyx"
-- Francis Featherby: email = ffrancis@seas.upenn.edu; github = "ffeatherby"
-- Peter Brice: email = pbrice@seas.upenn.edu; github = "briceybrit"
-- Steven Brooks: email = sbr@seas.upenn.edu; github = "stevegbrooks"
+|       Name       |        Email          |   GitHub   |
+|:-----------------|:----------------------|:-----------|
+|Iris Tiong        |iristyx@seas.upenn.edu |iristyx     |
+|Francis Featherby |ffrancis@seas.upenn.edu|ffeatherby  |
+|Peter Brice       |pbrice@seas.upenn.edu  |briceybrit  |
+|Steven Brooks     |sbr@seas.upenn.edu     |stevegbrooks|
 
 ### Description of project
 
-In essence, we build a database containing supply and demand information for various commodities (metals, other minerals, oil and gas, agricultural commodities etc.), containing historical information as well as projections, and we have a feature that allows the user to input their own estimates for various values - for US crude oil production in 2021, for example - to see the implications for supply and demand. 
+We will build a database containing supply and demand information for various commodities (metals, other minerals, oil and gas, agricultural commodities etc.), containing historical information as well as projections, and we have a feature that allows the user to input their own estimates for various values - for US crude oil production in 2021, for example - to see the implications for supply and demand. 
 
 We plan to use charts and maps to visualize the data.
 
-Existing resources deal mostly with individual sectors like energy or agriculture, but not the the whole commodities space, and they are read only. Our project provides a genuine innovation and a useful resource to many trade houses, banks and hedge funds. 
+Our project is an innovation because existing resources deal mostly with individual sectors like energy or agriculture, but not the the whole commodities space, and they are read only. Our project provides a useful resource for trade houses, banks and hedge funds. 
 
 ### Datasets
 
@@ -31,14 +33,14 @@ Existing resources deal mostly with individual sectors like energy or agricultur
 
 - Summary statistics for numeric columns:
 
-|   | Market_Year |Calendar_Year |   Unit_ID     |    Value        |
-|:--|:------------|:-------------|:--------------|:----------------|
-|   |Min.   :1960 |Min.   :1959  |Min.   : 2.000 |Min.   :   -9510 |
-|   |1st Qu.:1979 |1st Qu.:2006  |1st Qu.: 8.000 |1st Qu.:       0 |
-|   |Median :1992 |Median :2006  |Median : 8.000 |Median :      15 |
-|   |Mean   :1992 |Mean   :2006  |Mean   : 9.833 |Mean   :   11937 |
-|   |3rd Qu.:2007 |3rd Qu.:2014  |3rd Qu.: 8.000 |3rd Qu.:     212 |
-|   |Max.   :2021 |Max.   :2021  |Max.   :29.000 |Max.   :42528700 |
+| Market_Year |Calendar_Year |   Unit_ID     |    Value        |
+|:------------|:-------------|:--------------|:----------------|
+|Min.   :1960 |Min.   :1959  |Min.   : 2.000 |Min.   :   -9510 |
+|1st Qu.:1979 |1st Qu.:2006  |1st Qu.: 8.000 |1st Qu.:       0 |
+|Median :1992 |Median :2006  |Median : 8.000 |Median :      15 |
+|Mean   :1992 |Mean   :2006  |Mean   : 9.833 |Mean   :   11937 |
+|3rd Qu.:2007 |3rd Qu.:2014  |3rd Qu.: 8.000 |3rd Qu.:     212 |
+|Max.   :2021 |Max.   :2021  |Max.   :29.000 |Max.   :42528700 |
 
 
 
