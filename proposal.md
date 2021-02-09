@@ -79,12 +79,17 @@ Our project is an innovation because existing resources deal mostly with individ
 
   * The data are mostly time series. They show various aspects of supply and demand, e.g. production, consumption, inventories etc., for a given geographical region, such as a state or country, on a sequence of dates of in a sequence of periods.
   
-  * Below are some example lines from a CSV file dealing with US crude oil production in the lower 48 United States in three months in 2020.
+  * Below are some example lines from a CSV file dealing with US crude oil production in the lower 48 United States by month in 2020 in thousands of barrels.
   
-  "MSN","YYYYMM","Value","Column_Order","Description","Unit"
-"PAPRP48","202008","10140.812","1","Crude Oil Production, 48 States","Thousand Barrels per Day"
-"PAPRP48","202009","10419.657","1","Crude Oil Production, 48 States","Thousand Barrels per Day"
-"PAPRP48","202010","9959.47","1","Crude Oil Production, 48 States","Thousand Barrels per Day"
+|Date       | U.S. Production | East Coast Production | Florida | New York |
+|:----------|----------------:|----------------------:|--------:|---------:|
+|2020-06-15 |           313264|                   1967|       69|        23|
+|2020-07-15 |           340152|                   1968|      122|        23|
+|2020-08-15 |           328099|                   2189|      122|        23|
+|2020-09-15 |           326114|                   2309|      108|        23|
+|2020-10-15 |           323387|                   2359|      113|        23|
+|2020-11-15 |           333721|                   2180|      117|        23|
+> 
 
 ### Data Queries
 
