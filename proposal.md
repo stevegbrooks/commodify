@@ -15,7 +15,7 @@ To create the PDF for submission, open in Word and then export as ".pdf".
 
 ### Description of project
 
-We will build a database containing supply and demand information for various commodities (metals, other minerals, oil and gas, agricultural commodities etc.), containing historical information as well as projections, and we have a feature that allows the user to input their own estimates for various values - for US crude oil production in 2021, for example - to see the implications for supply and demand. 
+We will build a database containing supply and demand information for various commodities (metals, other minerals, oil and gas, agricultural commodities etc.), containing historical information as well as projections, and we will have a feature that allows the user to input their own estimates for various values - for US crude oil production in 2021, for example - to see the implications for supply and demand. As well as a search page we will have a 'dashboard' page, potentially customisable, allowing the user to see the most recent data of relevance to them, which might be the most recent supply and demand data and/or the most recent prices for given commodities.
 
 We plan to use charts and maps to visualize the data.
 
@@ -71,7 +71,20 @@ Our project is an innovation because existing resources deal mostly with individ
 
 
 
-2. TODO: find a global oil production dataset
+2. [Current and historical energy supply and demand data from the Energy Information Agency, part of the United States Department of Energy](https://www.eia.gov/petroleum/data.php)
+
+  * Description: data sets released weekly and monthly containing thousands of data points on US and global energy production and consumption.
+
+  * Size: the data are provided in various packages and formats, some overlapping, but there are at least hundreds of features per week in data stretching back decades, i.e. thousands of rows.
+
+  * The data are mostly time series. They show various aspects of supply and demand, e.g. production, consumption, inventories etc., for a given geographical region, such as a state or country, on a sequence of dates of in a sequence of periods.
+  
+  * Below are some example lines from a CSV file dealing with US crude oil production in the lower 48 United States in three months in 2020.
+  
+  "MSN","YYYYMM","Value","Column_Order","Description","Unit"
+"PAPRP48","202008","10140.812","1","Crude Oil Production, 48 States","Thousand Barrels per Day"
+"PAPRP48","202009","10419.657","1","Crude Oil Production, 48 States","Thousand Barrels per Day"
+"PAPRP48","202010","9959.47","1","Crude Oil Production, 48 States","Thousand Barrels per Day"
 
 ### Data Queries
 
@@ -79,7 +92,7 @@ Our project is an innovation because existing resources deal mostly with individ
 
 2. Ending stock prices for March 2020 of the top commodities produced by metric ton of that month.
 
-3. 
+3. Projected US corn ending stocks for 2021 based on the user's estimate for this year's harvest.
 
 4.
 
