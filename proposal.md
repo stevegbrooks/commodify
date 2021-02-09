@@ -15,7 +15,7 @@ To create the PDF for submission, open in Word and then export as ".pdf".
 
 ### Description of project
 
-We will build a database containing supply and demand information for various commodities (metals, other minerals, oil and gas, agricultural commodities etc.), containing historical information as well as projections, and we have a feature that allows the user to input their own estimates for various values - for US crude oil production in 2021, for example - to see the implications for supply and demand. 
+We will build a database containing supply and demand information for various commodities (metals, other minerals, oil and gas, agricultural commodities etc.), containing historical information as well as projections, and we will have a feature that allows the user to input their own estimates for various values - for US crude oil production in 2021, for example - to see the implications for supply and demand. As well as a search page we will have a 'dashboard' page, potentially customisable, allowing the user to see the most recent data of relevance to them, which might be the most recent supply and demand data and/or the most recent prices for given commodities.
 
 We plan to use charts and maps to visualize the data.
 
