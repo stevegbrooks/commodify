@@ -30,7 +30,34 @@ Our project is an innovation because existing resources deal mostly with individ
   * Size: ~200 MB with ~2 million rows and 12 features.
 
   * A commodity is identified by "Commodity_Code", and also has location, time, and various attributes attached to its value.
+  
+  * A quick peek at the first 5 rows of the data shows the following: 
+  
+	|    |   Commodity_Code | Commodity_Description   | Country_Code   | Country_Name   |   Market_Year |   Calendar_Year |   Month |   Attribute_ID | Attribute_Description   |   Unit_ID | Unit_Description   |   Value |
+	|---:|-----------------:|:------------------------|:---------------|:---------------|--------------:|----------------:|--------:|---------------:|:------------------------|----------:|:-------------------|--------:|
+	|  0 |           577400 | Almonds, Shelled Basis  | AF             | Afghanistan    |          2010 |            2018 |      10 |             20 | Beginning Stocks        |        21 | (MT)               |       0 |
+	|  1 |           577400 | Almonds, Shelled Basis  | AF             | Afghanistan    |          2010 |            2018 |      10 |            125 | Domestic Consumption    |        21 | (MT)               |       0 |
+	|  2 |           577400 | Almonds, Shelled Basis  | AF             | Afghanistan    |          2010 |            2018 |      10 |            176 | Ending Stocks           |        21 | (MT)               |       0 |
+	|  3 |           577400 | Almonds, Shelled Basis  | AF             | Afghanistan    |          2010 |            2018 |      10 |             88 | Exports                 |        21 | (MT)               |       0 |
+	|  4 |           577400 | Almonds, Shelled Basis  | AF             | Afghanistan    |          2010 |            2018 |      10 |             57 | Imports                 |        21 | (MT)               |       0 |
 
+  * Number of unique values for each column:
+  
+	|                       |     0 |
+	|:----------------------|------:|
+	| Commodity_Code        |    63 |
+	| Commodity_Description |    63 |
+	| Country_Code          |   212 |
+	| Country_Name          |   213 |
+	| Market_Year           |    62 |
+	| Calendar_Year         |    62 |
+	| Month                 |    13 |
+	| Attribute_ID          |    71 |
+	| Attribute_Description |    71 |
+	| Unit_ID               |    11 |
+	| Unit_Description      |    11 |
+	| Value                 | 44725 |
+	
   * Summary statistics for numeric columns:
 
 	| Market_Year |Calendar_Year |   Unit_ID     |    Value        |
