@@ -81,15 +81,25 @@ Our project is an innovation because existing resources deal mostly with individ
   
   * Below are some example lines from a CSV file dealing with US crude oil production in the lower 48 United States by month in 2020 in thousands of barrels.
   
-|Date       | U.S. Production | East Coast Production | Florida | New York |
-|:----------|----------------:|----------------------:|--------:|---------:|
-|2020-06-15 |           313264|                   1967|       69|        23|
-|2020-07-15 |           340152|                   1968|      122|        23|
-|2020-08-15 |           328099|                   2189|      122|        23|
-|2020-09-15 |           326114|                   2309|      108|        23|
-|2020-10-15 |           323387|                   2359|      113|        23|
-|2020-11-15 |           333721|                   2180|      117|        23|
-> 
+	|Date       | U.S. Production | East Coast Production | Florida | New York |
+	|:----------|----------------:|----------------------:|--------:|---------:|
+	|2020-06-15 |           313264|                   1967|       69|        23|
+	|2020-07-15 |           340152|                   1968|      122|        23|
+	|2020-08-15 |           328099|                   2189|      122|        23|
+	|2020-09-15 |           326114|                   2309|      108|        23|
+	|2020-10-15 |           323387|                   2359|      113|        23|
+	|2020-11-15 |           333721|                   2180|      117|        23|
+
+  * Summary statistics:
+  
+	|     Date                   |   US Prod     |East Cost Prod | Florida Prod  |New York Prod |
+	|:---------------------------|:--------------|:--------------|:--------------|:-------------|
+	|Min.   :1981-01-15 00:00:00 |Min.   :119208 |Min.   : 399.0 |Min.   :  35.0 |Min.   : 9.00 |
+	|1st Qu.:1990-12-30 12:00:00 |1st Qu.:175752 |1st Qu.: 649.5 |1st Qu.: 174.5 |1st Qu.:19.00 |
+	|Median :2000-12-15 00:00:00 |Median :212585 |Median : 861.0 |Median : 370.0 |Median :28.00 |
+	|Mean   :2000-12-14 11:43:27 |Mean   :223392 |Mean   :1171.7 |Mean   : 511.4 |Mean   :33.37 |
+	|3rd Qu.:2010-11-30 00:00:00 |3rd Qu.:263536 |3rd Qu.:1518.0 |3rd Qu.: 542.5 |3rd Qu.:35.50 |
+	|Max.   :2020-11-15 00:00:00 |Max.   :396865 |Max.   :4243.0 |Max.   :3606.0 |Max.   :96.00 |
 
 ### Data Queries
 
