@@ -71,7 +71,20 @@ Our project is an innovation because existing resources deal mostly with individ
 
 
 
-2. TODO: find a global oil production dataset
+2. [Current and historical energy supply and demand data from the Energy Information Agency, part of the United States Department of Energy](https://www.eia.gov/petroleum/data.php)
+
+  * Description: data sets released weekly and monthly containing thousands of data points, on US and global energy production and consumption.
+
+  * Size: the data are provided in various packages and formats, some overlapping, but there are at least hundreds of features per week in data stretching back decades, i.e. thousands of rows.
+
+  * The data are mostly time series. They show various aspects of supply and demand, e.g. production, consumption, inventories etc., for a given geographical region, such as a state or country, on a sequence of dates of in a sequence of periods.
+  
+  * Below are some example lines from a CSV file dealing with US crude oil production in the lower 48 United States in three months in 2020.
+  
+  "MSN","YYYYMM","Value","Column_Order","Description","Unit"
+"PAPRP48","202008","10140.812","1","Crude Oil Production, 48 States","Thousand Barrels per Day"
+"PAPRP48","202009","10419.657","1","Crude Oil Production, 48 States","Thousand Barrels per Day"
+"PAPRP48","202010","9959.47","1","Crude Oil Production, 48 States","Thousand Barrels per Day"
 
 ### Data Queries
 
@@ -79,7 +92,7 @@ Our project is an innovation because existing resources deal mostly with individ
 
 2. Ending stock prices for March 2020 of the top commodities produced by metric ton of that month.
 
-3. 
+3. Projected US corn ending stocks for 2021 based on the user's estimate for this year's harvest.
 
 4.
 
