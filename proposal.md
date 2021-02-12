@@ -105,10 +105,10 @@ Our project is an innovation because existing resources deal mostly with individ
 
 1. Top almond producers around the world in countries that consume the highest amount of oil.
 
-2. Ending stock prices for March 2020 of the top commodities produced by metric ton of that month.
+2. Ending market prices for March 2020 of the top commodities produced by metric ton of that month.
 
 3. Projected US corn ending stocks for 2021 based on the user's estimate for this year's harvest.
 
 4. Which American states were amongs the top ten producers of both agricultural commodites and energy products?
 
-5. 
+5. (If weather data is incorporated) What is the average precipitation in the five states with the highest wheat yield, and for the other states?
