@@ -2,8 +2,6 @@
 
 ## CIS 550 Final Project Proposal
 
-To create the PDF for submission, open in Word and then export as ".pdf".
-
 ### Team Members
 
 |       Name       |        Email          |   GitHub   |
@@ -31,19 +29,19 @@ Our project is an innovation because existing resources deal mostly with individ
 
   * A commodity is identified by "Commodity_Code", and also has location, time, and various attributes attached to its value.
   
-  * A quick peek at the first 5 rows of the data shows the following: 
+  * A quick peek at the first 5 rows of the data shows the following (column names changed for brevity; not all columns shown): 
   
-	|    |   Commodity_Code | Commodity_Description   | Country_Code   | Country_Name   |   Market_Year |   Calendar_Year |   Month |   Attribute_ID | Attribute_Description   |   Unit_ID | Unit_Description   |   Value |
-	|---:|-----------------:|:------------------------|:---------------|:---------------|--------------:|----------------:|--------:|---------------:|:------------------------|----------:|:-------------------|--------:|
-	|  0 |           577400 | Almonds, Shelled Basis  | AF             | Afghanistan    |          2010 |            2018 |      10 |             20 | Beginning Stocks        |        21 | (MT)               |       0 |
-	|  1 |           577400 | Almonds, Shelled Basis  | AF             | Afghanistan    |          2010 |            2018 |      10 |            125 | Domestic Consumption    |        21 | (MT)               |       0 |
-	|  2 |           577400 | Almonds, Shelled Basis  | AF             | Afghanistan    |          2010 |            2018 |      10 |            176 | Ending Stocks           |        21 | (MT)               |       0 |
-	|  3 |           577400 | Almonds, Shelled Basis  | AF             | Afghanistan    |          2010 |            2018 |      10 |             88 | Exports                 |        21 | (MT)               |       0 |
-	|  4 |           577400 | Almonds, Shelled Basis  | AF             | Afghanistan    |          2010 |            2018 |      10 |             57 | Imports                 |        21 | (MT)               |       0 |
+| ccode | comm | cntry | mrkt_yr | year | month | attr_id | attr | unit_id | unit_desc | val |
+|:----------|:----------|:-----------|:--------|:-----|:------|:--------|:----------|:---|:-----|:--|
+| 577400    | Almonds   | AF         | 2010    | 2018 | 10    | 20      | Beginning Stocks     | 21 | (MT) | 0 |
+| 577400    | Almonds   | AF         | 2010    | 2018 | 10    | 125     | Domestic Consumption | 21 | (MT) | 0 |
+| 577400    | Almonds   | AF         | 2010    | 2018 | 10    | 176     | Ending Stocks        | 21 | (MT) | 0 |
+| 577400    | Almonds   | AF         | 2010    | 2018 | 10    | 88      | Exports              | 21 | (MT) | 0 |
+| 577400    | Almonds   | AF         | 2010    | 2018 | 10    | 57      | Imports              | 21 | (MT) | 0 |
 
-  * Number of unique values for each column:
+  * Number of unique values for each column (original column names):
   
-	|                       |     0 |
+	| col_name              |unique |
 	|:----------------------|------:|
 	| Commodity_Code        |    63 |
 	| Commodity_Description |    63 |
@@ -79,16 +77,16 @@ Our project is an innovation because existing resources deal mostly with individ
 
   * The data are mostly time series. They show various aspects of supply and demand, e.g. production, consumption, inventories etc., for a given geographical region, such as a state or country, on a sequence of dates of in a sequence of periods.
   
-  * Below are some example lines from a CSV file dealing with US crude oil production in the lower 48 United States by month in 2020 in thousands of barrels.
+  * Below are some example lines from a CSV file dealing with US crude oil production in the lower 48 United States by month in 2020 in thousands of barrels (column names changed for brevity).
   
-	|Date       | U.S. Production | East Coast Production | Florida | New York |
-	|:----------|----------------:|----------------------:|--------:|---------:|
-	|2020-06-15 |           313264|                   1967|       69|        23|
-	|2020-07-15 |           340152|                   1968|      122|        23|
-	|2020-08-15 |           328099|                   2189|      122|        23|
-	|2020-09-15 |           326114|                   2309|      108|        23|
-	|2020-10-15 |           323387|                   2359|      113|        23|
-	|2020-11-15 |           333721|                   2180|      117|        23|
+	|Date       | U.S. Prod | East Coast Prod | Florida Prod | New York Prod|
+	|:----------|----------:|----------------:|-------------:|-------------:|
+	|2020-06-15 |     313264|             1967|            69|            23|
+	|2020-07-15 |     340152|             1968|           122|            23|
+	|2020-08-15 |     328099|             2189|           122|            23|
+	|2020-09-15 |     326114|             2309|           108|            23|
+	|2020-10-15 |     323387|             2359|           113|            23|
+	|2020-11-15 |     333721|             2180|           117|            23|
 
   * Summary statistics:
   
