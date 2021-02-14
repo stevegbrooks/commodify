@@ -1,3 +1,7 @@
+### added to template file
+*.csv
+*.xls*
+
 # Logs
 logs
 *.log
