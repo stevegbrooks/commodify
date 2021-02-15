@@ -14,7 +14,7 @@ https://www.iea.org/data-and-statistics?country=WORLD&fuel=Energy%20supply&indic
 
 We plan to replicate some of the functionality of these sites. The user will be able to query historic and current data on commodity supply and demand to find, for example, production or consumption in a given region during a given period. However, our product will have several important features not available at any public website but potentially of considerable use to commodity analysts at banks, hedge funds and the like:
 
-1. Data from multiple commodity sectors, i.e. not just agriculture or energy. This will facilitate cross-commodity analysis, for example comparison of differing rates of growth in consumption
+1. Data from multiple commodity sectors, i.e. not just agriculture or energy. This will facilitate cross-commodity analysis, for example comparison of differing rates of growth in consumption.
 2. Graphics such as charts and maps.
 3. Most importantly, it will also incorporate weather data, which as stated above is a vital driver of commodity supply and demand. Thus our product will facilitate data science concerning the impact of climate and weather on commodity markets.
 
