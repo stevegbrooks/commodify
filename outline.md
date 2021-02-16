@@ -15,12 +15,13 @@ https://www.iea.org/data-and-statistics?country=WORLD&fuel=Energy%20supply&indic
 We plan to replicate some of the functionality of these sites. The user will be able to query historic and current data on commodity supply and demand to find, for example, production or consumption in a given region during a given period. However, our product will have several important features not available at any public website but potentially of considerable use to commodity analysts at banks, hedge funds and the like:
 
 1. Data from multiple commodity sectors, i.e. not just agriculture or energy. This will facilitate cross-commodity analysis, for example comparison of differing rates of growth in consumption.
-2. Graphics such as charts and maps.
-3. Most importantly, it will also incorporate weather data, which as stated above is a vital driver of commodity supply and demand. Thus our product will facilitate data science concerning the impact of climate and weather on commodity markets.
+2. Our system will allow the user to enter their own estimates for certain statistics, e.g. 2021 US crude oil production, to see the implication for future inventories.
+3. Graphics such as charts and maps.
+4. Most importantly, it will also incorporate weather data, which as stated above is a vital driver of commodity supply and demand. Thus our product will facilitate data science concerning the impact of climate and weather on commodity markets.
 
 ### Features that will be implemented
 
-We will have at least one page that allows the user to perform queries on historical and current commodity supply and demand statistics, as well as climate and weather data pertinent to those commodities. There will also be a 'dashboard' page showing the most recent observations for various important commodity supply and demand and weather variables.
+We will have at least one page that allows the user to perform queries on historical and current commodity supply and demand statistics, as well as climate and weather data pertinent to those commodities. The user will also be able to enter their own estimates for some varibles to see the implications for future stock levels. There will also be a 'dashboard' page showing the most recent observations for various important commodity supply and demand and weather variables.
 
 Initially we plan to include agricultural commodities, using various data from the US Department of Agriculture, and petroleum, using data from the US Department of Energy's Energy Information Agency. We Will include data for The United States as a whole and for individual states and regions of the United States.
 
