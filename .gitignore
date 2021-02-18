@@ -1,6 +1,10 @@
 ### added to template file
 *.csv
 *.xls*
+data
+
+### Secrets
+db-config.txt
 
 # Logs
 logs

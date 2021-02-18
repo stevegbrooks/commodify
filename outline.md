@@ -43,6 +43,30 @@ Incorporation of prices into the database, allowing the user not only to explore
 
 ### Data cleaning plan
 
+#### USDA Commodities Data
+
+    1. Download data from usda.gov
+    2. Change column names to abbreviated snake case
+    3. 
+
+See `usda_preprocessing.ipynb` for implementation
+
+#### EIA Energy Data
+
+    1.
+    2.
+    3.
+
+See `eia_preprocessing.ipynb` for implementation
+
+#### NOAA Climate Data
+
+    1.
+    2.
+    3.
+
+See `noaa_preprocessing.ipynb` for implementation
+
 ### Dependencies of application
 
 1. MySQL
