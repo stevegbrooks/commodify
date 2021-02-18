@@ -1,7 +1,7 @@
 ### added to template file
 *.csv
 *.xls*
-data
+!data/*.csv
 
 ### Secrets
 db-config.txt
