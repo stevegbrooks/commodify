@@ -44,6 +44,53 @@ The search page will initially show buttons allowing the user to select a commod
 
 ### SQL DDL for creating database
 
+US_state(
+    name varchar(14),
+    PRIMARY KEY(name))
+    
+country(
+    name varchar(30),
+    PRIMARY KEY(name))
+    
+commodity_sector(
+    name varchar(20),
+    PRIMARY KEY(name))
+    
+commodity(
+    name var_char(20),
+    sector varchar(20),
+    PRIMARY KEY(name),
+    FOREIGN KEY sector REFERENCES commodity_sector(name))
+
+state_grain(
+    state varchar(14),
+    year INT,
+    commodity varchar(20),
+    beginning stocks INT,
+    acreage INT,
+    yield DECIMAL(3,1),
+    production INT,
+    ending stocks INT
+    PRIMARY KEY(state, year, commodity),
+    FOREIGN KEY(state) REFERENCES US_state(name)
+    FOREIGN KEY(commodity) REFERENCES commodity(name))
+    
+country_grain(
+    country varchar(20),
+    year INT,
+    commodity varchar(20),
+    beginning stocks INT,
+    acreage INT,
+    yield DECIMAL(3,1),
+    production INT,
+    imports INT,
+    consumption INT,
+    exports INT,
+    ending stocks INT,
+    PRIMARY KEY(country, year, commodity),
+    FOREIGN KEY(country) REFERENCES country(name))
+    
+
 ### Data cleaning plan
 
 #### USDA Commodities Data
