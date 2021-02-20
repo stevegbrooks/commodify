@@ -36,6 +36,9 @@ More graphics such as maps.
 Incorporation of prices into the database, allowing the user not only to explore the relationship between commodity supply and demand and climate, but also with market prices.
 
 ### High-level application design
+The dashboard page will show a range of important statistics for commodities and the weather that affects those commodities. For the most part those statistics will be based on the most recent observations. The dashboard will be arranged by commodity, so for exmple there might be a corn section that shows predicted corn production, consumption and ending stocks for the current year and average rainall and precipitation relative to normal last month for the major corn-producing states.
+
+The search page will initially show buttons allowing the user to select a commodity sector, for example 'grains', or 'petroleum'. After selecting one of these options the user will be presented with the option to search for country or state level data, and will then be shown drop-down menus for the data available. For example, these might be one drop-dowwn menu for states, one for commodity attributes (e.g. acreage or yield), and one for the period to be selected. The will also be the option to add weather data to the search, so for example the user might request to see annual average temperatures for the selected states. Once the 'Search' button is pressed, the user will see the requested data in tabular form, and, where possible, illustrated by charts and maps. For example, a request for US corn production for the years 2010 to 2020 might return such a bar chart. A search concerning US corn yields might show a map of the US with states coloured according to yield.
 
 ### Entity-relationship diagram
 
