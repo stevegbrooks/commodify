@@ -95,9 +95,11 @@ country_grain(
 
 #### USDA Commodities Data
 
+USDA data are highly scrutinised and we do not anticipate problems with erroeneous data.
+
     1. Download data from usda.gov
     2. Change column names to abbreviated snake case
-    3. 
+    3. Deal with null values, if any, by changing to zeros or removing the entry as appropriate.
 
 See `usda_preprocessing.ipynb` for implementation
 
