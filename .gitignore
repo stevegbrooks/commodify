@@ -2,6 +2,7 @@
 *.csv
 *.xls*
 !data/*.csv
+.vscode
 
 ### Secrets
 db-config.txt

@@ -42,6 +42,8 @@ The search page will initially show buttons allowing the user to select a commod
 
 ### Entity-relationship diagram
 
+![](PetersERD.png)
+
 ### SQL DDL for creating database
 
 US_state(
@@ -100,8 +102,10 @@ USDA data are highly scrutinised and we do not anticipate problems with erroeneo
     1. Download data from usda.gov
     2. Change column names to abbreviated snake case
     3. Deal with null values, if any, by changing to zeros or removing the entry as appropriate.
+    4. Change commodity description values to be more human readable (e.g., "Animal Numbers, Cattle" -> "Cattle").
+    5. Create larger categories for commodities (e.g., "Cattle", "Swine", "Chickens" all go into "Livestock").
 
-See `usda_preprocessing.ipynb` for implementation
+See `usda_preprocessing.ipynb` for implementation (WIP)
 
 #### EIA Energy Data
 
@@ -109,27 +113,28 @@ See `usda_preprocessing.ipynb` for implementation
     2.
     3.
 
-See `eia_preprocessing.ipynb` for implementation
+See `eia_preprocessing.ipynb` for implementation (WIP)
 
 #### NOAA Climate Data
 
-    1.
-    2.
-    3.
+    1. This data comes in different .csvs for each year from 1929 to 2021, so these are first concatenated together.
+    2. Then, just the USA data is filtered out by only retaining data from the 50 states.
+    3. Only the features relevant to our application are retained: `['DATE','TEMP','DEWP','SLP','WDSP','MXSPD','GUST','PRCP','SNDP','FRSHTT','STATE']`
+    4. Finally, mean values per state by month are calculated, and this aggregated table is the final output of the cleaning.
 
-See `noaa_preprocessing.ipynb` for implementation
+See `noaa_preprocessing.ipynb` for implementation (done)
 
 ### Dependencies of application
 
-1. MySQL
-2. React
+Backend: Node.js with MySQL
+Frontend: React.js with leaflet.js widget for mapping
 
 ### Team member responsibilities
 
-|       Name       | Main Responsibilities |
-|:-----------------|:----------------------|
-|Iris Tiong        |                       |
-|Francis Featherby |                       |
-|Peter Brice       |                       |
-|Steven Brooks     |                       |
+|       Name       | Main Responsibilities                       |
+|:-----------------|:--------------------------------------------|
+|Iris Tiong        |App backend implementation; Climate data     |
+|Francis Featherby |App specs and design; Commodities data       |
+|Peter Brice       |Database implementation; Petroleum data      |
+|Steven Brooks     |Project management; Frontend implementation  |
 
