@@ -115,9 +115,10 @@ See `eia_preprocessing.ipynb` for implementation (WIP)
 
 #### NOAA Climate Data
 
-1. This data comes in different .csvs for each year from 1929 to 2021, so these are first concatenated together.
-2. Then, just the USA data is filtered out by only retaining data from the 50 states.
-3. Only the features relevant to our application are retained: 
+1. This data comes in different .csvs for each year from 1929 to 2021 for each weather station located across the world, so these are first concatenated together.
+2. Then, just the USA data is filtered out (by parsing and checking station location name) and data is grouped together by states.
+3. Invalid placeholder values in the data (e.g. 9999.9, 999.9, 99.9) are replaced with N/A values
+4. Only the features relevant to our application are retained, all other columns are dropped from the : 
     `['DATE','TEMP','DEWP','SLP','WDSP','MXSPD','GUST','PRCP','SNDP','FRSHTT','STATE']`
 4. Finally, mean values per state by month are calculated, and this aggregated table is the final output of the cleaning.
 
