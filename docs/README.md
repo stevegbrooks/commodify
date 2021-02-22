@@ -42,42 +42,40 @@ The search page will initially show buttons allowing the user to select a commod
 
 ### Entity-relationship diagram
 
-![](PetersERD.png)
+![](CommodifyERD.png)
 
 ### SQL DDL for creating database
 ```
-US_state(
-    name varchar(14),
-    PRIMARY KEY(name))
-    
-country(
+Political_Entity(
     name varchar(30),
+    is_country bool,
     PRIMARY KEY(name))
-    
-commodity_sector(
-    name varchar(20),
-    PRIMARY KEY(name))
-    
-commodity(
-    name var_char(20),
-    sector varchar(20),
-    PRIMARY KEY(name),
-    FOREIGN KEY sector REFERENCES commodity_sector(name))
 
-state_grain(
-    state varchar(14),
+Commodity_Group(
+    code int,
+    group_name varchar(30),
+    PRIMARY KEY (group_name),
+    FOREIGN KEY code REFERENCES Commodity(code))
+
+Commodity_Name(
+    code int,
+    commodity_name varchar(30),
+    PRIMARY KEY(code))
+
+commodity(
+    political_entity varchar(14),
     year INT,
-    commodity varchar(20),
-    beginning stocks INT,
+    commodity_code varchar(20),
+    beginning_stocks INT,
     acreage INT,
     yield DECIMAL(3,1),
     production INT,
-    ending stocks INT
-    PRIMARY KEY(state, year, commodity),
-    FOREIGN KEY(state) REFERENCES US_state(name)
+    ending_stocks INT
+    PRIMARY KEY(political_entity, year, commodity),
+    FOREIGN KEY(political_entity) REFERENCES state(name)
     FOREIGN KEY(commodity) REFERENCES commodity(name))
     
-country_grain(
+commodity(
     country varchar(20),
     year INT,
     commodity varchar(20),
