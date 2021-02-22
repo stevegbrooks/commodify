@@ -42,7 +42,13 @@ The search page will initially show buttons allowing the user to select a commod
 
 #### UX Design
 
+##### Dashboard page
+
 ![](commodify_mockup_dashboard.png)
+
+##### Prediction page
+
+![](commodify_mockup_prediction.png)
 
 ### Entity-relationship diagram
 
