@@ -4,7 +4,7 @@
 
 ### Motivation
 
-We plan to build a database of commodity supply and demand statitistics. This will be augmented with features that allow the user to see the interaction between those variables and weather and climate, which are crucial determinants of commodity supply and demand. We will include functionality such as charts and maps to visualise the data.
+We plan to build a database of commodity supply and demand statistics. This will be augmented with features that allow the user to see the interaction between those variables and weather and climate, which are crucial determinants of commodity supply and demand. We will include functionality such as charts and maps to visualise the data.
 
 Some online databases of supply and demand data already exist, such as the United States Department of Agriculture's "Production, Supply and Demand Online" tool, and the International Energy Agency's "Data Browser", available at the below links:
 
@@ -21,7 +21,7 @@ We plan to replicate some of the functionality of these sites. The user will be 
 
 ### Features that will be implemented
 
-We will have at least one page that allows the user to perform queries on historical and current commodity supply and demand statistics, as well as climate and weather data pertinent to those commodities. The user will also be able to enter their own estimates for some varibles to see the implications for future stock levels. There will also be a 'dashboard' page showing the most recent observations for various important commodity supply and demand and weather variables.
+We will have at least one page that allows the user to perform queries on historical and current commodity supply and demand statistics, as well as climate and weather data pertinent to those commodities. The user will also be able to enter their own estimates for some variables to see the implications for future stock levels. There will also be a 'dashboard' page showing the most recent observations for various important commodity supply and demand and weather variables.
 
 Initially we plan to include agricultural commodities, using various data from the US Department of Agriculture, and petroleum, using data from the US Department of Energy's Energy Information Agency. We Will include data for The United States as a whole and for individual states and regions of the United States.
 
@@ -36,9 +36,9 @@ More graphics such as maps.
 Incorporation of prices into the database, allowing the user not only to explore the relationship between commodity supply and demand and climate, but also with market prices.
 
 ### High-level application design
-The dashboard page will show a range of important statistics for commodities and the weather that affects those commodities. For the most part those statistics will be based on the most recent observations. The dashboard will be arranged by commodity, so for exmple there might be a corn section that shows predicted corn production, consumption and ending stocks for the current year and average rainall and precipitation relative to normal last month for the major corn-producing states.
+The dashboard page will show a range of important statistics for commodities and the weather that affects those commodities. For the most part those statistics will be based on the most recent observations. The dashboard will be arranged by commodity, so for example there might be a corn section that shows predicted corn production, consumption and ending stocks for the current year and average rainfall and precipitation relative to normal last month for the major corn-producing states.
 
-The search page will initially show buttons allowing the user to select a commodity sector, for example 'grains', or 'petroleum'. After selecting one of these options the user will be presented with the option to search for country or state level data, and will then be shown drop-down menus for the data available. For example, these might be one drop-dowwn menu for states, one for commodity attributes (e.g. acreage or yield), and one for the period to be selected. The will also be the option to add weather data to the search, so for example the user might request to see annual average temperatures for the selected states. Once the 'Search' button is pressed, the user will see the requested data in tabular form, and, where possible, illustrated by charts and maps. For example, a request for US corn production for the years 2010 to 2020 might return such a bar chart. A search concerning US corn yields might show a map of the US with states coloured according to yield.
+The search page will initially show buttons allowing the user to select a commodity sector, for example 'grains', or 'petroleum'. After selecting one of these options the user will be presented with the option to search for country or state level data, and will then be shown drop-down menus for the data available. For example, these might be one drop-down menu for states, one for commodity attributes (e.g. acreage or yield), and one for the period to be selected. The will also be the option to add weather data to the search, so for example the user might request to see annual average temperatures for the selected states. Once the 'Search' button is pressed, the user will see the requested data in tabular form, and, where possible, illustrated by charts and maps. For example, a request for US corn production for the years 2010 to 2020 might return such a bar chart. A search concerning US corn yields might show a map of the US with states coloured according to yield.
 
 #### UX Design
 
@@ -99,7 +99,7 @@ Weather(
 ```
 ### Data cleaning plan
 
-USDA, EIA, and NOAA data are all highly scrutinised and we do not anticipate problems with erroeneous data.
+USDA, EIA, and NOAA data are all highly scrutinised and we do not anticipate problems with erroneous data.
 
 #### Commodities Data
 
