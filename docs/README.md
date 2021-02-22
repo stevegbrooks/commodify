@@ -137,3 +137,8 @@ USDA, EIA, and NOAA data are all highly scrutinised and we do not anticipate pro
 |Peter Brice       |Database design and implementation; Petroleum data      |
 |Steven Brooks     |Project management; Technology integration; Data visualization  |
 
+### Image sources
+- NOAA weather map image: https://www.climate.gov/maps-data/data-snapshots/averagetemp-monthly-cmb-2021-01-00?theme=Temperature
+
+- Commodify placeholder logo: https://www.brandcrowd.com/maker/logo/golden-wheat-grain-86776
+
