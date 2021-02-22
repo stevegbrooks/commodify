@@ -89,24 +89,17 @@ Weather(
 ```
 ### Data cleaning plan
 
-#### USDA Commodities Data
+USDA, EIA, and NOAA data are all highly scrutinised and we do not anticipate problems with erroeneous data.
 
-USDA data are highly scrutinised and we do not anticipate problems with erroeneous data.
+#### Commodities Data
 
 1. Change column names to abbreviated snake case
 2. Deal with null values, if any, by changing to zeros or removing the entry as appropriate.
 3. Change commodity description values to be more human readable (e.g., "Animal Numbers, Cattle" -> "Cattle").
 4. Create larger categories for commodities (e.g., "Cattle", "Swine", "Chickens" all go into "Livestock").
-
-See `usda_preprocessing.ipynb` for implementation (WIP)
-
-#### EIA Energy Data
-
-1. 
-2. 
-3. 
-
-See `eia_preprocessing.ipynb` for implementation (WIP)
+5. Cast from "long" to "wide" on attributes, so that we have columns for each of the unique values of attributes (e.g., "Production", "Beginning Stocks", etc...). 
+6. Join with oil production and consumption data from EIA based "country_name".
+7. Concatenate USDA state data and EIA state data after making sure that they share same column names.
 
 #### NOAA Climate Data
 
@@ -116,8 +109,6 @@ See `eia_preprocessing.ipynb` for implementation (WIP)
 4. Only the features relevant to our application are retained, all other columns are dropped from the : 
     `['DATE','TEMP','DEWP','SLP','WDSP','MXSPD','GUST','PRCP','SNDP','FRSHTT','STATE']`
 4. Finally, mean values per state by month are calculated, and this aggregated table is the final output of the cleaning.
-
-See `noaa_preprocessing.ipynb` for implementation (done)
 
 ### Dependencies of application
 
