@@ -51,6 +51,21 @@ Political_Entity(
     is_country bool,
     PRIMARY KEY(name))
 
+Commodity(
+    political_entity varchar(14),
+    year int,
+    code varchar(20),
+    beginning_stocks int,
+    ending_stocks int,
+    imports int,
+    exports int,
+    acreage int,
+    yield decimal(3,1),
+    production int,
+    domestic_consumption int,
+    PRIMARY KEY(political_entity, year, commodity),
+    FOREIGN KEY(political_entity) REFERENCES Political_Entity(name))
+
 Commodity_Group(
     code int,
     group_name varchar(30),
@@ -62,33 +77,15 @@ Commodity_Name(
     commodity_name varchar(30),
     PRIMARY KEY(code))
 
-commodity(
-    political_entity varchar(14),
-    year INT,
-    commodity_code varchar(20),
-    beginning_stocks INT,
-    acreage INT,
-    yield DECIMAL(3,1),
-    production INT,
-    ending_stocks INT
-    PRIMARY KEY(political_entity, year, commodity),
-    FOREIGN KEY(political_entity) REFERENCES state(name)
-    FOREIGN KEY(commodity) REFERENCES commodity(name))
-    
-commodity(
-    country varchar(20),
-    year INT,
-    commodity varchar(20),
-    beginning stocks INT,
-    acreage INT,
-    yield DECIMAL(3,1),
-    production INT,
-    imports INT,
-    consumption INT,
-    exports INT,
-    ending stocks INT,
-    PRIMARY KEY(country, year, commodity),
-    FOREIGN KEY(country) REFERENCES country(name))
+Weather(
+    political_entity varchar(30),
+    year int,
+    month int,
+    temp decimal(3,1),
+    rainfall decimal(3,1),
+    PRIMARY KEY (political_entity, year, month),
+    FOREIGN KEY political_entity REFERENCES Political_Entity(name)
+)
 ```
 ### Data cleaning plan
 
