@@ -3,6 +3,7 @@
 *.xls*
 !data/*.csv
 .vscode
+app/build
 
 ### Secrets
 db-config.txt
