@@ -10,9 +10,10 @@ CREATE TABLE Political_Entity(
 );
 
 CREATE TABLE Commodity (
-    political_entity varchar(14),
-    year int,
     name varchar(20),
+    year int,
+    month int,
+    political_entity varchar(14),
     beginning_stocks int,
     ending_stocks int,
     imports int,
