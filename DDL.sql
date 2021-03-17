@@ -1,3 +1,6 @@
+/*##########################*/
+/*#### Create relations ####*/
+/*##########################*/
 
 DROP DATABASE IF EXISTS commodify;
 CREATE DATABASE commodify;
@@ -45,6 +48,12 @@ CREATE TABLE Weather(
     FOREIGN KEY (pe_id) REFERENCES Political_Entity(id)
 );
 
+/*##############################################*/
+/*#### Load data - remember to change path! ####*/
+/*##############################################*/
+
+/*Political Entity*/
+
 LOAD DATA LOCAL INFILE "~/CIS550/commodify/data/political_entity.csv"
 INTO TABLE Political_Entity
 COLUMNS TERMINATED BY ','
@@ -58,6 +67,8 @@ IGNORE 1 LINES
 )
 SET abbrev = NULLIF(@vabbrev,'')
 ;
+
+/*Commodity*/
 
 LOAD DATA LOCAL INFILE "~/CIS550/commodify/data/commodity.csv"
 INTO TABLE Commodity
@@ -83,6 +94,8 @@ yield = NULLIF(@vyield,''),
 production = NULLIF(@vproduction,''),
 domestic_consumption = NULLIF(@vdomestic_consumption,'')
 ;
+
+/*Weather*/
 
 LOAD DATA LOCAL INFILE "~/CIS550/commodify/data/weather.csv"
 INTO TABLE Weather
