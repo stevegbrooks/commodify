@@ -11,7 +11,7 @@ CREATE TABLE Political_Entity(
 );
 
 CREATE TABLE Commodity (
-    name varchar(20),
+    name varchar(120),
     year int,
     month int,
     pe_id int,
@@ -20,7 +20,7 @@ CREATE TABLE Commodity (
     imports int,
     exports int,
     acreage int,
-    yield decimal(3,1),
+    yield decimal(6,2),
     production int,
     domestic_consumption int,
     PRIMARY KEY(name, year, pe_id),
@@ -52,4 +52,27 @@ ESCAPED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 LINES;
 
-
+LOAD DATA LOCAL INFILE "~/CIS550/commodify/data/commodity.csv"
+INTO TABLE Commodity
+COLUMNS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+ESCAPED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES
+(
+	name, year, month, pe_id, 
+	@vbeginning_stocks, @vending_stocks,
+    @vimports, @vexports, 
+    @vacerage, @vyield, 
+    @vproduction, @vdomestic_consumption
+)
+SET 
+beginning_stocks = NULLIF(@vbeginning_stocks,''),
+ending_stocks = NULLIF(@vending_stocks,''),
+imports = NULLIF(@vimports,''),
+exports = NULLIF(@vexports,''),
+acreage = NULLIF(@vacreage,''),
+yield = NULLIF(@vyield,''),
+production = NULLIF(@vproduction,''),
+domestic_consumption = NULLIF(@vdomestic_consumption,'')
+;
