@@ -1,269 +1,269 @@
-name,is_country
-Iran,1
-Italy,1
-Morocco,1
-Portugal,1
-Spain,1
-United States,1
-Turkey,1
-Greece,1
-Tunisia,1
-Thailand,1
-Algeria,1
-Argentina,1
-Australia,1
-Brazil,1
-Canada,1
-Chile,1
-China,1
-Colombia,1
-European Union,1
-Hong Kong,1
-India,1
-Indonesia,1
-Israel,1
-Japan,1
-Jordan,1
-Kazakhstan,1
-"Korea, South",1
-Malaysia,1
-Mexico,1
-New Zealand,1
-Norway,1
-Pakistan,1
-Russia,1
-Saudi Arabia,1
-South Africa,1
-Switzerland,1
-Taiwan,1
-United Arab Emirates,1
-Vietnam,1
-Afghanistan,1
-Austria,1
-Belgium-Luxembourg,1
-Bulgaria,1
-Costa Rica,1
-Denmark,1
-Dominican Republic,1
-Ecuador,1
-El Salvador,1
-Finland,1
-Former Czechoslovakia,1
-Former Yugoslavia,1
-France,1
-German Democratic Republic,1
-"Germany, Federal Republic of",1
-Guatemala,1
-Honduras,1
-Hungary,1
-Ireland,1
-Netherlands,1
-Nicaragua,1
-Panama,1
-Peru,1
-Philippines,1
-Poland,1
-Romania,1
-Sweden,1
-Union of Soviet Socialist Repu,1
-United Kingdom,1
-Uruguay,1
-Venezuela,1
-Egypt,1
-Belize,1
-Belarus,1
-Armenia,1
-Azerbaijan,1
-Estonia,1
-Georgia,1
-Kyrgyzstan,1
-Latvia,1
-Lithuania,1
-Moldova,1
-Tajikistan,1
-Turkmenistan,1
-Ukraine,1
-Uzbekistan,1
-Czech Republic,1
-Haiti,1
-Slovakia,1
-Germany,1
-Yugoslavia (>05/92),1
-EU-15,1
-Singapore,1
-Albania,1
-Angola,1
-Bosnia and Herzegovina,1
-Burma,1
-Iraq,1
-"Korea, North",1
-Kuwait,1
-Nepal,1
-Nigeria,1
-Oman,1
-Qatar,1
-Syria,1
-Zambia,1
-Zimbabwe,1
-Lebanon,1
-Bangladesh,1
-Libya,1
-Sri Lanka,1
-Croatia,1
-Serbia,1
-Bolivia,1
-Cyprus,1
-Ethiopia,1
-Iceland,1
-Kenya,1
-Malta,1
-Cuba,1
-Yemen (Sanaa),1
-Bhutan,1
-Yemen,1
-North Macedonia,1
-Serbia and Montenegro,1
-Slovenia,1
-Eritrea,1
-Uganda,1
-Benin,1
-Burundi,1
-Cameroon,1
-Central African Republic,1
-Congo (Brazzaville),1
-Congo (Kinshasa),1
-Cote d'Ivoire,1
-Equatorial Guinea,1
-Gabon,1
-Ghana,1
-Guinea,1
-Guyana,1
-Jamaica,1
-Liberia,1
-Madagascar,1
-Malawi,1
-New Caledonia,1
-Papua New Guinea,1
-Paraguay,1
-Rwanda,1
-Sierra Leone,1
-Tanzania,1
-Togo,1
-Trinidad and Tobago,1
-Laos,1
-Botswana,1
-Burkina,1
-Cambodia,1
-Lesotho,1
-Mali,1
-Senegal,1
-Mozambique,1
-Somalia,1
-"Gambia, The",1
-Mauritania,1
-Eswatini,1
-Guinea-Bissau,1
-Cabo Verde,1
-Chad,1
-Namibia,1
-South Sudan,1
-Sudan,1
-Yemen (Aden),1
-Niger,1
-Mauritius,1
-Bahrain,1
-Luxembourg,1
-Gaza Strip,1
-Fiji,1
-Samoa,1
-Faroe Islands,1
-Bermuda,1
-Netherlands Antilles,1
-Suriname,1
-Barbados,1
-Antigua and Barbuda,1
-"Bahamas, The",1
-Macau,1
-Montenegro,1
-Other,1
-Djibouti,1
-Comoros,1
-Sao Tome and Principe,1
-Solomon Islands,1
-Vanuatu/New Hebrides,1
-Belgium (without Luxembourg),1
-Brunei,1
-Reunion,1
-Guadeloupe,1
-Martinique,1
-Puerto Rico,1
-St. Kitts and Nevis,1
-Virgin Islands of the U.S.,1
-Mongolia,1
-Fr.Ter.Africa-Issas,1
-Gibraltar,1
-Maldives,1
-French West Indies,1
-Gilbert and Ellice Islands,1
-Greenland,1
-Grenada,1
-Seychelles,1
-St. Lucia,1
-French Polynesia,1
-Tonga,1
-EU-25,1
-Alaska,0
-Alabama,0
-Arkansas,0
-American Samoa,0
-Arizona,0
-California,0
-Colorado,0
-Connecticut,0
-District of Columbia,0
-Delaware,0
-Florida,0
-Georgia,0
-Guam,0
-Hawaii,0
-Iowa,0
-Idaho,0
-Illinois,0
-Indiana,0
-Kansas,0
-Kentucky,0
-Louisiana,0
-Massachusetts,0
-Maryland,0
-Maine,0
-Michigan,0
-Minnesota,0
-Missouri,0
-Mississippi,0
-Montana,0
-North Carolina,0
-North Dakota,0
-Nebraska,0
-New Hampshire,0
-New Jersey,0
-New Mexico,0
-Nevada,0
-New York,0
-Ohio,0
-Oklahoma,0
-Oregon,0
-Pennsylvania,0
-Puerto Rico,0
-Rhode Island,0
-South Carolina,0
-South Dakota,0
-Tennessee,0
-Texas,0
-Utah,0
-Virginia,0
-Virgin Islands,0
-Vermont,0
-Washington,0
-Wisconsin,0
-West Virginia,0
-Wyoming,0
+id,name,is_country
+0,Afghanistan,1
+1,Alabama,0
+2,Alaska,0
+3,Albania,1
+4,Algeria,1
+5,American Samoa,0
+6,Angola,1
+7,Antigua and Barbuda,1
+8,Argentina,1
+9,Arizona,0
+10,Arkansas,0
+11,Armenia,1
+12,Australia,1
+13,Austria,1
+14,Azerbaijan,1
+15,"Bahamas, The",1
+16,Bahrain,1
+17,Bangladesh,1
+18,Barbados,1
+19,Belarus,1
+20,Belgium (without Luxembourg),1
+21,Belgium-Luxembourg,1
+22,Belize,1
+23,Benin,1
+24,Bermuda,1
+25,Bhutan,1
+26,Bolivia,1
+27,Bosnia and Herzegovina,1
+28,Botswana,1
+29,Brazil,1
+30,Brunei,1
+31,Bulgaria,1
+32,Burkina,1
+33,Burma,1
+34,Burundi,1
+35,Cabo Verde,1
+36,California,0
+37,Cambodia,1
+38,Cameroon,1
+39,Canada,1
+40,Central African Republic,1
+41,Chad,1
+42,Chile,1
+43,China,1
+44,Colombia,1
+45,Colorado,0
+46,Comoros,1
+47,Congo (Brazzaville),1
+48,Congo (Kinshasa),1
+49,Connecticut,0
+50,Costa Rica,1
+51,Cote d'Ivoire,1
+52,Croatia,1
+53,Cuba,1
+54,Cyprus,1
+55,Czech Republic,1
+56,Delaware,0
+57,Denmark,1
+58,District of Columbia,0
+59,Djibouti,1
+60,Dominican Republic,1
+61,EU-15,1
+62,EU-25,1
+63,Ecuador,1
+64,Egypt,1
+65,El Salvador,1
+66,Equatorial Guinea,1
+67,Eritrea,1
+68,Estonia,1
+69,Eswatini,1
+70,Ethiopia,1
+71,European Union,1
+72,Faroe Islands,1
+73,Fiji,1
+74,Finland,1
+75,Florida,0
+76,Former Czechoslovakia,1
+77,Former Yugoslavia,1
+78,Fr.Ter.Africa-Issas,1
+79,France,1
+80,French Polynesia,1
+81,French West Indies,1
+82,Gabon,1
+83,"Gambia, The",1
+84,Gaza Strip,1
+85,Georgia,0
+86,Georgia,1
+87,German Democratic Republic,1
+88,Germany,1
+89,"Germany, Federal Republic of",1
+90,Ghana,1
+91,Gibraltar,1
+92,Gilbert and Ellice Islands,1
+93,Greece,1
+94,Greenland,1
+95,Grenada,1
+96,Guadeloupe,1
+97,Guam,0
+98,Guatemala,1
+99,Guinea,1
+100,Guinea-Bissau,1
+101,Guyana,1
+102,Haiti,1
+103,Hawaii,0
+104,Honduras,1
+105,Hong Kong,1
+106,Hungary,1
+107,Iceland,1
+108,Idaho,0
+109,Illinois,0
+110,India,1
+111,Indiana,0
+112,Indonesia,1
+113,Iowa,0
+114,Iran,1
+115,Iraq,1
+116,Ireland,1
+117,Israel,1
+118,Italy,1
+119,Jamaica,1
+120,Japan,1
+121,Jordan,1
+122,Kansas,0
+123,Kazakhstan,1
+124,Kentucky,0
+125,Kenya,1
+126,"Korea, North",1
+127,"Korea, South",1
+128,Kuwait,1
+129,Kyrgyzstan,1
+130,Laos,1
+131,Latvia,1
+132,Lebanon,1
+133,Lesotho,1
+134,Liberia,1
+135,Libya,1
+136,Lithuania,1
+137,Louisiana,0
+138,Luxembourg,1
+139,Macau,1
+140,Madagascar,1
+141,Maine,0
+142,Malawi,1
+143,Malaysia,1
+144,Maldives,1
+145,Mali,1
+146,Malta,1
+147,Martinique,1
+148,Maryland,0
+149,Massachusetts,0
+150,Mauritania,1
+151,Mauritius,1
+152,Mexico,1
+153,Michigan,0
+154,Minnesota,0
+155,Mississippi,0
+156,Missouri,0
+157,Moldova,1
+158,Mongolia,1
+159,Montana,0
+160,Montenegro,1
+161,Morocco,1
+162,Mozambique,1
+163,Namibia,1
+164,Nebraska,0
+165,Nepal,1
+166,Netherlands,1
+167,Netherlands Antilles,1
+168,Nevada,0
+169,New Caledonia,1
+170,New Hampshire,0
+171,New Jersey,0
+172,New Mexico,0
+173,New York,0
+174,New Zealand,1
+175,Nicaragua,1
+176,Niger,1
+177,Nigeria,1
+178,North Carolina,0
+179,North Dakota,0
+180,North Macedonia,1
+181,Norway,1
+182,Ohio,0
+183,Oklahoma,0
+184,Oman,1
+185,Oregon,0
+186,Other,1
+187,Pakistan,1
+188,Panama,1
+189,Papua New Guinea,1
+190,Paraguay,1
+191,Pennsylvania,0
+192,Peru,1
+193,Philippines,1
+194,Poland,1
+195,Portugal,1
+196,Puerto Rico,1
+197,Puerto Rico,0
+198,Qatar,1
+199,Reunion,1
+200,Rhode Island,0
+201,Romania,1
+202,Russia,1
+203,Rwanda,1
+204,Samoa,1
+205,Sao Tome and Principe,1
+206,Saudi Arabia,1
+207,Senegal,1
+208,Serbia,1
+209,Serbia and Montenegro,1
+210,Seychelles,1
+211,Sierra Leone,1
+212,Singapore,1
+213,Slovakia,1
+214,Slovenia,1
+215,Solomon Islands,1
+216,Somalia,1
+217,South Africa,1
+218,South Carolina,0
+219,South Dakota,0
+220,South Sudan,1
+221,Spain,1
+222,Sri Lanka,1
+223,St. Kitts and Nevis,1
+224,St. Lucia,1
+225,Sudan,1
+226,Suriname,1
+227,Sweden,1
+228,Switzerland,1
+229,Syria,1
+230,Taiwan,1
+231,Tajikistan,1
+232,Tanzania,1
+233,Tennessee,0
+234,Texas,0
+235,Thailand,1
+236,Togo,1
+237,Tonga,1
+238,Trinidad and Tobago,1
+239,Tunisia,1
+240,Turkey,1
+241,Turkmenistan,1
+242,Uganda,1
+243,Ukraine,1
+244,Union of Soviet Socialist Repu,1
+245,United Arab Emirates,1
+246,United Kingdom,1
+247,United States,1
+248,Uruguay,1
+249,Utah,0
+250,Uzbekistan,1
+251,Vanuatu/New Hebrides,1
+252,Venezuela,1
+253,Vermont,0
+254,Vietnam,1
+255,Virgin Islands,0
+256,Virgin Islands of the U.S.,1
+257,Virginia,0
+258,Washington,0
+259,West Virginia,0
+260,Wisconsin,0
+261,Wyoming,0
+262,Yemen,1
+263,Yemen (Aden),1
+264,Yemen (Sanaa),1
+265,Yugoslavia (>05/92),1
+266,Zambia,1
+267,Zimbabwe,1
