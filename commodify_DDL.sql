@@ -39,8 +39,8 @@ CREATE TABLE Weather(
     pe_id int,
     year int,
     month int,
-    temp numeric(2,1),
-    rainfall numeric(2,1),
+    temp decimal(4,2),
+    rainfall numeric(4,2),
     PRIMARY KEY (pe_id, year, month),
     FOREIGN KEY (pe_id) REFERENCES Political_Entity(id)
 );
@@ -82,4 +82,18 @@ acreage = NULLIF(@vacreage,''),
 yield = NULLIF(@vyield,''),
 production = NULLIF(@vproduction,''),
 domestic_consumption = NULLIF(@vdomestic_consumption,'')
+;
+
+LOAD DATA LOCAL INFILE "~/CIS550/commodify/data/weather.csv"
+INTO TABLE Weather
+COLUMNS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+ESCAPED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES
+(
+	pe_id, year, month, temp,
+    @vrainfall
+)
+SET rainfall = NULLIF(@vrainfall,'')
 ;
