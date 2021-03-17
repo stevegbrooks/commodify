@@ -7,6 +7,7 @@ CREATE TABLE Political_Entity(
     id int,
     name varchar(30),
     is_country bool,
+    abbrev varchar(3),
     PRIMARY KEY(id)
 );
 
@@ -50,7 +51,13 @@ COLUMNS TERMINATED BY ','
 OPTIONALLY ENCLOSED BY '"'
 ESCAPED BY '"'
 LINES TERMINATED BY '\n'
-IGNORE 1 LINES;
+IGNORE 1 LINES
+(
+	id, name, is_country,
+    @vabbrev
+)
+SET abbrev = NULLIF(@vabbrev,'')
+;
 
 LOAD DATA LOCAL INFILE "~/CIS550/commodify/data/commodity.csv"
 INTO TABLE Commodity
