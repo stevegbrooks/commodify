@@ -14,6 +14,12 @@ CREATE TABLE Political_Entity(
     PRIMARY KEY(id)
 );
 
+CREATE TABLE Commodity_Group(
+    name varchar(120),
+    group_name varchar(30),
+    PRIMARY KEY (name)
+);
+
 CREATE TABLE Commodity (
     name varchar(120),
     year int,
@@ -28,14 +34,8 @@ CREATE TABLE Commodity (
     production int,
     domestic_consumption int,
     PRIMARY KEY(name, year, pe_id),
+    FOREIGN KEY(name) REFERENCES Commodity_Group(name),
     FOREIGN KEY(pe_id) REFERENCES Political_Entity(id)
-);
-
-CREATE TABLE Commodity_Group(
-    name varchar(20),
-    group_name varchar(30),
-    PRIMARY KEY (group_name),
-    FOREIGN KEY (name) REFERENCES Commodity(name)
 );
 
 CREATE TABLE Weather(
@@ -51,6 +51,8 @@ CREATE TABLE Weather(
 /*##############################################*/
 /*#### Load data - remember to change path! ####*/
 /*##############################################*/
+
+/*Commodity Group*/
 
 /*Political Entity*/
 
