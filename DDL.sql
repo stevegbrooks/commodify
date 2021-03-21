@@ -17,7 +17,7 @@ CREATE TABLE Political_Entity(
 CREATE TABLE Commodity_Group(
     name varchar(120),
     group_name varchar(30),
-    PRIMARY KEY (name)
+    PRIMARY KEY(name)
 );
 
 CREATE TABLE Commodity (
@@ -53,6 +53,13 @@ CREATE TABLE Weather(
 /*##############################################*/
 
 /*Commodity Group*/
+LOAD DATA LOCAL INFILE "~/CIS550/commodify/data/commodity_group.csv"
+INTO TABLE Commodity_Group
+COLUMNS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+ESCAPED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES;
 
 /*Political Entity*/
 
