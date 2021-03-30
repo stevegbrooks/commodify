@@ -2,9 +2,12 @@
 /*#### Create relations ####*/
 /*##########################*/
 
+
 DROP DATABASE IF EXISTS commodify;
 CREATE DATABASE commodify;
 USE commodify;
+
+/*change to your path*/
 
 CREATE TABLE Political_Entity(
     id int,
@@ -103,6 +106,30 @@ yield = NULLIF(@vyield,''),
 production = NULLIF(@vproduction,''),
 domestic_consumption = NULLIF(@vdomestic_consumption,'')
 ;
+
+LOAD DATA LOCAL INFILE "~/CIS550/commodify/data/corn_state_data.csv"
+INTO TABLE Commodity
+COLUMNS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+ESCAPED BY '"'
+LINES TERMINATED BY '\n'
+(name, pe_id, year, production, yield, beginning_stocks, ending_stocks);
+
+LOAD DATA LOCAL INFILE "~/CIS550/commodify/data/soybean_state_data.csv"
+INTO TABLE Commodity
+COLUMNS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+ESCAPED BY '"'
+LINES TERMINATED BY '\n'
+(name, pe_id, year, production, yield, beginning_stocks, ending_stocks);
+
+LOAD DATA LOCAL INFILE "~/CIS550/commodify/data/wheat_state_data.csv"
+INTO TABLE Commodity
+COLUMNS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+ESCAPED BY '"'
+LINES TERMINATED BY '\n'
+(name, pe_id, year, production, yield, beginning_stocks, ending_stocks);
 
 /*Weather*/
 
