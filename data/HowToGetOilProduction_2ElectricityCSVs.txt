@@ -1,0 +1,38 @@
+CrudeOilProduction_ByState_Monthly_InThousandsBarrels_1981-2020.csv
+This is how much crude oil each state produced per year.
+It excludes offshore production.
+
+1) go to https://www.eia.gov/dnav/pet/pet_crd_crpdn_adc_mbbl_m.htm
+1b) alternatively, can use the Excel add-in found https://www.eia.gov/opendata/excel/
+2) Select the "Monthly-Thousand Barrels"
+3) Check the boxes for the States only.
+3b) do not need to include "PADD"s, "Offshore"s.
+4) Click "Download Series History"
+5) Edit the resulting spreadsheet by getting rid of superfluous columns/rows. Only need State name columns and by time series (rows) 1981-2020.
+6) Split out month and year into two columns
+7) Save as a csv.
+
+
+
+ElectricPowerGeneratedBy3Types_ByState_Monthly_2001-2021.csv
+This is how much fossil fuel was used to produce electricity in each state. The fossil fuels are classified into 3 types which are crude oil, natural gas, coal.
+
+1) go to https://www.eia.gov/electricity/data/state/
+2) Under "Monthly data from Electric Power Monthly,"
+   Click on "Fossil Fuel Consumption for Electricity Generation by Year..."
+3) Manually put all the tabs together.
+4) Filter only for "Total Electric Power Industry"
+   "Coal", "Petroleum", "Natural Gas"
+   Only states. (remove the "US").
+5) save as .csv
+
+
+
+EnergyConsumption_ByState_Annual_InBillionBtu_1960-2018.csv
+This is how much energy each state consumed per year in billion Btu.
+
+1) https://www.eia.gov/state/seds/seds-data-complete.php#Consumption
+2) Under "Key statistics and indicators", under "Consumption",
+   click the "XLSX" for "Total energy consumption, real GDP..." under 1960-2018
+ 3) Copy tab with "Total Consumption" tab and transpose data into a new .csv
+ 4) Units are "billion Btu"
