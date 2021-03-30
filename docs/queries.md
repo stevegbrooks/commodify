@@ -12,7 +12,7 @@ Password: wheat
 Port: 3306
 Endpoint: commodify-db.cn5sga8k6aq8.us-east-1.rds.amazonaws.com
 
-Run `mysql --host=commodify-db.cn5sga8k6aq8.us-east-1.rds.amazonaws.com --port=3306 --user=admin -p`.
+Run `mysql --host=commodify-db.cn5sga8k6aq8.us-east-1.rds.amazonaws.com --port=3306 --user=guest -p`.
 
 Input password at prompt.
 
