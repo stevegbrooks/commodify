@@ -36,7 +36,9 @@ WHERE c.name = 'Oilseed, Soybean' AND c. year = 2020
 ORDER BY c.production DESC
 LIMIT 10;`
 
-This one finds all the states with wheat yields smaller than Canada's last year:
+#### Query 3
+
+##### It is human nature to compare oneself with others. Users may want to find low-performing states that are producing less commodities than another country. An example is the query below which returns all the (USA) states with wheat yields smaller than Canada's last year:
 
 `SELECT p.name
 FROM Political_Entity p JOIN Commodity c on p.id = c.pe_id
@@ -45,49 +47,49 @@ WHERE c.name = 'Wheat' AND c. year = 2019 AND p.is_country = 0 AND c.yield < (
 	FROM Political_Entity p2 JOIN Commodity c2 on p2.id = c2.pe_id
 	WHERE p2.name = 'Canada' AND c2.year = 2020 AND c2.name = 'Wheat');`
 
-#### Query 3
+#### Query 4
 
 ##### In view of the threat of climate change, analysts and traders may wish to identify extreme weather-resistant commodities for which the yield/production levels increase with the occurrence of harsh weather. The query below requests for a list of commodities that 'thrive' in harsh weather conditions - experienced increase in yield OR production in years of extreme weather (i.e. temperature or rainfall greater than 95% of all data or smaller than 5% of all data)
 
 `SELECT ...`
 
-#### Query 4
+#### Query 5
 
 ##### Weather conditions may be useful in the prediction of production and consumption levels of commodities. For instance, the query below requests for the average temperature and rainfall at locations with the top 5 highest domestic production of almonds in any year. 
 
 `SELECT ...`
 
-#### Query 5
+#### Query 6
 
 ##### Somewhat the reverse of query 2, users may wish to identify the largest consumers of certain commodities at specific period of time. The query below returns a list of countries that were in the top 50 of total crude oil consumed and renewables produced from 2000-2010.
 
 `SELECT ...`
 
-#### Query 6
+#### Query 7
 
 ##### What states are in the top 10 largest one year growth's in beginning_stocks?
 
 `SELECT ...`
 
-#### Query 7
+#### Query 8
 
 ##### For each state, in their largest %growth year in electricity consumed, what was the commodity that had the largest yield growth % from the previous year
 
 `SELECT ...`
 
-#### Query 8
+#### Query 9
 
 ##### What commodity had the highest yield in the top 5 and bottom 5 of electricity producing states for 2015. Only include commodities which have the same units of measurements for yield.
 
 `SELECT ...`
 
-#### Query 9
+#### Query 10
 
 ##### What were the countries and their average renewables production which consumed the least amount fossil fuels from 1995-2005?
 
 `SELECT ...`
 
-#### Query 10 
+#### Query 11
 
 ##### For the 10 countries with the largest yield of "oil" agriculture (has oil in the name and is an agricultural commodity), what was their average electricity production and consumption in 2015?
 
