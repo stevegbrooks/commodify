@@ -59,7 +59,6 @@ WHERE c.name = 'Wheat' AND c. year = 2019 AND p.is_country = 0 AND c.yield < (
     ORDER BY avg_year_temp DESC
     LIMIT 10
 )
-
 SELECT c.name 
 FROM (
     SELECT A.name, A.year, A.sum - LAG(A.sum) OVER (ORDER BY A.name, A.year ) AS difference_previous_year
@@ -68,9 +67,7 @@ FROM (
             FROM Commodity c
             GROUP BY c.name, c.year) A ) c JOIN top10highesttemp ON c.year = top10highesttemp.year
 WHERE c.difference_previous_year > 0;
-    
-SELECT DISTINCT year FROM Weather;
-`
+SELECT DISTINCT year FROM Weather;`
 
 #### Query 5
 
