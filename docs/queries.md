@@ -28,14 +28,16 @@ WHERE c.name = 'Corn' AND p.name = 'United States' AND c.year > 2010;`
 
 #### Query 2
 
-#### Users may want to obtain information on the largest producers of commodities. For instance, the query belows requests for the 10 biggest producers of soybeans in 2020, counting states as well as countries.
+##### Users may want to obtain information on the largest producers of commodities. For instance, the query belows requests for the 10 biggest producers of soybeans in 2020, counting states as well as countries.
 
 `SELECT p.name, c.production
 FROM Political_Entity p JOIN Commodity c on p.id = c.pe_id
 WHERE c.name = 'Oilseed, Soybean' AND c. year = 2020
 ORDER BY c.production DESC
 LIMIT 10;`
+
 This one finds all the states with wheat yields smaller than Canada's last year:
+
 `SELECT p.name
 FROM Political_Entity p JOIN Commodity c on p.id = c.pe_id
 WHERE c.name = 'Wheat' AND c. year = 2019 AND p.is_country = 0 AND c.yield < (
