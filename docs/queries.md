@@ -49,15 +49,38 @@ WHERE c.name = 'Wheat' AND c. year = 2019 AND p.is_country = 0 AND c.yield < (
 
 #### Query 4
 
-##### In view of the threat of climate change, analysts and traders may wish to identify extreme weather-resistant commodities for which the yield/production levels increase with the occurrence of harsh weather. The query below requests for a list of commodities that 'thrive' in harsh weather conditions - experienced increase in yield OR production in years of extreme weather (i.e. temperature or rainfall greater than 95% of all data or smaller than 5% of all data)
+##### In view of the threat of climate change, analysts and traders may wish to identify extreme weather-resistant commodities for which the global production levels increase with the occurrence of harsh weather, using U.S. weather data as a proxy for the global weather. The query below requests for a list of commodities that 'thrive' in harsh weather conditions - experienced increase in global production in years of extreme weather (given by top 10 years with highest average temperature)
 
-`SELECT ...`
+`WITH top10highesttemp AS (
+    SELECT year FROM
+    (SELECT year, avg(temp) AS avg_year_temp
+    FROM Weather
+    GROUP BY year) a
+    ORDER BY avg_year_temp DESC
+    LIMIT 10
+)
+
+SELECT c.name 
+FROM (
+    SELECT A.name, A.year, A.sum - LAG(A.sum) OVER (ORDER BY A.name, A.year ) AS difference_previous_year
+        FROM (
+            SELECT DISTINCT c.name, c.year, SUM(c.production) AS sum
+            FROM Commodity c
+            GROUP BY c.name, c.year) A ) c JOIN top10highesttemp ON c.year = top10highesttemp.year
+WHERE c.difference_previous_year > 0;
+    
+SELECT DISTINCT year FROM Weather;
+`
 
 #### Query 5
 
-##### Weather conditions may be useful in the prediction of production and consumption levels of commodities. For instance, the query below requests for the average temperature and rainfall at locations with the top 5 highest domestic production of almonds in any year. 
+##### Weather conditions may be useful in the prediction of production and consumption levels of commodities. For instance, the query below requests for the average temperature and rainfall in top 5 best producing year/month in U.S. states. 
 
-`SELECT ...`
+`SELECT AVG(w.temp) AS avg_best_temp, AVG(w.rainfall) AS avg_best_rainfall
+FROM Commodity c JOIN Weather w on c.pe_id = w.pe_id
+WHERE c.name = 'Oilseed, Soybean'
+ORDER BY c.production DESC
+LIMIT 5;`
 
 #### Query 6
 
