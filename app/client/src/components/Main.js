@@ -4,6 +4,7 @@ import Footer from './Footer'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import Dashboard from './Dashboard'
 import UserProfile from './UserProfile'
+import Test from './Test'
 
 class Main extends Component {
   render() {
@@ -13,6 +14,7 @@ class Main extends Component {
         <Switch>
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/profile" component={UserProfile} />
+          <Route path="/test" component={Test} />
           <Redirect from='*' to='/dashboard' />
         </Switch>
         <Footer />
