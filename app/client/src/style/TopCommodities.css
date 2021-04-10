@@ -1,0 +1,23 @@
+.topcoms-container {
+    display: flex;
+    flex-flow: column wrap;
+    margin-top: 10px;
+  }
+  
+  .topcoms-container .topcoms, 
+  .topcoms-container .topcomsResults {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    height: 40px;
+    padding: 0 10px;
+  }
+  
+  .topcoms .header, 
+  .topcomsResults .country, 
+  .topcomsResults .commodity, 
+  .topcomsResults .year, 
+  .topcomsResults .month, 
+  .topcomsResults .ending_stocks {
+    flex: 1 0 25%;
+  }
