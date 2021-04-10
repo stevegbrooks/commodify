@@ -24,6 +24,12 @@ class Sidebar extends Component {
                 <p>User Profile</p>
               </NavLink>
             </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to='/test'>
+                <i className="nc-icon nc-circle-09"></i>
+                <p>Top Commodities</p>
+              </NavLink>
+            </li>
 
           </ul>
         </div>
