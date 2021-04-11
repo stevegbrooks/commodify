@@ -8,7 +8,7 @@ class Sidebar extends Component {
         <div className="sidebar-wrapper">
           <div className="logo">
             <Link to='/' className="simple-text">
-              Simple Dashboard
+              Commodify
             </Link>
           </div>
           <ul className="nav">
