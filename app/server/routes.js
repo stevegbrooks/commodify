@@ -23,7 +23,22 @@ function getTopCommodities(req, res) {
     }
   });
 };
+
+function getAllCommodityGroups(req, res) {
+  var query = `
+    SELECT DISTINCT group_name
+    FROM Commodity_Group;
+  `;
+  connection.query(query, function(err, rows, fields) {
+    if (err) console.log(err);
+    else {
+      res.json(rows);
+    }
+  });
+};
+
 // The exported functions, which can be accessed in index.js.
 module.exports = {
-	getTopCommodities: getTopCommodities
+	getTopCommodities: getTopCommodities,
+  getAllCommodityGroups: getAllCommodityGroups
 }
