@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-export default class GroupButton extends React.Component {
+export default class SectorButton extends React.Component {
 	constructor(props) {
 		super(props);
 
@@ -16,8 +16,8 @@ export default class GroupButton extends React.Component {
 
 	render() {
 		return (
-			<div className="group" id={this.props.id} onClick={this.props.onClick}>
-			{this.props.group}
+			<div className="genre" id={this.props.id} onClick={this.props.onClick}>
+			{this.props.genre}
 			</div>
 		);
 	}
