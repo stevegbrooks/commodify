@@ -32,6 +32,21 @@ function getAllCommodityGroups(req, res) {
   connection.query(query, function(err, rows, fields) {
     if (err) console.log(err);
     else {
+      console.log(rows);
+      res.json(rows);
+    }
+  });
+};
+
+function getCommodityList(req, res) {
+  var query = `
+    SELECT DISTINCT name
+    FROM Commodity;
+  `;
+  connection.query(query, function(err, rows, fields) {
+    if (err) console.log(err);
+    else {
+      console.log(rows);
       res.json(rows);
     }
   });
@@ -40,5 +55,6 @@ function getAllCommodityGroups(req, res) {
 // The exported functions, which can be accessed in index.js.
 module.exports = {
 	getTopCommodities: getTopCommodities,
-  getAllCommodityGroups: getAllCommodityGroups
+  getAllCommodityGroups: getAllCommodityGroups,
+  getCommodityList: getCommodityList
 }
