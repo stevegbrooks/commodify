@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 // routes.getTopCommodities, specified in routes.js.
 app.get('/topcoms', routes.getTopCommodities);
 app.get('/commodity_groups', routes.getAllCommodityGroups);
-app.get('/commodities', routes.getCommodityList);
+app.get('/commodities/:sector', routes.getCommodityList);
 
 /* ---- Server ---- */
 app.listen(5000, () => {

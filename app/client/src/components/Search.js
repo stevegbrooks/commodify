@@ -7,8 +7,8 @@ export default class Dashboard extends React.Component {
   constructor(props) {
     super(props);
 
-    // The state maintained by this React Component. This component maintains the list of genres,
-    // and a list of movies for a specified genre.
+    // The state maintained by this React Component. This component maintains the list of sectors,
+    // and a list of commodities for a specified sector.
     this.state = {
       genres: [],
       commodities: [],
@@ -33,12 +33,12 @@ export default class Dashboard extends React.Component {
       console.log(err);
     }).then(genreList => {
       if (!genreList) return;
-      // Map each genre in this.state.genres to an HTML element:
-      // A button which triggers the showMovies function for each genre.
+      // Map each sector in this.state.sectors to an HTML element:
+      // A button which triggers the showCommodities function for each sector.
       let genreDivs = genreList.map((genreObj, i) =>
 	    <SectorButton id={"button-" + genreObj.group_name} onClick={() => this.showCommodities(genreObj.group_name)} genre={genreObj.group_name} /> );
 
-      // Set the state of the genres list to the value returned by the HTTP response from the server.
+      // Set the state of the sectors list to the value returned by the HTTP response from the server.
       this.setState({
         genres: genreDivs
       });
@@ -50,9 +50,10 @@ export default class Dashboard extends React.Component {
 
 
 
-  showCommodities(genre) {
+  showCommodities(sector) {
     // Send an HTTP request to the server.
-    fetch("http://localhost:5000/commodities",
+
+    fetch("http://localhost:5000/commodities/" + sector,
     {
       method: 'GET' // The type of HTTP request.
     }).then(res => {
@@ -83,7 +84,8 @@ export default class Dashboard extends React.Component {
 		});
 	}
 
-  submitCommodity() {
+
+	submitCommodity() {
 		
 	}
 
