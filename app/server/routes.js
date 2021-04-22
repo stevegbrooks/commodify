@@ -25,17 +25,25 @@ function getTopCommodities(req, res) {
 };
 
 function getAllCommodityGroups(req, res) {
-  var query = `
+  var sector = req.params.sector;
+
+  if (sector = "Agriculture") {
+    var query = `
     SELECT DISTINCT group_name
     FROM Commodity_Group;
-  `;
-  connection.query(query, function(err, rows, fields) {
-    if (err) console.log(err);
-    else {
-      console.log(rows);
-      res.json(rows);
-    }
-  });
+    `;
+    connection.query(query, function(err, rows, fields) {
+      if (err) console.log(err);
+      else {
+        console.log(rows);
+        res.json(rows);
+      }
+    });
+  } else {
+    
+  }
+
+  
 };
 
 function getCommodityList(req, res) {
