@@ -11,8 +11,12 @@ export default class Dashboard extends React.Component {
     // and a list of movies for a specified genre.
     this.state = {
       genres: [],
+      commodities: [],
+      selectedCommodity: ""
     }
 
+    this.showCommodities = this.showCommodities.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   // React function that is called when the page load.
@@ -32,7 +36,7 @@ export default class Dashboard extends React.Component {
       // Map each genre in this.state.genres to an HTML element:
       // A button which triggers the showMovies function for each genre.
       let genreDivs = genreList.map((genreObj, i) =>
-	<SectorButton id={"button-" + genreObj.group_name} onClick={() => this.showSearchOptions(genreObj.group_name)} genre={genreObj.group_name} /> );
+	    <SectorButton id={"button-" + genreObj.group_name} onClick={() => this.showCommodities(genreObj.group_name)} genre={genreObj.group_name} /> );
 
       // Set the state of the genres list to the value returned by the HTTP response from the server.
       this.setState({
@@ -44,6 +48,44 @@ export default class Dashboard extends React.Component {
     });
   }
 
+
+
+  showCommodities(genre) {
+    // Send an HTTP request to the server.
+    fetch("http://localhost:5000/commodities",
+    {
+      method: 'GET' // The type of HTTP request.
+    }).then(res => {
+			return res.json();
+		}).then(commodityListObj => {
+
+			let commodityList = commodityListObj.map((commodityObj, i) =>
+				<option key={i} value={commodityObj.name}>
+				{commodityObj.name}
+				</option>
+			);
+
+			this.setState({
+				commodities: commodityList,
+			});
+
+			if(commodityList.length > 0) {
+				this.setState({
+					selectedCommodity: commodityListObj[0].name
+				})
+			}
+		})
+	}
+
+  handleChange(e) {
+		this.setState({
+			selectedCommodity: e.target.value
+		});
+	}
+
+  submitCommodity() {
+		
+	}
 
   render() {    
     return (
@@ -58,7 +100,22 @@ export default class Dashboard extends React.Component {
             </div>
           </div>
 
-          
+          <br></br>
+          <div className="jumbotron">
+            <div className="commodities-container">
+              <div className="commodities-header">
+                <div className="header-lg"><strong>Commodity</strong></div>
+              </div>
+              <div className="commodities-container">
+			          <div className="dropdown-container">
+			            <select value={this.state.selectedCommodity} onChange={this.handleChange} className="dropdown" id="commoditiesDropdown">
+			            	{this.state.commodities}
+			            </select>
+			            <button className="submit-btn" id="commoditiesSubmitBtn" onClick={this.submitCommoditiy}>Submit</button>
+			          </div>
+			        </div>
+            </div>
+          </div>
         </div>
       </div>
     );
