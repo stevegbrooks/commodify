@@ -19,6 +19,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.get('/topcoms', routes.getTopCommodities);
 app.get('/commodity_groups', routes.getAllCommodityGroups);
 app.get('/commodities/:sector', routes.getCommodityList);
+app.get('/entities/:entityType', routes.getEntityList);
 
 /* ---- Server ---- */
 app.listen(5000, () => {

@@ -60,9 +60,27 @@ function getCommodityList(req, res) {
   });
 };
 
+function getEntityList(req, res) {
+  var entityType = req.params.entityType
+
+  var query = `
+    SELECT name
+    FROM Political_Entity
+    WHERE is_country = '${entityType}';
+  `;
+  connection.query(query, function(err, rows, fields) {
+    if (err) console.log(err);
+    else {
+      console.log(rows);
+      res.json(rows);
+    }
+  });
+};
+
 // The exported functions, which can be accessed in index.js.
 module.exports = {
 	getTopCommodities: getTopCommodities,
   getAllCommodityGroups: getAllCommodityGroups,
-  getCommodityList: getCommodityList
+  getCommodityList: getCommodityList,
+  getEntityList: getEntityList
 }
