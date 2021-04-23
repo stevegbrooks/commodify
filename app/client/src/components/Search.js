@@ -13,23 +13,13 @@ export default class Dashboard extends React.Component {
       genres: [],
       commodities: [],
       selectedCommodity: "",
-      selectedOption: ""
+      entityType: "Entity",
+      selectedEntity: ""
     }
 
     this.showCommodities = this.showCommodities.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.onValueChange = this.onValueChange.bind(this);
-  }
-
-  onValueChange(event) {
-    this.setState({
-      selectedOption: event.target.value
-    });
-  }
-
-  formSubmit(event) {
-    event.preventDefault();
-    console.log(this.state.selectedOption)
   }
 
   // React function that is called when the page load.
@@ -65,7 +55,6 @@ export default class Dashboard extends React.Component {
 
   showCommodities(sector) {
     // Send an HTTP request to the server.
-
     fetch("http://localhost:5000/commodities/" + sector,
     {
       method: 'GET' // The type of HTTP request.
@@ -97,10 +86,43 @@ export default class Dashboard extends React.Component {
 		});
 	}
 
+  onValueChange(event) {
+    this.setState({
+      entityType: event.target.value
+    });
+    var entityType = 0
+    if (this.state.entityType == "Country") {
+      entityType = 1
+    }
+    fetch("http://localhost:5000/entities/" + entityType,
+    {
+      method: 'GET' // The type of HTTP request.
+    }).then(res => {
+			return res.json();
+		}).then(entityListObj => {
 
-	submitCommodity() {
-		
-	}
+			let entityList = entityListObj.map((entityObj, i) =>
+				<option key={i} value={entityObj.name}>
+				{entityObj.name}
+				</option>
+			);
+
+			this.setState({
+				entities: entityList,
+			});
+
+			if(entityList.length > 0) {
+				this.setState({
+					selectedEntity: entityListObj[0].name
+				})
+			}
+		})
+  }
+
+
+  submitOptions() {
+    
+  }
 
 
 
@@ -128,8 +150,11 @@ export default class Dashboard extends React.Component {
 			            <select value={this.state.selectedCommodity} onChange={this.handleChange} className="dropdown" id="commoditiesDropdown">
 			            	{this.state.commodities}
 			            </select>
-			            <button className="submit-btn" id="commoditiesSubmitBtn" onClick={this.submitCommoditiy}>Submit</button>
 			          </div>
+
+                <div>
+                  Selected option is : {this.state.selectedCommodity}
+                </div>
 
 			        </div>
               <div className="commodities-header">
@@ -142,7 +167,7 @@ export default class Dashboard extends React.Component {
                     <input
                       type="radio"
                       value="State"
-                      checked={this.state.selectedOption === "State"}
+                      checked={this.state.entityType === "State"}
                       onChange={this.onValueChange}
                     />
                     State
@@ -153,14 +178,30 @@ export default class Dashboard extends React.Component {
                     <input
                       type="radio"
                       value="Country"
-                      checked={this.state.selectedOption === "Country"}
+                      checked={this.state.entityType === "Country"}
                       onChange={this.onValueChange}
                     />
                     Country
                   </label>
                 </div>
-
               </form>
+
+              <div className="commodities-header">
+                <div className="header-lg"><strong>{this.state.entityType}</strong></div>
+              </div>
+              <div className="commodities-container">
+			          <div className="dropdown-container">
+			            <select value={this.state.selectedEntity} onChange={this.handleChange} className="dropdown" id="entitiesDropdown">
+			            	{this.state.entities}
+			            </select>
+
+                  <div>
+                  Selected option is : {this.state.selectedEntity}
+                  </div>
+
+			            <button className="submit-btn" id="entitiesSubmitBtn" onClick={this.submitOptions}>Submit</button>
+			          </div>
+			        </div>
 
             </div>
           </div>
