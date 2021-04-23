@@ -12,11 +12,24 @@ export default class Dashboard extends React.Component {
     this.state = {
       genres: [],
       commodities: [],
-      selectedCommodity: ""
+      selectedCommodity: "",
+      selectedOption: ""
     }
 
     this.showCommodities = this.showCommodities.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.onValueChange = this.onValueChange.bind(this);
+  }
+
+  onValueChange(event) {
+    this.setState({
+      selectedOption: event.target.value
+    });
+  }
+
+  formSubmit(event) {
+    event.preventDefault();
+    console.log(this.state.selectedOption)
   }
 
   // React function that is called when the page load.
@@ -89,6 +102,8 @@ export default class Dashboard extends React.Component {
 		
 	}
 
+
+
   render() {    
     return (
       <div className="Dashboard">
@@ -115,7 +130,38 @@ export default class Dashboard extends React.Component {
 			            </select>
 			            <button className="submit-btn" id="commoditiesSubmitBtn" onClick={this.submitCommoditiy}>Submit</button>
 			          </div>
+
 			        </div>
+              <div className="commodities-header">
+                <div className="header-lg"><strong>Entity</strong></div>
+              </div>
+
+              <form onSubmit={this.formSubmit}>
+                <div className="radio">
+                  <label>
+                    <input
+                      type="radio"
+                      value="State"
+                      checked={this.state.selectedOption === "State"}
+                      onChange={this.onValueChange}
+                    />
+                    State
+                  </label>
+                </div>
+                <div className="radio">
+                  <label>
+                    <input
+                      type="radio"
+                      value="Country"
+                      checked={this.state.selectedOption === "Country"}
+                      onChange={this.onValueChange}
+                    />
+                    Country
+                  </label>
+                </div>
+
+              </form>
+
             </div>
           </div>
         </div>
