@@ -51,6 +51,18 @@ CREATE TABLE Weather(
     FOREIGN KEY (pe_id) REFERENCES Political_Entity(id)
 );
 
+CREATE TABLE CommodityNonAg (
+    name varchar(120),
+    year int,
+    month int,
+    pe_id int,
+    production double,
+    consumption double,
+    PRIMARY KEY(name, year, pe_id),
+    FOREIGN KEY(name) REFERENCES Commodity_Group(name),
+    FOREIGN KEY(pe_id) REFERENCES Political_Entity(id)
+);
+
 /*##############################################*/
 /*#### Load data - remember to change path! ####*/
 /*##############################################*/
@@ -130,6 +142,90 @@ OPTIONALLY ENCLOSED BY '"'
 ESCAPED BY '"'
 LINES TERMINATED BY '\n'
 (name, pe_id, year, production, yield, beginning_stocks, ending_stocks);
+
+/*CommodityNonAg*/
+
+LOAD DATA LOCAL INFILE "~/CIS550/commodify/data/Crude oil_Formatted.csv"
+INTO TABLE CommodityNonAg
+COLUMNS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+ESCAPED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES
+(
+	name, year, month, pe_id, 
+	@vproduction, @vconsumption
+)
+SET 
+production = NULLIF(@vproduction,''),
+consumption = NULLIF(@vconsumption,'')
+;
+
+LOAD DATA LOCAL INFILE "~/CIS550/commodify/data/Natural gas_Formatted.csv"
+INTO TABLE CommodityNonAg
+COLUMNS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+ESCAPED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES
+(
+	name, year, month, pe_id, 
+	@vproduction, @vconsumption
+)
+SET 
+production = NULLIF(@vproduction,''),
+consumption = NULLIF(@vconsumption,'')
+;
+
+
+LOAD DATA LOCAL INFILE "~/CIS550/commodify/data/Coal_Formatted.csv"
+INTO TABLE CommodityNonAg
+COLUMNS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+ESCAPED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES
+(
+	name, year, month, pe_id, 
+	@vproduction, @vconsumption
+)
+SET 
+production = NULLIF(@vproduction,''),
+consumption = NULLIF(@vconsumption,'')
+;
+
+LOAD DATA LOCAL INFILE "~/CIS550/commodify/data/Renewable energy_Formatted.csv"
+INTO TABLE CommodityNonAg
+COLUMNS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+ESCAPED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES
+(
+	name, year, month, pe_id, 
+	@vproduction, @vconsumption
+)
+SET 
+production = NULLIF(@vproduction,''),
+consumption = NULLIF(@vconsumption,'')
+;
+
+
+LOAD DATA LOCAL INFILE "~/CIS550/commodify/data/Electricity_AnnualByState_mWh_1990-2019_Formatted.csv"
+INTO TABLE CommodityNonAg
+COLUMNS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+ESCAPED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES
+(
+	name, year, month, pe_id, 
+	@vproduction, @vconsumption
+)
+SET 
+production = NULLIF(@vproduction,''),
+consumption = NULLIF(@vconsumption,'')
+;
 
 /*Weather*/
 
