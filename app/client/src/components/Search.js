@@ -90,9 +90,12 @@ export default class Dashboard extends React.Component {
     this.setState({
       entityType: event.target.value
     });
-    var entityType = 0
-    if (this.state.entityType == "Country") {
+    var entityType = -1
+    if (this.state.entityType == "State") {
       entityType = 1
+    }
+    if (this.state.entityType == "Country") {
+      entityType = 0
     }
     fetch("http://localhost:5000/entities/" + entityType,
     {
