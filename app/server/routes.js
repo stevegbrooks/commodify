@@ -73,6 +73,8 @@ function getCommodityList(req, res) {
 function getEntityList(req, res) {
   var entityType = req.params.entityType
 
+  console.log(entityType)
+
   var eT = 0
   if (entityType == "Country") {
     eT = 1
@@ -81,7 +83,7 @@ function getEntityList(req, res) {
   var query = `
     SELECT name
     FROM Political_Entity
-    WHERE is_country = '${entityType}';
+    WHERE is_country = '${eT}';
   `;
   connection.query(query, function(err, rows, fields) {
     if (err) console.log(err);
