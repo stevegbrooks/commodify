@@ -13,12 +13,13 @@ export default class Dashboard extends React.Component {
       genres: [],
       commodities: [],
       selectedCommodity: "",
-      entityType: "Entity",
+      entityType: "State",
       selectedEntity: ""
     }
 
     this.showCommodities = this.showCommodities.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleChange2 = this.handleChange2.bind(this);
     this.onValueChange = this.onValueChange.bind(this);
   }
 
@@ -86,18 +87,17 @@ export default class Dashboard extends React.Component {
 		});
 	}
 
+  handleChange2(e) {
+		this.setState({
+			selectedEntity: e.target.value
+		});
+	}
+
   onValueChange(event) {
     this.setState({
       entityType: event.target.value
     });
-    var entityType = -1
-    if (this.state.entityType == "State") {
-      entityType = 1
-    }
-    if (this.state.entityType == "Country") {
-      entityType = 0
-    }
-    fetch("http://localhost:5000/entities/" + entityType,
+    fetch("http://localhost:5000/entities/" + this.state.entityType,
     {
       method: 'GET' // The type of HTTP request.
     }).then(res => {
@@ -182,6 +182,7 @@ export default class Dashboard extends React.Component {
                       type="radio"
                       value="Country"
                       checked={this.state.entityType === "Country"}
+                      defaultChecked
                       onChange={this.onValueChange}
                     />
                     Country
@@ -189,12 +190,12 @@ export default class Dashboard extends React.Component {
                 </div>
               </form>
 
-              <div className="commodities-header">
+              <div className="entities-header">
                 <div className="header-lg"><strong>{this.state.entityType}</strong></div>
               </div>
-              <div className="commodities-container">
+              <div className="entities-container">
 			          <div className="dropdown-container">
-			            <select value={this.state.selectedEntity} onChange={this.handleChange} className="dropdown" id="entitiesDropdown">
+			            <select value={this.state.selectedEntity} onChange={this.handleChange2} className="dropdown" id="entitiesDropdown">
 			            	{this.state.entities}
 			            </select>
 
