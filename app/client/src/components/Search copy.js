@@ -13,20 +13,16 @@ export default class Dashboard extends React.Component {
     this.state = {
       genres: [],
       commodities: [],
-      entities: [],
       selectedCommodity: "",
+      entityType: "Entity",
       selectedEntity: "",
-      results: [],
-      entityType: "",
-      name: "React"
+      results: []
     }
 
     this.showCommodities = this.showCommodities.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.radioButtonChange = this.radioButtonChange.bind(this);
-    this.entitySelection = this.entitySelection.bind(this);
-    this.submitOptions = this.submitOptions.bind(this);
-
+    this.handleChange2 = this.handleChange2.bind(this);
+    this.onValueChange = this.onValueChange.bind(this);
   }
 
   // React function that is called when the page load.
@@ -87,21 +83,23 @@ export default class Dashboard extends React.Component {
 		})
 	}
 
-
-
   handleChange(e) {
 		this.setState({
 			selectedCommodity: e.target.value
 		});
 	}
 
-  radioButtonChange(event) {
-    console.log(event.target.value);
+  handleChange2(e) {
+		this.setState({
+			selectedEntity: e.target.value
+		});
+	}
+
+  onValueChange(event) {
     this.setState({
       entityType: event.target.value
     });
-    
-    fetch("http://localhost:5000/entities/" + event.target.value,
+    fetch("http://localhost:5000/entities/" + this.state.entityType,
     {
       method: 'GET' // The type of HTTP request.
     }).then(res => {
@@ -126,17 +124,10 @@ export default class Dashboard extends React.Component {
 		})
   }
 
-  entitySelection(e) {
-		this.setState({
-			selectedEntity: e.target.value
-		});
-	}
-
 
   submitOptions() {
-    var searchTerms = [this.state.selectedCommodity, this.state.selectedEntity]
     // Send an HTTP request to the server.
-    fetch("http://localhost:5000/histData/" + searchTerms,
+    fetch("http://localhost:5000/entities/",
     {
       method: 'GET' // The type of HTTP request.
     }).then(res => {
@@ -168,22 +159,18 @@ export default class Dashboard extends React.Component {
     return (
       <div className="Dashboard">
 
-        {/* displays the sectors */}
         <br></br>
         <div className="container sectors-container">
           <div className="jumbotron">
-            <div className="h5"><strong>Which sector do you want to search?</strong></div>
+            <div className="h5">Which sector do you want to search?</div>
             <div className="genres-container">
               {this.state.genres}
             </div>
           </div>
 
-          {/* selections section */}
           <br></br>
           <div className="jumbotron">
             <div className="commodities-container">
-
-              {/* commodity dropdown */}
               <div className="commodities-header">
                 <div className="header-lg"><strong>Commodity</strong></div>
               </div>
@@ -193,60 +180,80 @@ export default class Dashboard extends React.Component {
 			            	{this.state.commodities}
 			            </select>
 			          </div>
+
                 <div>
                   Selected option is : {this.state.selectedCommodity}
                 </div>
+
 			        </div>
-
-              {/* entity type radio buttons */}
-              <br></br>
-              <div className="entityType-header">
-                <div className="header-lg"><strong>State or Country?</strong></div>
-              </div>
-              <div onChange={this.radioButtonChange}>
-                <input type="radio" value="State" name="stateORcountry" /> State
-                <input type="radio" value="Country" name="stateORcountry" /> Country
-              </div>
-              <div>
-                Selected option is : {this.state.entityType}
-              </div>
-
-              {/* entitity dropdown */}
-              <br></br>
               <div className="commodities-header">
+                <div className="header-lg"><strong>Entity</strong></div>
+              </div>
+
+              <form onSubmit={this.formSubmit}>
+                <div className="radio">
+                  <label>
+                    <input
+                      type="radio"
+                      value="State"
+                      checked={this.state.entityType === "State"}
+                      onChange={this.onValueChange}
+                    />
+                    State
+                  </label>
+                </div>
+                <div className="radio">
+                  <label>
+                    <input
+                      type="radio"
+                      value="Country"
+                      checked={this.state.entityType === "Country"}
+                      onChange={this.onValueChange}
+                    />
+                    Country
+                  </label>
+                </div>
+              </form>
+
+              <div className="entities-header">
                 <div className="header-lg"><strong>{this.state.entityType}</strong></div>
               </div>
-			        <div className="dropdown-container">
-			          <select value={this.state.selectedEntity} onChange={this.entitySelection} className="dropdown" id="entitiesDropdown">
-			          	{this.state.entities}
-			          </select>
+              <div className="entities-container">
+			          <div className="dropdown-container">
+			            <select value={this.state.selectedEntity} onChange={this.handleChange2} className="dropdown" id="entitiesDropdown">
+			            	{this.state.entities}
+			            </select>
+
+                  <div>
+                  Selected option is : {this.state.selectedEntity}
+                  </div>
+
+                  <button className="submit-btn" id="entitiesSubmitBtn" onClick={this.submitOptions()}>Submit</button> 
+			          </div>
 			        </div>
-              <div>
-                Selected option is : {this.state.selectedEntity}
-              </div>
-
-              {/* submission */}
-
-
 
             </div>
           </div>
+
+          
 
           <br></br>
           <div className="jumbotron">
-            <div className="movies-container">
-              <div className="movies-header">
-                <div className="header"><strong>Year</strong></div>
+            <div className="res-container">
+              <div className="res-header">
+                <div className="header-lg"><strong>Year</strong></div>
+                <div className="header"><strong>Beginning Stocks</strong></div>
                 <div className="header"><strong>Production</strong></div>
-                <div className="header"><strong>Domestic consumption</strong></div>
-                <div className="header"><strong>Ending stocks</strong></div>
+                <div className="header"><strong>Imports</strong></div>
+                <div className="header"><strong>Domestic Consumption</strong></div>
+                <div className="header"><strong>Exports</strong></div>
+                <div className="header"><strong>Ending Stocks</strong></div>
               </div>
               <div className="results-container" id="results">
-                {this.state.movies}
+                {this.state.results}
               </div>
             </div>
           </div>
-
 
         </div>
       </div>

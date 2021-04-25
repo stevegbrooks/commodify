@@ -20,6 +20,7 @@ app.get('/topcoms', routes.getTopCommodities);
 app.get('/commodity_groups', routes.getAllCommodityGroups);
 app.get('/commodities/:sector', routes.getCommodityList);
 app.get('/entities/:entityType', routes.getEntityList);
+app.get('/histData/:searchTerms', routes.getHistData);
 
 /* ---- Server ---- */
 app.listen(5000, () => {
