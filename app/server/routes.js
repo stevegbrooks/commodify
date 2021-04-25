@@ -75,10 +75,15 @@ function getEntityList(req, res) {
 
   console.log(entityType)
 
-  var eT = 0
+  var eT = -1
+  if (entityType == "State") {
+    eT = 0
+  }
   if (entityType == "Country") {
     eT = 1
   }
+
+  console.log(entityType)
 
   var query = `
     SELECT name
@@ -94,10 +99,29 @@ function getEntityList(req, res) {
   });
 };
 
+function getHistData(req, res) {
+  var searchTerms = req.params.entityType
+  var commodity = searchTerms[0]
+  var entity = searchTerms[1]
+
+  var query = `
+    SELECT DISTINCT group_name
+    FROM Commodity_Group;
+    `;
+  connection.query(query, function(err, rows, fields) {
+    if (err) console.log(err);
+    else {
+      console.log(rows);
+      res.json(rows);
+    }
+  });
+};
+
 // The exported functions, which can be accessed in index.js.
 module.exports = {
 	getTopCommodities: getTopCommodities,
   getAllCommodityGroups: getAllCommodityGroups,
   getCommodityList: getCommodityList,
-  getEntityList: getEntityList
+  getEntityList: getEntityList,
+  getHistData: getHistData
 }
