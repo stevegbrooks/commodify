@@ -7,7 +7,7 @@
   .topcoms-container .topcoms, 
   .topcoms-container .topcomsResults {
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
     align-items: center;
     height: 40px;
     padding: 0 10px;

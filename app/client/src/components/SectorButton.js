@@ -9,15 +9,15 @@ export default class SectorButton extends React.Component {
 		{
 			id
 			onClick
-			genre
+			sector
 		}
 		*/
 	}
 
 	render() {
 		return (
-			<div className="genre" id={this.props.id} onClick={this.props.onClick}>
-			{this.props.genre}
+			<div className="sector" id={this.props.id} onClick={this.props.onClick}>
+			{this.props.sector}
 			</div>
 		);
 	}

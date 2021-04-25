@@ -1,22 +1,21 @@
-import React from 'react';
-import '../style/Dashboard.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { Component } from 'react';
+import '../style/Search.css';
 import SectorButton from './SectorButton';
 import SearchResultRow from './SearchResultRow';
 
-export default class Dashboard extends React.Component {
+export default class Dashboard extends Component {
   constructor(props) {
     super(props);
 
     // The state maintained by this React Component. This component maintains the list of sectors,
     // and a list of commodities for a specified sector.
     this.state = {
-      genres: [],
+      sectors: [],
       commodities: [],
       entities: [],
       selectedCommodity: "",
       selectedEntity: "",
-      results: [],
+      searchYears: [],
       entityType: "",
       name: "React"
     }
@@ -41,16 +40,16 @@ export default class Dashboard extends React.Component {
     }, err => {
       // Print the error if there is one.
       console.log(err);
-    }).then(genreList => {
-      if (!genreList) return;
+    }).then(sectorList => {
+      if (!sectorList) return;
       // Map each sector in this.state.sectors to an HTML element:
       // A button which triggers the showCommodities function for each sector.
-      let genreDivs = genreList.map((genreObj, i) =>
-	    <SectorButton id={"button-" + genreObj.group_name} onClick={() => this.showCommodities(genreObj.group_name)} genre={genreObj.group_name} /> );
+      let sectorDivs = sectorList.map((sectorObj, i) =>
+	    <SectorButton id={"button-" + sectorObj.group_name} onClick={() => this.showCommodities(sectorObj.group_name)} sector={sectorObj.group_name} /> );
 
       // Set the state of the sectors list to the value returned by the HTTP response from the server.
       this.setState({
-        genres: genreDivs
+        sectors: sectorDivs
       });
     }, err => {
       // Print the error if there is one.
@@ -134,47 +133,43 @@ export default class Dashboard extends React.Component {
 
 
   submitOptions() {
-    var searchTerms = [this.state.selectedCommodity, this.state.selectedEntity]
+    var searchTerms = "" + this.state.selectedCommodity + ";" + this.state.selectedEntity
     // Send an HTTP request to the server.
     fetch("http://localhost:5000/histData/" + searchTerms,
     {
-      method: 'GET' // The type of HTTP request.
-    }).then(res => {
-      // Convert the response data to a JSON.
-      return res.json();
-    }, err => {
-      // Print the error if there is one.
-      console.log(err);
-    }).then(resultList => {
-      if (!resultList) return;
-      let resultDivs = resultList.map((resultObj, i) =>
-      <SearchResultRow title={resultObj.title} rating={resultObj.rating} vote_count={resultObj.vote_count}  />
-      );
-    
-    
-      // Set the state of the movies list to the value returned by the HTTP response from the server.
-      this.setState({
-        results: resultDivs
-      });
-    }, err => {
-    // Print the error if there is one.
-    console.log(err);
-    });
-  }
+      method: "GET"
+		}).then(res => {
+			return res.json();
+		}, err => {
+			console.log(err);
+		}).then(searchYearList => {
+			let searchYearDivs = searchYearList.map((searchYearObj, i) => 
+				<SearchResultRow year = {searchYearObj.year}
+          beginning_stocks = {searchYearObj.beginning_stocks}
+          production = {searchYearObj.production}
+          domestic_consumption = {searchYearObj.domestic_consumption}
+          ending_stocks = {searchYearObj.ending_stocks}
+        />
+			);
 
+			this.setState({
+				searchYears: searchYearDivs
+			});
+		});
+	}
 
 
   render() {    
     return (
-      <div className="Dashboard">
+      <div className="Search">
 
         {/* displays the sectors */}
         <br></br>
-        <div className="container sectors-container">
+        <div className="search-container">
           <div className="jumbotron">
             <div className="h5"><strong>Which sector do you want to search?</strong></div>
-            <div className="genres-container">
-              {this.state.genres}
+            <div className="sectors-container">
+              {this.state.sectors}
             </div>
           </div>
 
@@ -226,29 +221,30 @@ export default class Dashboard extends React.Component {
               </div>
 
               {/* submission */}
-
+              <button id="submitSelectionsBtn" className="submit-btn" onClick={this.submitOptions}>Submit</button>
 
 
             </div>
           </div>
 
-          <br></br>
-          <div className="jumbotron">
-            <div className="movies-container">
-              <div className="movies-header">
-                <div className="header"><strong>Year</strong></div>
-                <div className="header"><strong>Production</strong></div>
-                <div className="header"><strong>Domestic consumption</strong></div>
-                <div className="header"><strong>Ending stocks</strong></div>
-              </div>
-              <div className="results-container" id="results">
-                {this.state.movies}
-              </div>
-            </div>
+				<div className="results-container">
+          <div className="results">
+            <div className="header"><strong>Year</strong></div>
+            <div className="header"><strong>Beginning Stocks</strong></div>
+            <div className="header"><strong>Production</strong></div>
+            <div className="header"><strong>Domestic Consumption</strong></div>
+            <div className="header"><strong>Ending Stocks</strong></div>
           </div>
+          <div className="results-container" id="results">
+            {this.state.searchYears}
+          </div>
+        </div>
 
 
         </div>
+
+        
+
       </div>
     );
   }

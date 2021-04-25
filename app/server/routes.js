@@ -100,13 +100,18 @@ function getEntityList(req, res) {
 };
 
 function getHistData(req, res) {
-  var searchTerms = req.params.entityType
-  var commodity = searchTerms[0]
-  var entity = searchTerms[1]
+  var searchTerms = req.params.searchTerms
+  console.log(searchTerms)
+  var n = searchTerms.search(";")
+  var commodity = searchTerms.substring(0,n)
+  var entity = searchTerms.substring(n+ 1,searchTerms.length)
+  console.log(commodity)
+  console.log(entity)
 
   var query = `
-    SELECT DISTINCT group_name
-    FROM Commodity_Group;
+  SELECT C.year, C.beginning_stocks, C.production, C.domestic_consumption, C.ending_stocks
+  FROM Commodity C JOIN Political_Entity P on C.pe_id = P.id
+  WHERE C.name = '${commodity}' and P.name = '${entity}' AND C.year > 2010;
     `;
   connection.query(query, function(err, rows, fields) {
     if (err) console.log(err);

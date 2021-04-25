@@ -1,0 +1,33 @@
+.search-container {
+    margin: 50px;
+    display: flex;
+    flex-flow: column wrap;
+    margin-top: 10px;
+  }
+
+.sectors-container .sector {
+    margin: 20px;
+    margin-top: 20px;
+}
+
+.sectors-container .sector:hover {
+  background-color: #ddd;
+}
+
+  results-container results, 
+  results-container searchYears {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    height: 40px;
+    padding: 0 10px;
+  }
+  
+  results .header, 
+  searchYears .year,
+  searchYears .beginning_stocks, 
+  searchYears .production, 
+  searchYears .domestic_production, 
+  searchYears .ending_stocks {
+    flex: 1 0 25%;
+  }
