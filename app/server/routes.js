@@ -25,9 +25,6 @@ function getTopCommodities(req, res) {
 };
 
 function getAllCommodityGroups(req, res) {
-  var sector = req.params.sector;
-
-  if (sector = "Agriculture") {
     var query = `
     SELECT DISTINCT group_name
     FROM Commodity_Group;
@@ -39,25 +36,38 @@ function getAllCommodityGroups(req, res) {
         res.json(rows);
       }
     });
-  } else {
-    
-  }
-
-  
 };
 
 function getCommodityList(req, res) {
-  var query = `
-    SELECT DISTINCT name
-    FROM Commodity;
-  `;
-  connection.query(query, function(err, rows, fields) {
-    if (err) console.log(err);
-    else {
-      console.log(rows);
-      res.json(rows);
-    }
-  });
+  var sector = req.params.sector;
+
+  if (sector == "Electricity") {
+    var query = `
+      SELECT DISTINCT name
+      FROM CommodityNonAg;
+    `;
+    connection.query(query, function(err, rows, fields) {
+      if (err) console.log(err);
+      else {
+        console.log(rows);
+        res.json(rows);
+      }
+    });
+  } else {
+    var query = `
+      SELECT DISTINCT C.name
+      FROM Commodity C JOIN Commodity_Group G ON C.name=G.name
+      WHERE G.group_name = '${sector}';
+    `;
+    connection.query(query, function(err, rows, fields) {
+      if (err) console.log(err);
+      else {
+        console.log(rows);
+        res.json(rows);
+      }
+    });
+  }
+
 };
 
 function getEntityList(req, res) {
