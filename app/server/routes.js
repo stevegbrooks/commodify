@@ -24,6 +24,28 @@ function getTopCommodities(req, res) {
   });
 };
 
+function getAreaChartData(req, res) {
+  var query = `
+    SELECT year,
+      SUM(IF(name ='Animal Numbers, Cattle', production, NULL )) AS cattle_supply,
+      SUM(IF(name='Animal Numbers, Swine', production, NULL )) AS swine_supply,
+      SUM(IF(name='Orange Juice', production, NULL )) AS oj_supply,
+      SUM(IF(name='Corn', production, NULL )) AS corn_supply,
+      SUM(IF(name='Wheat', production, NULL )) AS wheat_supply
+    FROM commodify.Commodity 
+    WHERE year < 2021 AND year > 2000
+    GROUP BY year
+    ORDER BY year;
+  `;
+  connection.query(query, function(err, rows, fields) {
+    if (err) console.log(err);
+    else {
+      console.log(rows);
+      res.json(rows);
+    }
+  });
+};
+
 function getAllCommodityGroups(req, res) {
   var query = `
     SELECT DISTINCT group_name
@@ -124,7 +146,7 @@ function getHistData(req, res) {
 
 // The exported functions, which can be accessed in index.js.
 module.exports = {
-	getTopCommodities: getTopCommodities,
+	getAreaChartData: getAreaChartData,
   getAllCommodityGroups: getAllCommodityGroups,
   getCommodityList: getCommodityList,
   getEntityList: getEntityList,

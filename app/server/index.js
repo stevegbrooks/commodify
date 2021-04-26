@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 /* ---- (Test) ---- */
 // The route localhost:5000/topcoms is registered to the function
 // routes.getTopCommodities, specified in routes.js.
-app.get('/topcoms', routes.getTopCommodities);
+app.get('/areaChart', routes.getAreaChartData);
 app.get('/commodity_groups', routes.getAllCommodityGroups);
 app.get('/commodities/:sector', routes.getCommodityList);
 app.get('/entities/:entityType', routes.getEntityList);
