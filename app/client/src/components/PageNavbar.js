@@ -12,7 +12,7 @@ export default class PageNavbar extends React.Component {
 	}
 
 	componentDidMount() {
-		const pageList = ['Dashboard', 'Search', 'TopCommodities', 'UserProfile'];
+		const pageList = ['Dashboard', 'Search'];
 
 		let navbarDivs = pageList.map((page, i) => {
 			if (this.props.active === page) {
@@ -33,22 +33,14 @@ export default class PageNavbar extends React.Component {
 			<div className="PageNavbar">
 				<nav className="navbar navbar-expand-lg navbar-light bg-light">
 					<div className="navbar-brand center">
-						<Link to='/' className="simple-text">
-						Commodify
-						</Link>
+						<Link to='/' className="simple-text"> Commodify </Link>
 					</div>
 			      <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-					<div className="navbar-nav">
-			        {this.state.navDivs}
-			        </div>
+					<div className="navbar-nav"> 
+						{this.state.navDivs} 
+					</div>
 			      </div>
-				  <li className="nav-item">
-                	<Link className="nav-link" to='/'>
-                  	<span className="no-icon">Log out</span>
-                	</Link>
-              	</li>
 			    </nav>
-				
 			</div>
         );
 	}
