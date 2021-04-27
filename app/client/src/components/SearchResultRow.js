@@ -12,7 +12,7 @@ export default class SearchResultRow extends React.Component {
 				<div className="year">{this.props.year}</div>
 				<div className="beginning_stocks">{this.props.beginning_stocks}</div>
 				<div className="production">{this.props.production}</div>
-				<div className="domestic_consumption">{this.props.domestic_consumption}</div>
+				<div className="consumption">{this.props.consumption}</div>
 				<div className="ending_stocks">{this.props.ending_stocks}</div>
 			</div>
 		);
