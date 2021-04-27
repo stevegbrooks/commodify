@@ -34,8 +34,8 @@ CREATE TABLE Commodity (
     exports int,
     acreage int,
     yield decimal(6,2),
-    production int,
-    domestic_consumption int,
+    production double,
+    consumption double,
     PRIMARY KEY(name, year, pe_id),
     FOREIGN KEY(name) REFERENCES Commodity_Group(name),
     FOREIGN KEY(pe_id) REFERENCES Political_Entity(id)
@@ -49,18 +49,6 @@ CREATE TABLE Weather(
     rainfall numeric(4,2),
     PRIMARY KEY (pe_id, year, month),
     FOREIGN KEY (pe_id) REFERENCES Political_Entity(id)
-);
-
-CREATE TABLE CommodityNonAg (
-    name varchar(120),
-    year int,
-    month int,
-    pe_id int,
-    production double,
-    consumption double,
-    PRIMARY KEY(name, year, pe_id),
-    FOREIGN KEY(name) REFERENCES Commodity_Group(name),
-    FOREIGN KEY(pe_id) REFERENCES Political_Entity(id)
 );
 
 /*##############################################*/
@@ -106,7 +94,7 @@ IGNORE 1 LINES
 	@vbeginning_stocks, @vending_stocks,
     @vimports, @vexports, 
     @vacerage, @vyield, 
-    @vproduction, @vdomestic_consumption
+    @vproduction, @vconsumption
 )
 SET 
 beginning_stocks = NULLIF(@vbeginning_stocks,''),
@@ -116,7 +104,7 @@ exports = NULLIF(@vexports,''),
 acreage = NULLIF(@vacreage,''),
 yield = NULLIF(@vyield,''),
 production = NULLIF(@vproduction,''),
-domestic_consumption = NULLIF(@vdomestic_consumption,'')
+consumption = NULLIF(@vconsumption,'')
 ;
 
 LOAD DATA LOCAL INFILE "~/CIS550/commodify/data/corn_state_data.csv"
@@ -146,7 +134,7 @@ LINES TERMINATED BY '\n'
 /*CommodityNonAg*/
 
 LOAD DATA LOCAL INFILE "~/CIS550/commodify/data/Crude oil_Formatted.csv"
-INTO TABLE CommodityNonAg
+INTO TABLE Commodity
 COLUMNS TERMINATED BY ','
 OPTIONALLY ENCLOSED BY '"'
 ESCAPED BY '"'
@@ -162,7 +150,7 @@ consumption = NULLIF(@vconsumption,'')
 ;
 
 LOAD DATA LOCAL INFILE "~/CIS550/commodify/data/Natural gas_Formatted.csv"
-INTO TABLE CommodityNonAg
+INTO TABLE Commodity
 COLUMNS TERMINATED BY ','
 OPTIONALLY ENCLOSED BY '"'
 ESCAPED BY '"'
@@ -179,7 +167,7 @@ consumption = NULLIF(@vconsumption,'')
 
 
 LOAD DATA LOCAL INFILE "~/CIS550/commodify/data/Coal_Formatted.csv"
-INTO TABLE CommodityNonAg
+INTO TABLE Commodity
 COLUMNS TERMINATED BY ','
 OPTIONALLY ENCLOSED BY '"'
 ESCAPED BY '"'
@@ -195,7 +183,7 @@ consumption = NULLIF(@vconsumption,'')
 ;
 
 LOAD DATA LOCAL INFILE "~/CIS550/commodify/data/Renewable energy_Formatted.csv"
-INTO TABLE CommodityNonAg
+INTO TABLE Commodity
 COLUMNS TERMINATED BY ','
 OPTIONALLY ENCLOSED BY '"'
 ESCAPED BY '"'
@@ -210,9 +198,8 @@ production = NULLIF(@vproduction,''),
 consumption = NULLIF(@vconsumption,'')
 ;
 
-
 LOAD DATA LOCAL INFILE "~/CIS550/commodify/data/Electricity_AnnualByState_mWh_1990-2019_Formatted.csv"
-INTO TABLE CommodityNonAg
+INTO TABLE Commodity
 COLUMNS TERMINATED BY ','
 OPTIONALLY ENCLOSED BY '"'
 ESCAPED BY '"'

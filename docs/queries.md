@@ -29,7 +29,7 @@ Analysts and traders dealing with commodity statistics will most commonly use a 
 
 ```
 SELECT c.year, c.beginning_stocks, c.yield, c.production, 
-       c.imports, c.domestic_consumption, c.exports, c.ending_stocks
+       c.imports, c.consumption, c.exports, c.ending_stocks
 FROM Commodity c JOIN Political_Entity p ON c.pe_id = p.id
 WHERE c.name = 'Corn' AND p.name = 'United States' AND c.year > 2010;
 ```

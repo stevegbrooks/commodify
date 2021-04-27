@@ -147,7 +147,7 @@ export default class Dashboard extends Component {
 				<SearchResultRow year = {searchYearObj.year}
           beginning_stocks = {searchYearObj.beginning_stocks}
           production = {searchYearObj.production}
-          domestic_consumption = {searchYearObj.domestic_consumption}
+          consumption = {searchYearObj.consumption}
           ending_stocks = {searchYearObj.ending_stocks}
         />
 			);

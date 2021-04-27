@@ -72,7 +72,7 @@ Commodity(
     acreage int,
     yield decimal(3,1),
     production int,
-    domestic_consumption int,
+    consumption int,
     PRIMARY KEY(political_entity, year, commodity),
     FOREIGN KEY(political_entity) REFERENCES Political_Entity(name))
 
