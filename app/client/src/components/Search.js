@@ -145,7 +145,6 @@ export default class Dashboard extends Component {
 		}).then(searchYearList => {
 			let searchYearDivs = searchYearList.map((searchYearObj, i) => 
 				<SearchResultRow year = {searchYearObj.year}
-          beginning_stocks = {searchYearObj.beginning_stocks}
           production = {searchYearObj.production}
           consumption = {searchYearObj.consumption}
           ending_stocks = {searchYearObj.ending_stocks}
@@ -187,9 +186,6 @@ export default class Dashboard extends Component {
 			            	{this.state.commodities}
 			            </select>
 			          </div>
-                <div>
-                  Selected option is : {this.state.selectedCommodity}
-                </div>
 			        </div>
 
               {/* entity type radio buttons */}
@@ -200,9 +196,6 @@ export default class Dashboard extends Component {
               <div onChange={this.radioButtonChange}>
                 <input type="radio" value="State" name="stateORcountry" /> State
                 <input type="radio" value="Country" name="stateORcountry" /> Country
-              </div>
-              <div>
-                Selected option is : {this.state.entityType}
               </div>
 
               {/* entitity dropdown */}
@@ -215,9 +208,6 @@ export default class Dashboard extends Component {
 			          	{this.state.entities}
 			          </select>
 			        </div>
-              <div>
-                Selected option is : {this.state.selectedEntity}
-              </div>
 
               {/* submission */}
               <button id="submitSelectionsBtn" className="submit-btn" onClick={this.submitOptions}>Submit</button>

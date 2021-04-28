@@ -116,9 +116,9 @@ function getHistData(req, res) {
   console.log(entity)
 
   var query = `
-  SELECT C.year, C.beginning_stocks, C.production, C.consumption, C.ending_stocks
+  SELECT C.year, C.production, C.consumption, C.ending_stocks
   FROM Commodity C JOIN Political_Entity P on C.pe_id = P.id
-  WHERE C.name = '${commodity}' and P.name = '${entity}' AND C.year > 2010;
+  WHERE C.name = '${commodity}' and P.name = '${entity}' AND C.year > 2012;
     `;
   connection.query(query, function(err, rows, fields) {
     if (err) console.log(err);
