@@ -14,13 +14,24 @@
   box-sizing: border-box;
 }
 
+.commodities-container {
+  margin: 10px 10;
+  /* border-bottom: 1px solid #ddd; */
+}
+
+.commodities-container .dropdown {
+  flex: 1 0 20%;
+  margin: 5px 50;
+  padding: 0px;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
 .sectors-container .sector:hover {
   background-color: #ddd;
 }
 
 .searchYears-container .searchYears-header, .results-container .searchYear {
-  display: flex;
-  flex-flow: row nowrap;
   align-items: center;
   height: 40px;
 }
@@ -32,3 +43,18 @@
 .searchYears-header .header, .searchYear .rating, .searchYear .votes {
   flex: 1 0 25%;
 }
+
+.searchYears-container .results-container {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  height: 0px;
+  padding: 100 10px;
+}
+  
+  .searchYears .header, 
+  .searchYears .year, 
+  .searchYears .production, 
+  .searchYears .domestic_consumption {
+    flex: 1 0 25%;
+  }
