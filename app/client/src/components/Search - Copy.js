@@ -161,10 +161,11 @@ export default class Dashboard extends Component {
 
   render() {    
     return (
-      <div className="Dashboard">
+      <div className="Search">
 
+        {/* displays the sectors */}
         <br></br>
-        <div className="container searchYears-container">
+        <div className="search-container">
           <div className="jumbotron">
             <div className="h5"><strong>Which sector do you want to search?</strong></div>
             <div className="sectors-container">
@@ -226,23 +227,25 @@ export default class Dashboard extends Component {
             </div>
           </div>
 
-          <br></br>
-          <div className="jumbotron">
-            <div className="searchYears-container">
-              <div className="searchYears-header">
-              <div className="header"><strong>Year</strong></div>
-              <div className="header"><strong>Production</strong></div>
-              <div className="header"><strong>Domestic Consumption</strong></div>
-              <div className="header"><strong>Ending Stocks</strong></div>
-              </div>
-              <div className="results-container" id="results">
-                {this.state.searchYears}
-              </div>
-            </div>
+				<div className="results-container">
+          <div className="results">
+            <div className="header"><strong>Year</strong></div>
+            <div className="header"><strong>Beginning Stocks</strong></div>
+            <div className="header"><strong>Production</strong></div>
+            <div className="header"><strong>Domestic Consumption</strong></div>
+            <div className="header"><strong>Ending Stocks</strong></div>
+          </div>
+          <div className="results-container" id="results">
+            {this.state.searchYears}
           </div>
         </div>
+
+
+        </div>
+
+        
+
       </div>
     );
-
   }
 }

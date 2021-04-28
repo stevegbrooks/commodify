@@ -1,33 +1,34 @@
-.search-container {
-    margin: 50px;
-    display: flex;
-    flex-flow: column wrap;
-    margin-top: 10px;
-  }
+.sectors-container {
+  /* margin: 10px 0; */
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  /* border-bottom: 1px solid #ddd; */
+}
 
 .sectors-container .sector {
-    margin: 20px;
-    margin-top: 20px;
+  flex: 1 0 20%;
+  margin: 5px 0;
+  padding: 10px;
+  cursor: pointer;
+  box-sizing: border-box;
 }
 
 .sectors-container .sector:hover {
   background-color: #ddd;
 }
 
-  results-container results, 
-  results-container searchYears {
-    display: flex;
-    flex-flow: row wrap;
-    align-items: center;
-    height: 40px;
-    padding: 0 10px;
-  }
-  
-  results .header, 
-  searchYears .year,
-  searchYears .beginning_stocks, 
-  searchYears .production, 
-  searchYears .domestic_production, 
-  searchYears .ending_stocks {
-    flex: 1 0 25%;
-  }
+.searchYears-container .searchYears-header, .results-container .searchYear {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  height: 40px;
+}
+
+.searchYear .title, .searchYears-header .header-lg {
+  flex: 1 0 50%;
+}
+
+.searchYears-header .header, .searchYear .rating, .searchYear .votes {
+  flex: 1 0 25%;
+}
