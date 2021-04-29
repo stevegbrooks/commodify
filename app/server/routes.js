@@ -129,11 +129,32 @@ function getHistData(req, res) {
   });
 };
 
+function getWeatherData(req, res) {
+  var state = req.params.state
+  console.log(state)
+
+  var query = `
+  SELECT month, AVG(temp) AS temp, AVG(rainfall) AS rainfall
+FROM Weather W JOIN Political_Entity P ON W.pe_id=P.id
+WHERE P.name = '${state}' and W.Year > 1970
+GROUP BY month
+ORDER BY month ASC;
+    `;
+  connection.query(query, function(err, rows, fields) {
+    if (err) console.log(err);
+    else {
+      console.log(rows);
+      res.json(rows);
+    }
+  });
+};
+
 // The exported functions, which can be accessed in index.js.
 module.exports = {
 	getAreaChartData: getAreaChartData,
   getAllCommodityGroups: getAllCommodityGroups,
   getCommodityList: getCommodityList,
   getEntityList: getEntityList,
-  getHistData: getHistData
+  getHistData: getHistData,
+  getWeatherData: getWeatherData
 }
