@@ -20,13 +20,13 @@ export default class Dashboard extends Component {
       entityType: "",
       name: "React",
       monthAvs: [],
+      selectedSector: ""
     }
 
-    this.showCommodities = this.showCommodities.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.radioButtonChange = this.radioButtonChange.bind(this);
-    this.entitySelection = this.entitySelection.bind(this);
     this.submitOptions = this.submitOptions.bind(this);
+    this.sectorSelection = this.sectorSelection.bind(this);
 
   }
 
@@ -47,7 +47,7 @@ export default class Dashboard extends Component {
       // Map each sector in this.state.sectors to an HTML element:
       // A button which triggers the showCommodities function for each sector.
       let sectorDivs = sectorList.map((sectorObj, i) =>
-	    <SectorButton id={"button-" + sectorObj.group_name} onClick={() => this.showCommodities(sectorObj.group_name)} sector={sectorObj.group_name} /> );
+	    <SectorButton id={"button-" + sectorObj.group_name} onClick={() => this.sectorSelection(sectorObj.group_name)} sector={sectorObj.group_name} /> );
 
       // Set the state of the sectors list to the value returned by the HTTP response from the server.
       this.setState({
@@ -59,11 +59,21 @@ export default class Dashboard extends Component {
     });
   }
 
+  sectorSelection(sector) {
+    this.setState({
+			selectedSector: sector
+		});
+  }
 
+  radioButtonChange(event) {
+    console.log(event.target.value);
+    this.setState({
+      entityType: event.target.value
+    });
 
-  showCommodities(sector) {
-    // Send an HTTP request to the server.
-    fetch("http://localhost:5000/commodities/" + sector,
+    var entAndSector = "" + event.target.value + ";" + this.state.selectedSector
+    
+    fetch("http://localhost:5000/commodities/" + entAndSector,
     {
       method: 'GET' // The type of HTTP request.
     }).then(res => {
@@ -86,23 +96,16 @@ export default class Dashboard extends Component {
 				})
 			}
 		})
-	}
-
-
+  }
 
   handleChange(e) {
 		this.setState({
 			selectedCommodity: e.target.value
 		});
-	}
 
-  radioButtonChange(event) {
-    console.log(event.target.value);
-    this.setState({
-      entityType: event.target.value
-    });
+    var entAndCom = "" + this.state.entityType + ";" + e.target.value
     
-    fetch("http://localhost:5000/entities/" + event.target.value,
+    fetch("http://localhost:5000/entities/" + entAndCom,
     {
       method: 'GET' // The type of HTTP request.
     }).then(res => {
@@ -125,12 +128,6 @@ export default class Dashboard extends Component {
 				})
 			}
 		})
-  }
-
-  entitySelection(e) {
-		this.setState({
-			selectedEntity: e.target.value
-		});
 	}
 
 
@@ -201,6 +198,20 @@ export default class Dashboard extends Component {
           <div className="jumbotron">
             <div className="commodities-container">
 
+              <div>
+              Selected sector is : {this.state.selectedSector}
+            </div>
+
+              {/* entity type radio buttons */}
+              <br></br>
+              <div className="entityType-header">
+                <div className="header-lg"><strong>State or Country?</strong></div>
+              </div>
+              <div onChange={this.radioButtonChange}>
+                <input type="radio" value="State" name="stateORcountry" /> State
+                <input type="radio" value="Country" name="stateORcountry" /> Country
+              </div>
+
               {/* commodity dropdown */}
               <div className="commodities-header">
                 <div className="header-lg"><strong>Commodity</strong></div>
@@ -212,16 +223,6 @@ export default class Dashboard extends Component {
 			            </select>
 			          </div>
 			        </div>
-
-              {/* entity type radio buttons */}
-              <br></br>
-              <div className="entityType-header">
-                <div className="header-lg"><strong>State or Country?</strong></div>
-              </div>
-              <div onChange={this.radioButtonChange}>
-                <input type="radio" value="State" name="stateORcountry" /> State
-                <input type="radio" value="Country" name="stateORcountry" /> Country
-              </div>
 
               {/* entitity dropdown */}
               <br></br>

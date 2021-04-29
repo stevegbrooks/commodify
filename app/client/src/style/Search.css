@@ -21,7 +21,7 @@
 
 .commodities-container .dropdown {
   flex: 1 0 20%;
-  margin: 5px 50;
+  margin: 5px 0;
   padding: 0px;
   cursor: pointer;
   box-sizing: border-box;

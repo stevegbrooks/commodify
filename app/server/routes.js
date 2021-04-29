@@ -61,12 +61,29 @@ function getAllCommodityGroups(req, res) {
 };
 
 function getCommodityList(req, res) {
-  var sector = req.params.sector;
+  var entAndSector = req.params.entAndSector;
+
+  console.log(entAndSector)
+  var n = entAndSector.search(";")
+  var entityType = entAndSector.substring(0,n)
+  var sector = entAndSector.substring(n+1,entAndSector.length)
+  console.log(entityType)
+  console.log(sector)
+
+  var eT = -1
+  if (entityType == "State") {
+    eT = 0
+  }
+  if (entityType == "Country") {
+    eT = 1
+  }
 
   var query = `
     SELECT DISTINCT C.name
-    FROM Commodity C JOIN Commodity_Group G ON C.name=G.name
-    WHERE G.group_name = '${sector}';
+    FROM Commodity C JOIN Political_Entity P ON C.pe_id=P.id JOIN Commodity_Group G ON C.name = G.name
+    WHERE P.is_country='${eT}' AND C.year=2019 AND G.group_name='${sector}' AND ((C.production != 0 OR C.production != null)
+        OR (C.consumption != 0 OR C.consumption != null) OR (C.ending_stocks != 0 OR C.ending_stocks != null))
+    ORDER BY C.name ASC;
   `;
   connection.query(query, function(err, rows, fields) {
     if (err) console.log(err);
@@ -78,9 +95,14 @@ function getCommodityList(req, res) {
 };
 
 function getEntityList(req, res) {
-  var entityType = req.params.entityType
+  var entAndCom = req.params.entAndCom
 
+  console.log(entAndCom)
+  var n = entAndCom.search(";")
+  var entityType = entAndCom.substring(0,n)
+  var commodity = entAndCom.substring(n+ 1,entAndCom.length)
   console.log(entityType)
+  console.log(commodity)
 
   var eT = -1
   if (entityType == "State") {
@@ -90,12 +112,14 @@ function getEntityList(req, res) {
     eT = 1
   }
 
-  console.log(entityType)
-
   var query = `
-    SELECT name
-    FROM Political_Entity
-    WHERE is_country = '${eT}';
+  SELECT name
+  FROM Political_Entity
+  WHERE is_country = '${eT}' and name IN (
+    SELECT DISTINCT P.name
+      FROM Commodity C JOIN Political_Entity P ON C.pe_id=P.id
+      WHERE C.name = '${commodity}' AND ((C.production != 0 OR C.production != null)
+      OR (C.consumption != 0 OR C.consumption != null) OR (C.ending_stocks != 0 OR C.ending_stocks != null)));
   `;
   connection.query(query, function(err, rows, fields) {
     if (err) console.log(err);
