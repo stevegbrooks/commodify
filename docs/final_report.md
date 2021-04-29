@@ -37,6 +37,42 @@ For example, these might be one drop-down menu for states, one for commodity att
 
 ## Queries
 
+Building the search function involved devising numerous complex searches to ensure that at each stage of the selection process the user sees only options which will result in non-null results. For example, the following query ensures that once the user has selected a commodity sector and whether they want state or country-level data, they will only be able to choose from commodities for which there was data in some of the relevants attributes in 2019 (the last year with full data available):
+
+  SELECT DISTINCT C.name
+  FROM Commodity C JOIN Political_Entity P ON C.pe_id=P.id JOIN Commodity_Group G ON C.name = G.name
+  WHERE P.is_country='${eT}' AND C.year=2019 AND G.group_name='${sector}' AND ((C.production != 0 OR C.production != null)
+    OR (C.consumption != 0 OR C.consumption != null) OR (C.ending_stocks != 0 OR C.ending_stocks != null))
+  ORDER BY C.name ASC;
+    
+ Likewise, the below query returns a list of only those states or countries for which there was data in 2019 for one of the relevent attributes for the commodity previously selected:
+ 
+  SELECT name
+  FROM Political_Entity
+  WHERE is_country = '${eT}' and name IN (
+    SELECT DISTINCT P.name
+    FROM Commodity C JOIN Political_Entity P ON C.pe_id=P.id
+    WHERE C.name = '${commodity}' AND ((C.production != 0 OR C.production != null)
+      OR (C.consumption != 0 OR C.consumption != null) OR (C.ending_stocks != 0 OR C.ending_stocks != null)));
+ 
+ 
+ Once a commodity and state or country have been selected, the below query returns the relevant production, consumption and ending stock data for recent years (not that not all such attributes have data for all commodities and all entities):
+ 
+  SELECT C.year, C.production, C.consumption, C.ending_stocks
+  FROM Commodity C JOIN Political_Entity P on C.pe_id = P.id
+  WHERE C.name = '${commodity}' and P.name = '${entity}' AND C.year > 2012;
+  
+Finally, if the user selected a state, the below query returns climate data for that state, specifically average tempereature and rainfall for each month, based on data for the last fifty years:
+
+  SELECT month, AVG(temp) AS temp, AVG(rainfall) AS rainfall
+  FROM Weather W JOIN Political_Entity P ON W.pe_id=P.id
+  WHERE P.name = '${state}' and W.Year > 1970
+  GROUP BY month
+  ORDER BY month ASC;
+ 
+ 
+ 
+
 ## Performance evaluation
 
 ## Technical challenges
