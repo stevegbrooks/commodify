@@ -27,6 +27,7 @@ export default class Dashboard extends Component {
     this.radioButtonChange = this.radioButtonChange.bind(this);
     this.submitOptions = this.submitOptions.bind(this);
     this.sectorSelection = this.sectorSelection.bind(this);
+    this.entitySelection = this.entitySelection.bind(this);
 
   }
 
@@ -128,6 +129,12 @@ export default class Dashboard extends Component {
 				})
 			}
 		})
+	}
+
+  entitySelection(e) {
+		this.setState({
+			selectedEntity: e.target.value
+		});
 	}
 
 
