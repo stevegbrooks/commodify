@@ -3,6 +3,15 @@ import '../style/Search.css';
 import SectorButton from './SectorButton';
 import SearchResultRow from './SearchResultRow';
 import WeatherResultRow from './WeatherResultRow';
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend
+} from "recharts";
 
 export default class Dashboard extends Component {
   constructor(props) {
@@ -20,7 +29,9 @@ export default class Dashboard extends Component {
       entityType: "",
       name: "React",
       monthAvs: [],
-      selectedSector: ""
+      selectedSector: "",
+      comChart: [],
+      weatherChart: []
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -160,6 +171,11 @@ export default class Dashboard extends Component {
 			this.setState({
 				searchYears: searchYearDivs
 			});
+
+      this.setState({
+				comChart: searchYearList
+			});
+
 		});
     
     if (this.state.entityType == "State") {
@@ -181,6 +197,11 @@ export default class Dashboard extends Component {
         this.setState({
           monthAvs: weatherDivs
         });
+
+        this.setState({
+          weatherChart: weatherList
+        });
+
       });
     }
     
@@ -258,7 +279,7 @@ export default class Dashboard extends Component {
               <div className="searchYears-header">
               <div className="header"><strong>Year</strong></div>
               <div className="header"><strong>Production</strong></div>
-              <div className="header"><strong>Domestic Consumption</strong></div>
+              <div className="header"><strong>Consumption</strong></div>
               <div className="header"><strong>Ending Stocks</strong></div>
               </div>
               <div className="results-container" id="results">
@@ -292,6 +313,76 @@ export default class Dashboard extends Component {
               </div>
             </div>
           </div>
+
+          <LineChart
+            width={1200}
+            height={500}
+            data={this.state.comChart}
+            margin={{
+              top: 50,
+              right: 75,
+              left: 50,
+              bottom: 0
+            }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="year" />
+            <YAxis />
+            <Tooltip />
+            <Line
+              type="monotone"
+              dataKey="production"
+              stackId="1"
+              stroke="#3B528BFF"
+              fill="#3B528BFF"
+            />
+            <Line
+              type="monotone"
+              dataKey="consumption"
+              stackId="1"
+              stroke="#21908CFF"
+              fill="#21908CFF"
+            />
+            <Line
+              type="monotone"
+              dataKey="ending_stocks"
+              stackId="1"
+              stroke="#440164FF"
+              fill="#440164FF"
+            />
+          </LineChart>
+
+          <LineChart
+            width={1200}
+            height={500}
+            data={this.state.weatherChart}
+            margin={{
+              top: 50,
+              right: 75,
+              left: 50,
+              bottom: 0
+            }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="year" />
+            <YAxis />
+            <Tooltip />
+            <Line
+              type="monotone"
+              dataKey="temp"
+              stackId="1"
+              stroke="#FDE725FF"
+              fill="#FDE725FF"
+            />
+            <Line
+              type="monotone"
+              dataKey="rainfall"
+              stackId="1"
+              stroke="#5DC863FF"
+              fill="#5DC863FF"
+            />
+          </LineChart>
+
         </div>
       </div>
     );
