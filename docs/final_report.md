@@ -37,7 +37,7 @@ For example, these might be one drop-down menu for states, one for commodity att
 
 ## Queries
 
-Building the search function involved devising numerous complex searches to ensure that at each stage of the selection process the user sees only options which will result in non-null results. For example, the following query ensures that once the user has selected a commodity sector and whether they want state or country-level data, they will only be able to choose from commodities for which there was data in some of the relevants attributes in 2019 (the last year with full data available):
+Building the search function involved devising numerous complex searches to ensure that at each stage of the selection process the user sees only options which will result in non-null results. For example, the following query ensures that once the user has selected a commodity sector and whether they want state or country-level data, they will only be able to choose from commodities for which the database holds data for some of the relevants attributes in 2019 (the last year with full data available):
 
   SELECT DISTINCT C.name
   FROM Commodity C JOIN Political_Entity P ON C.pe_id=P.id JOIN Commodity_Group G ON C.name = G.name
@@ -45,7 +45,7 @@ Building the search function involved devising numerous complex searches to ensu
     OR (C.consumption != 0 OR C.consumption != null) OR (C.ending_stocks != 0 OR C.ending_stocks != null))
   ORDER BY C.name ASC;
     
- Likewise, the below query returns a list of only those states or countries for which there was data in 2019 for one of the relevent attributes for the commodity previously selected:
+ Likewise, the below query returns a list of only those states or countries for which there is data for 2019 for one of the relevent attributes for the commodity previously selected:
  
   SELECT name
   FROM Political_Entity
@@ -56,7 +56,7 @@ Building the search function involved devising numerous complex searches to ensu
       OR (C.consumption != 0 OR C.consumption != null) OR (C.ending_stocks != 0 OR C.ending_stocks != null)));
  
  
- Once a commodity and state or country have been selected, the below query returns the relevant production, consumption and ending stock data for recent years (not that not all such attributes have data for all commodities and all entities):
+ Once a commodity and state or country have been selected, the below query returns the relevant production, consumption and ending stock data for recent years:
  
   SELECT C.year, C.production, C.consumption, C.ending_stocks
   FROM Commodity C JOIN Political_Entity P on C.pe_id = P.id
@@ -76,3 +76,5 @@ Finally, if the user selected a state, the below query returns climate data for 
 ## Performance evaluation
 
 ## Technical challenges
+
+Different commodities have different characteristics, and furthermore the data available concerning supply and demand of commodities vary from place to place in terms of the attributes available, their frequency and so on. Our database and website had to handle this diversity.
