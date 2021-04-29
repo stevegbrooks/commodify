@@ -74,9 +74,10 @@
   
   .monthAvs-container .results2-container {
     display: flex;
+    flex-flow:  row nwrap;
     align-items: center;
     height: 0px;
-    padding: 50 10px;
+    padding: 100 10px;
   }
     
     .monthAvs .header, 
