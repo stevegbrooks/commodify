@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../style/Search.css';
 import SectorButton from './SectorButton';
 import SearchResultRow from './SearchResultRow';
+import WeatherResultRow from './WeatherResultRow';
 
 export default class Dashboard extends Component {
   constructor(props) {
@@ -17,7 +18,8 @@ export default class Dashboard extends Component {
       selectedEntity: "",
       searchYears: [],
       entityType: "",
-      name: "React"
+      name: "React",
+      monthAvs: [],
     }
 
     this.showCommodities = this.showCommodities.bind(this);
@@ -155,6 +157,29 @@ export default class Dashboard extends Component {
 				searchYears: searchYearDivs
 			});
 		});
+    
+    if (this.state.entityType == "State") {
+      fetch("http://localhost:5000/weatherData/" + this.state.selectedEntity,
+      {
+        method: "GET"
+      }).then(res => {
+        return res.json();
+      }, err => {
+        console.log(err);
+      }).then(weatherList => {
+        let weatherDivs = weatherList.map((weatherObj, i) => 
+          <WeatherResultRow month = {weatherObj.year}
+            temp = {weatherObj.temp}
+            rainfall = {weatherObj.rainfall}
+          />
+        );
+
+        this.setState({
+          monthAvs: weatherDivs
+        });
+      });
+    }
+    
 	}
 
 
@@ -218,6 +243,9 @@ export default class Dashboard extends Component {
 
           <br></br>
           <div className="jumbotron">
+          <div className="commodities-header">
+                <div className="header-lg"><strong>Commodity Data</strong></div>
+              </div>
             <div className="searchYears-container">
               <div className="searchYears-header">
               <div className="header"><strong>Year</strong></div>
@@ -227,6 +255,32 @@ export default class Dashboard extends Component {
               </div>
               <div className="results-container" id="results">
                 {this.state.searchYears}
+              </div>
+            </div>
+          </div>
+
+          <br></br>
+          <div className="jumbotron">
+          <div className="commodities-header">
+                <div className="header-lg"><strong>Climate Data</strong></div>
+              </div>
+            <div className="monthAvs-container">
+              <div className="monthAvs-header">
+              <div className="header"><strong>Jan</strong></div>
+              <div className="header"><strong>Feb</strong></div>
+              <div className="header"><strong>Mar</strong></div>
+              <div className="header"><strong>Apr</strong></div>
+              <div className="header"><strong>May</strong></div>
+              <div className="header"><strong>Jun</strong></div>
+              <div className="header"><strong>Jul</strong></div>
+              <div className="header"><strong>Aug</strong></div>
+              <div className="header"><strong>Sep</strong></div>
+              <div className="header"><strong>Oct</strong></div>
+              <div className="header"><strong>Nov</strong></div>
+              <div className="header"><strong>Dec</strong></div>
+              </div>
+              <div className="results-container2" id="results2">
+                {this.state.monthAvs}
               </div>
             </div>
           </div>

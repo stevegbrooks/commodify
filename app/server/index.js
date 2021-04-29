@@ -21,6 +21,7 @@ app.get('/commodity_groups', routes.getAllCommodityGroups);
 app.get('/commodities/:sector', routes.getCommodityList);
 app.get('/entities/:entityType', routes.getEntityList);
 app.get('/histData/:searchTerms', routes.getHistData);
+app.get('/weatherData/:state', routes.getWeatherData);
 
 /* ---- Server ---- */
 app.listen(5000, () => {
