@@ -214,8 +214,8 @@ export default class Dashboard extends Component {
 
         <br></br>
         <div className="container searchYears-container">
-          <div className="jumbotron">
-            <div className="h5"><strong>Which sector do you want to search?</strong></div>
+          <div className="jumbotron-top">
+            <div className="h2"><strong>Which sector do you want to search?</strong></div>
             <div className="sectors-container">
               {this.state.sectors}
             </div>
