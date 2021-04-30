@@ -34,6 +34,7 @@
 .searchYears-container .searchYears-header, .results-container .searchYear {
   align-items: center;
   height: 40px;
+
 }
 
 .searchYear .title, .searchYears-header .header-lg {
@@ -50,6 +51,7 @@
   align-items: center;
   height: 0px;
   padding: 100 10px;
+  
 }
   
   .searchYears .header, 
@@ -100,4 +102,13 @@
 .commodities-header {
   margin-top:40px;
   margin-bottom:5px;
+}
+
+.jumbotron-large {
+  height: 200px;
+  padding:1rem 2rem 1rem 2rem;
+  margin-bottom:2rem;
+  background-color:#f9f7f2;
+  border-radius:.3rem; 
+  overflow:hidden;
 }

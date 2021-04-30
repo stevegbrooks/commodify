@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../style/Search.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import SectorButton from './SectorButton';
 import SearchResultRow from './SearchResultRow';
 import WeatherResultRow from './WeatherResultRow';
@@ -242,7 +243,7 @@ export default class Dashboard extends Component {
 
               <div class="btn-group btn-group-toggle" data-toggle="buttons" onChange={this.radioButtonChange}>
 
-              <label class="btn btn-outline-dark">
+              <label class="btn btn-secondary">
                 <input type="radio" value="State" name="stateORcountry" autocomplete="off"/> State
               </label>
               <label class="btn btn-secondary">
@@ -254,47 +255,50 @@ export default class Dashboard extends Component {
               <div className="commodities-header">
                 <div className="header-lg"><strong>Commodity</strong></div>
               </div>
-              <div className="commodities-container">
-			          <div className="dropdown-container">
-			            <select value={this.state.selectedCommodity} onChange={this.handleChange} className="dropdown" id="commoditiesDropdown">
-			            	{this.state.commodities}
-			            </select>
-			          </div>
-			        </div>
 
-              {/* entity dropdown */}
-              <br></br>
-              <div className="commodities-header">
-                <div className="header-lg"><strong>{this.state.entityType}</strong></div>
+              <div class="dropdown" select value={this.state.selectedCommodity} onChange={this.handleChange} id="commoditiesDropdown">
+			            	{this.state.commodities}
+                  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Choose a commodity
+                  </a>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#">Commodity 1</a>
+                  <a class="dropdown-item" href="#">Commodity 2</a>
+                  <a class="dropdown-item" href="#">Commodity 3</a>
+                </div>
               </div>
 
-              <div class="dropdown show">
-                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Choose a commodity
+              {/* entity dropdown */}
+              <div className="commodities-header">
+                <div className="header-lg"><strong>Entity: {this.state.entityType}</strong></div>
+              </div>
+
+              <div class="dropdown" select-value={this.state.selectedEntity} onChange={this.entitySelection} id="entitiesDropdown">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Select {this.state.entityType}
                 </a>
 
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                   <a class="dropdown-item" href="#">Action</a>
                   <a class="dropdown-item" href="#">Another action</a>
                   <a class="dropdown-item" href="#">Something else here</a>
                 </div>
               </div>
 
-			        {/* <div className="dropdown-container">
-			          <select value={this.state.selectedEntity} onChange={this.entitySelection} className="dropdown" id="entitiesDropdown">
-			          	{this.state.entities}
-			          </select>
-			        </div> */}
 
               {/* submission */}
-              <button id="submitSelectionsBtn" className="submit-btn" onClick={this.submitOptions}>Submit</button>
+              <br></br><br></br>
+              <button type="button" id="submitSelectionsBtn" class="btn btn-dark btn-block" onClick={this.submitOptions}>Submit</button>
+              {/* <button id="submitSelectionsBtn" className="submit-btn" onClick={this.submitOptions}>Submit</button> */}
 
 
             </div>
           </div>
 
           <br></br>
-          <div className="jumbotron">
+          <div className="jumbotron-large">
+            <div className="commodities-container">
           <div className="commodities-header">
                 <div className="header-lg"><strong>Commodity Data</strong></div>
               </div>
@@ -309,10 +313,11 @@ export default class Dashboard extends Component {
                 {this.state.searchYears}
               </div>
             </div>
-          </div>
+          </div></div>
 
           <br></br>
-          <div className="jumbotron">
+          <div className="jumbotron-large">
+          <div className="commodities-container">
           <div className="commodities-header">
                 <div className="header-lg"><strong>Climate Data</strong></div>
               </div>
@@ -335,6 +340,7 @@ export default class Dashboard extends Component {
                 {this.state.monthAvs}
               </div>
             </div>
+          </div>
           </div>
 
           <LineChart
