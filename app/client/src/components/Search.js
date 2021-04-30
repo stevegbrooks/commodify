@@ -226,7 +226,7 @@ export default class Dashboard extends Component {
           <div className="jumbotron">
             <div className="commodities-container">
 
-              <div>
+            <div>
               Selected sector is : {this.state.selectedSector}
             </div>
 
@@ -235,10 +235,20 @@ export default class Dashboard extends Component {
               <div className="entityType-header">
                 <div className="header-lg"><strong>State or Country?</strong></div>
               </div>
-              <div onChange={this.radioButtonChange}>
-                <input type="radio" value="State" name="stateORcountry" /> State
+              {/* <div onChange={this.radioButtonChange}>
+                <input type="radio" value="State" name="stateORcountry" /> State 
                 <input type="radio" value="Country" name="stateORcountry" /> Country
-              </div>
+              </div> */}
+
+              <div class="btn-group btn-group-toggle" data-toggle="buttons" onChange={this.radioButtonChange}>
+
+              <label class="btn btn-outline-dark">
+                <input type="radio" value="State" name="stateORcountry" autocomplete="off"/> State
+              </label>
+              <label class="btn btn-secondary">
+                <input type="radio" value="Country" name="stateORcountry" autocomplete="off"/> Country
+              </label>
+            </div>
 
               {/* commodity dropdown */}
               <div className="commodities-header">
@@ -252,16 +262,29 @@ export default class Dashboard extends Component {
 			          </div>
 			        </div>
 
-              {/* entitity dropdown */}
+              {/* entity dropdown */}
               <br></br>
               <div className="commodities-header">
                 <div className="header-lg"><strong>{this.state.entityType}</strong></div>
               </div>
-			        <div className="dropdown-container">
+
+              <div class="dropdown show">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Choose a commodity
+                </a>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </div>
+
+			        {/* <div className="dropdown-container">
 			          <select value={this.state.selectedEntity} onChange={this.entitySelection} className="dropdown" id="entitiesDropdown">
 			          	{this.state.entities}
 			          </select>
-			        </div>
+			        </div> */}
 
               {/* submission */}
               <button id="submitSelectionsBtn" className="submit-btn" onClick={this.submitOptions}>Submit</button>
