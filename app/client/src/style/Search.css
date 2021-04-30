@@ -86,14 +86,18 @@
       flex: 1 0 25%;
     }
 
-.jumbotron {
-  padding: 2rem 1rem;
-  margin-bottom: 2rem;
-  background-color: #f7f3eb;
-  border-radius: 0.3rem;
-}
 
 .jumbotron-top {
   background-color: rgb(255, 255, 255);
   margin-bottom: 0rem;
+}
+
+.entityType-header {
+  margin-top:5px;
+  margin-bottom:5px;
+}
+
+.commodities-header {
+  margin-top:40px;
+  margin-bottom:5px;
 }
