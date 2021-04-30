@@ -1,5 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '../style/NavBar.css'
 import { Link } from 'react-router-dom'
 
 export default class PageNavbar extends React.Component {
@@ -32,8 +33,11 @@ export default class PageNavbar extends React.Component {
 		return (
 			<div className="PageNavbar">
 				<nav className="navbar navbar-expand-lg navbar-light bg-light">
-					<div className="navbar-brand center">
-						<Link to='/' className="simple-text"> Commodify </Link>
+					<div className="logo-image">
+						<a href =".\">
+						<img src="commodify_navbar_logo.png" class="img-fluid"></img>
+						</a>						
+
 					</div>
 			      <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
 					<div className="navbar-nav"> 
