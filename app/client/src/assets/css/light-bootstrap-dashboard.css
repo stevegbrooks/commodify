@@ -870,13 +870,13 @@ body>.navbar-collapse[data-color="purple"]:after {
 
 .btn {
     border-width: 2px;
-    background-color: transparent;
+    /* background-color: transparent; */
     font-weight: 400;
     opacity: 0.8;
     filter: alpha(opacity=80);
     padding: 8px 16px;
     border-color: #888888;
-    color: #888888;
+    color: #f1eaea;
 }
 
 .btn:hover,
@@ -884,7 +884,7 @@ body>.navbar-collapse[data-color="purple"]:after {
 .btn:active,
 .btn.active,
 .open>.btn.dropdown-toggle {
-    background-color: transparent;
+    /* background-color: transparent; */
     color: #777777;
     border-color: #777777;
 }
@@ -1163,8 +1163,8 @@ fieldset[disabled] .btn-info.active {
 }
 
 .btn-warning {
-    border-color: #FF9500;
-    color: #FF9500;
+    border-color: #f7b04c;
+    color: #928c83;
 }
 
 .btn-warning:hover,
@@ -1217,7 +1217,7 @@ fieldset[disabled] .btn-warning.active {
 .btn-warning.btn-fill:active,
 .btn-warning.btn-fill.active,
 .open>.btn-warning.btn-fill.dropdown-toggle {
-    background-color: #ED8D00;
+    background-color: #f3d2a1;
     color: #FFFFFF;
 }
 
@@ -1970,7 +1970,7 @@ fieldset[disabled] .form-control {
 .navbar .navbar-brand {
     font-weight: 400;
     margin: 5px 0px;
-    font-size: 5px;
+    font-size: 20px;
     color: #888888;
 }
 
@@ -3080,7 +3080,7 @@ Copyright (c) 2015 Daniel Eden
     text-align: left;
     text-anchor: start;
 }
-
+btn btn-secondary
 .ct-label.ct-horizontal.ct-end {
     -webkit-box-align: flex-start;
     -webkit-align-items: flex-start;
