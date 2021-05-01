@@ -1,8 +1,15 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import hometext from '../assets/HomeText.js';
+import ReactMarkdown from 'react-markdown';
 
-
-export default class Home extends Component {
-    render() {
-        return (<p>Hi</p>)
-    }
+class Home extends Component {
+  render() {
+    return (
+      <div className = "Home">
+        <ReactMarkdown source={hometext} />
+      </div>
+    )
+  }
 }
+
+export default Home
