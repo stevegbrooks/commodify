@@ -31,7 +31,7 @@ export default class PageNavbar extends React.Component {
 
 	render() {
 		return (
-			<div className="PageNavbar">
+
 				<nav className="navbar navbar-expand-lg navbar-light bg-light">
 					<div className="logo-image">
 						<a href =".\">
@@ -45,7 +45,7 @@ export default class PageNavbar extends React.Component {
 					</div>
 			      </div>
 			    </nav>
-			</div>
+
         );
 	}
 }
