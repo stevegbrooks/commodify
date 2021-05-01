@@ -2,7 +2,6 @@
 /*#### Create relations ####*/
 /*##########################*/
 
-
 DROP DATABASE IF EXISTS commodify;
 CREATE DATABASE commodify;
 USE commodify;
@@ -14,6 +13,7 @@ CREATE TABLE Political_Entity(
     name varchar(30),
     is_country bool,
     abbrev varchar(3),
+    geo_id varchar(3),
     PRIMARY KEY(id)
 );
 
@@ -75,9 +75,11 @@ LINES TERMINATED BY '\n'
 IGNORE 1 LINES
 (
 	id, name, is_country,
-    @vabbrev
+    @vabbrev, @vgeo_id
 )
-SET abbrev = NULLIF(@vabbrev,'')
+SET 
+abbrev = NULLIF(@vabbrev,''),
+geo_id = NULLIF(@vgeo_id,'')
 ;
 
 /*Commodity*/

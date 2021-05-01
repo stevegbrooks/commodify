@@ -8,12 +8,15 @@ var connection = mysql.createPool(config);
 /* ------------------- Route Handlers --------------- */
 /* -------------------------------------------------- */
 
-function getTopCommodities(req, res) {
+function getMapChartData(req, res) {
   var query = `
-    SELECT pe.name as country, c.name as commodity, c.year, c.month, c.ending_stocks 
-    FROM Commodity c JOIN Political_Entity pe ON c.pe_id = pe.id
-    ORDER BY ending_stocks DESC
-    LIMIT 10;
+    SELECT PE.geo_id,
+      ROUND(SUM(IF(C.name='Electricity', production, NULL ))/100000) AS elec_prod
+    FROM commodify.Commodity C 
+      JOIN commodify.Political_Entity PE ON C.pe_id = PE.id
+    WHERE PE.is_country = 0 
+    GROUP BY PE.geo_id
+    ORDER BY PE.geo_id;
   `;
   connection.query(query, function(err, rows, fields) {
     if (err) console.log(err);
@@ -26,16 +29,17 @@ function getTopCommodities(req, res) {
 
 function getAreaChartData(req, res) {
   var query = `
-    SELECT year,
-      SUM(IF(name ='Animal Numbers, Cattle', production, NULL )) AS cattle_supply,
-      SUM(IF(name='Animal Numbers, Swine', production, NULL )) AS swine_supply,
-      SUM(IF(name='Orange Juice', production, NULL )) AS oj_supply,
-      SUM(IF(name='Corn', production, NULL )) AS corn_supply,
-      SUM(IF(name='Wheat', production, NULL )) AS wheat_supply
-    FROM commodify.Commodity 
-    WHERE year < 2021 AND year > 2000
-    GROUP BY year
-    ORDER BY year;
+    SELECT C.year,
+      SUM(IF(C.name ='Oilseed, Soybean', production, NULL )) AS soy_prod,
+      SUM(IF(C.name='Corn', production, NULL )) AS corn_prod,
+      SUM(IF(C.name='Wheat', production, NULL )) AS wheat_prod,
+      ROUND(SUM(IF(C.name='Electricity', production, NULL ))/100000) AS elec_prod,
+      ROUND(SUM(W.rainfall)) AS rainfall
+    FROM commodify.Commodity C 
+      JOIN commodify.Political_Entity PE ON C.pe_id = PE.id
+      JOIN commodify.Weather W ON PE.id = W.pe_id
+    WHERE C.year < 2020 AND C.year >= 1990 AND PE.is_country = 0 
+    GROUP BY C.year;
   `;
   connection.query(query, function(err, rows, fields) {
     if (err) console.log(err);
@@ -175,6 +179,7 @@ ORDER BY month ASC;
 
 // The exported functions, which can be accessed in index.js.
 module.exports = {
+  getMapChartData: getMapChartData,
 	getAreaChartData: getAreaChartData,
   getAllCommodityGroups: getAllCommodityGroups,
   getCommodityList: getCommodityList,
