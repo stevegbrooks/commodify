@@ -230,66 +230,80 @@ export default class Dashboard extends Component {
             </div></div>
 
           {/* selections section */}
-          <br></br>
-          <div className="h2"><strong>2. Select commodity and entity (state or country)</strong></div>
-
+          <br/><br/>
           <div className="jumbotron-top">
-            <div className="header-lg"><strong>State or Country?</strong></div>
+            <div className="h2"><strong>2. Select commodity and geography.</strong></div>
+
+
+
             <div className="commodities-container">
 
+              <div class="row">
+                <div class="col-sm">
+                  <div className="commodities-header">
+                    <div className="header-lg"><strong>State or Country?</strong></div>
+                  </div>
+                  {/* entity type radio buttons */}
+                  <div class="btn-group btn-group-toggle" data-toggle="buttons" onChange={this.radioButtonChange}>
+
+                    <label class="btn btn-secondary">
+                      <input type="radio" value="State" name="stateORcountry" autocomplete="off" /> State
+</label>
+                    <label class="btn btn-secondary">
+                      <input type="radio" value="Country" name="stateORcountry" autocomplete="off" /> Country
+</label>
+                  </div>
+                </div>
+                <div class="col-sm">
+                  {/* commodity dropdown */}
+                  <div className="commodities-header">
+                    <div className="header-lg"><strong>Commodity</strong></div>
+                  </div>
 
 
-              {/* entity type radio buttons */}
+                  <div className=".commodities-container .dropdown">
+                    <div className="dropdown-container">
+                      {/* <label class="btn btn-secondary dropdown-toggle"> */}
+                      <select value={this.state.selectedCommodity} onChange={this.handleChange} className="dropdown" id="commoditiesDropdown">
+                        {this.state.commodities}
+                      </select>
+                      {/* </label> */}
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm">
+                  {/* entity dropdown */}
+                  <div className="commodities-header">
+                    <div className="header-lg"><strong>Entity: {this.state.entityType}</strong></div>
+                  </div>
 
-
-              <div class="btn-group btn-group-toggle" data-toggle="buttons" onChange={this.radioButtonChange}>
-
-                <label class="btn btn-secondary">
-                  <input type="radio" value="State" name="stateORcountry" autocomplete="off" /> State
-              </label>
-                <label class="btn btn-secondary">
-                  <input type="radio" value="Country" name="stateORcountry" autocomplete="off" /> Country
-              </label>
-              </div>
-
-              {/* commodity dropdown */}
-              <div className="commodities-header">
-                <div className="header-lg"><strong>Commodity</strong></div>
-              </div>
-
-
-              <div className="commodities-container">
-                <div className="dropdown-container">
-                  {/* <label class="btn btn-secondary dropdown-toggle"> */}
-                  <select value={this.state.selectedCommodity} onChange={this.handleChange} className="dropdown" id="commoditiesDropdown">
-                    {this.state.commodities}
-                  </select>
-                  {/* </label> */}
+                  <div className=".commodities-container .dropdown">
+                    <div className="dropdown-container">
+                      <select value={this.state.selectedEntity} onChange={this.entitySelection} className="dropdown" id="entitiesDropdown">
+                        {this.state.entities}
+                      </select>
+                    </div>
+                  </div>
                 </div>
               </div>
+<br/><br/>
+              <div className="selection-container">
+              <div>
+                <strong>Selected commodity is :</strong> {this.state.selectedCommodity}<br/>
+                <strong>Selected geography is :</strong> {this.state.selectedEntity}
 
-
-              {/* entity dropdown */}
-              <div className="commodities-header">
-                <div className="header-lg"><strong>Entity: {this.state.entityType}</strong></div>
               </div>
+            </div>
+            <br/>
 
 
-              <div className="dropdown-container">
-                <select class="form-select" value={this.state.selectedEntity} onChange={this.entitySelection} className="dropdown" id="entitiesDropdown">
-                  {this.state.entities}
-                </select>
-              </div>
-
-
-              {/* submission */}
-              <br></br><br></br>
-              <button type="button" id="submitSelectionsBtn" class="btn btn-dark btn-block" onClick={this.submitOptions}>Submit</button>
-              {/* <button id="submitSelectionsBtn" className="submit-btn" onClick={this.submitOptions}>Submit</button> */}
-
+           
 
             </div>
           </div>
+                        {/* submission */}
+                        <br></br><br></br>
+              <button type="button" id="submitSelectionsBtn" class="btn btn-dark btn-block" onClick={this.submitOptions}>Submit</button>
 
           <br></br>
           <div className="jumbotron-large">
