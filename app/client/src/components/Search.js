@@ -212,33 +212,72 @@ export default class Dashboard extends Component {
   render() {
     return (
       <div className="Dashboard">
-
-        <br></br>
-        <div className="container">
+        <div className="container-fluid">
           <div class="row">
-            <div class="col">
-              1 of 2
-            </div>
-            <div class="col">
-              2 of 2
-            </div>
-          </div>
-          <div className="jumbotron-top">
-            <div className="h2"><strong>1. Which sector do you want to search?</strong></div>
-            <div className="sectors-container">
-              {this.state.sectors}
-            </div>
-            <br></br>
 
-            <div className="selection-container">
-              <div>
-                <strong>Selected sector is :</strong> {this.state.selectedSector}
+            {/* left panel, containing user input components */}
+            <div class="col-4">
+              <div className="search-intro">
+                Commodify makes accessing commodities data easy.<br/>Please fill in some information so that we can begin the search.
+              </div>
+
+              {/* commodity sector selection */}
+              <div className="userInput-container">
+                <h4>1. Which sector are you interested in?</h4>
+
+                <div className="sectors-container">
+                  {this.state.sectors}
+                </div>
+                <br></br>
+
+                <div className="selection-container">
+                  <div>
+                    <strong>Selected sector is :</strong> {this.state.selectedSector}
+                  </div>
+                </div>
+              </div>
+
+              <div className="userInput-container">
+                <h4>2. Select commodity and geography.</h4>
+
+                {/* entity type radio buttons */}
+                <div class="btn-group btn-group-toggle" data-toggle="buttons" onChange={this.radioButtonChange}>
+                  <label class="btn btn-secondary">
+                    <input type="radio" value="State" name="stateORcountry" autocomplete="off" /> State
+                  </label>
+                  <label class="btn btn-secondary">
+                    <input type="radio" value="Country" name="stateORcountry" autocomplete="off" /> Country
+                  </label>
+                </div>
+
+                {/* commodity dropdown */}
+                <div className="commodities-header">
+                  <div className="header-lg"><strong>Commodity</strong></div>
+                </div>
+
+                <div className=".commodities-container .dropdown">
+                    <div className="dropdown-container">
+                      <select value={this.state.selectedCommodity} onChange={this.handleChange} className="dropdown" id="commoditiesDropdown">
+                        {this.state.commodities}
+                      </select>
+                      {/* </label> */}
+                    </div>
+                  </div>
 
               </div>
-            </div></div>
+              
 
-          {/* selections section */}
-          <br /><br />
+
+
+            </div>
+
+            <div class="col-8">graphs and results</div>
+          </div>
+
+
+
+
+          
           <div className="jumbotron-top">
             <div className="h2"><strong>2. Select commodity and geography.</strong></div>
 
@@ -315,27 +354,27 @@ export default class Dashboard extends Component {
 
 
 
-                <div class="row">
-                  <div class="col-md-1-5">
+            <div class="row">
+              <div class="col-md-1-5">
 
-                      <div className="header"><strong>Year</strong></div>
-                      <div className="header"><strong>Production</strong></div>
-                      <div className="header"><strong>Consumption</strong></div>
-                      <div className="header"><strong>Ending Stocks</strong></div>
-</div>
-                    <div class="col-sm">
+                <div className="header"><strong>Year</strong></div>
+                <div className="header"><strong>Production</strong></div>
+                <div className="header"><strong>Consumption</strong></div>
+                <div className="header"><strong>Ending Stocks</strong></div>
+              </div>
+              <div class="col-sm">
 
-                      <div className="results-container" id="results">
-                        {this.state.searchYears}
-                      </div>
-                    </div>
-                  </div>
-                
-
-
+                <div className="results-container" id="results">
+                  {this.state.searchYears}
+                </div>
+              </div>
             </div>
 
-            <LineChart
+
+
+          </div>
+
+          <LineChart
             width={1200}
             height={500}
             responsive={true}
@@ -375,32 +414,32 @@ export default class Dashboard extends Component {
             />
           </LineChart>
 
-  
+
           <div className="commodities-header">
-                <div className="h4"><strong>Climate Data</strong></div>
-              </div>
+            <div className="h4"><strong>Climate Data</strong></div>
+          </div>
           <div className="jumbotron-large">
- 
-              <div className="row">
-                <div className="col-md-1-5">
-                  <div className="header"><strong>Jan</strong></div>
-                  <div className="header"><strong>Feb</strong></div>
-                  <div className="header"><strong>Mar</strong></div>
-                  <div className="header"><strong>Apr</strong></div>
-                  <div className="header"><strong>May</strong></div>
-                  <div className="header"><strong>Jun</strong></div>
-                  <div className="header"><strong>Jul</strong></div>
-                  <div className="header"><strong>Aug</strong></div>
-                  <div className="header"><strong>Sep</strong></div>
-                  <div className="header"><strong>Oct</strong></div>
-                  <div className="header"><strong>Nov</strong></div>
-                  <div className="header"><strong>Dec</strong></div>
-                </div>
-                <div class="col-sm">
+
+            <div className="row">
+              <div className="col-md-1-5">
+                <div className="header"><strong>Jan</strong></div>
+                <div className="header"><strong>Feb</strong></div>
+                <div className="header"><strong>Mar</strong></div>
+                <div className="header"><strong>Apr</strong></div>
+                <div className="header"><strong>May</strong></div>
+                <div className="header"><strong>Jun</strong></div>
+                <div className="header"><strong>Jul</strong></div>
+                <div className="header"><strong>Aug</strong></div>
+                <div className="header"><strong>Sep</strong></div>
+                <div className="header"><strong>Oct</strong></div>
+                <div className="header"><strong>Nov</strong></div>
+                <div className="header"><strong>Dec</strong></div>
+              </div>
+              <div class="col-sm">
                 <div className="results-container2" id="results2">
                   {this.state.monthAvs}
                 </div></div>
-              </div>
+            </div>
 
           </div>
 
