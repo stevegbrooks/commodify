@@ -302,7 +302,7 @@ export default class Dashboard extends Component {
             </div>
           </div>
                         {/* submission */}
-                        <br></br><br></br>
+              <br></br><br></br>
               <button type="button" id="submitSelectionsBtn" class="btn btn-dark btn-block" onClick={this.submitOptions}>Submit</button>
 
           <br></br>
