@@ -216,6 +216,7 @@ export default class Dashboard extends Component {
         <div className="container-fluid">
           <div class="row">
 
+
             {/* left panel, containing user input components */}
             <div class="col-4 border-right">
               <div className="search-intro">
