@@ -247,6 +247,9 @@ export default class Dashboard extends Component {
                 </div>
 
                 {/* entity type radio buttons */}
+                <div className="commodities-header">
+                  <div className="header-lg"><strong>State or country?</strong></div>
+                </div>
                 <div class="btn-group btn-group-toggle" data-toggle="buttons" onChange={this.radioButtonChange}>
                   <label class="btn btn-secondary">
                     <input type="radio" value="State" name="stateORcountry" /> State
@@ -254,7 +257,7 @@ export default class Dashboard extends Component {
                   <label class="btn btn-secondary">
                     <input type="radio" value="Country" name="stateORcountry" /> Country
                   </label>
-                </div>
+                </div><br/><br/>
 
                 {/* commodity dropdown */}
                 <div className="commodities-header">
@@ -267,7 +270,7 @@ export default class Dashboard extends Component {
                       {this.state.commodities}
                     </select>
                   </div>
-                </div>
+                </div><br/>
 
                 {/* entity dropdown */}
                 <div className="commodities-header">
@@ -286,7 +289,7 @@ export default class Dashboard extends Component {
                 <div className="selection-container">
                   <div>
                     <strong>Selected commodity is :</strong> {this.state.selectedCommodity}<br/>
-                    <strong>Selected geopgraphy is :</strong> {this.state.selectedEntity}
+                    <strong>Selected geography is :</strong> {this.state.selectedEntity}
                   </div>
                 </div>
               </div>
