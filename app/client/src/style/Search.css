@@ -110,12 +110,18 @@
 }
 
 .jumbotron-large {
-  height: 200px;
-  padding:1rem 2rem 1rem 2rem;
+  padding-left:2rem;
+  padding-top:1rem;
+  padding-bottom: 1rem;
+  padding-right:2rem;
   margin-bottom:2rem;
   background-color:#f9f7f2;
   border-radius:.3rem; 
   overflow:hidden;
+  flex-direction: column;
+  min-height: 1vh;
+  display:flex;
+  
 }
 
 .selection-container {
