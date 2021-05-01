@@ -55,6 +55,7 @@ export default class Dashboard extends Component {
       }, err => {
         // Print the error if there is one.
         console.log(err);
+
       }).then(sectorList => {
         if (!sectorList) return;
         // Map each sector in this.state.sectors to an HTML element:
@@ -248,17 +249,22 @@ export default class Dashboard extends Component {
 
                 {/* entity type radio buttons */}
                 <div className="commodities-header">
-                  <div className="header-lg"><strong>State or country?</strong></div>
+                  <div className="header-lg"><strong>US state or country?</strong></div>
                 </div>
-                <div class="btn-group btn-group-toggle" data-toggle="buttons" onChange={this.radioButtonChange}>
-                  <label class="btn btn-secondary">
-                    <input type="radio" value="State" name="stateORcountry" /> State
-                  </label>
-                  <label class="btn btn-secondary">
-                    <input type="radio" value="Country" name="stateORcountry" /> Country
-                  </label>
-                </div><br/><br/>
 
+                <div onChange={this.radioButtonChange}>
+                  <div class="row">
+                    <div class="col">
+                    <input type="radio" value="State" name="stateORcountry" /> US State
+                    </div>
+                    <div class="col">
+                    <input type="radio" value="Country" name="stateORcountry" /> Country
+                    </div>
+                  </div>
+                
+                
+              </div>
+<br/>
                 {/* commodity dropdown */}
                 <div className="commodities-header">
                   <div className="header-lg"><strong>Commodity</strong></div>
@@ -270,7 +276,7 @@ export default class Dashboard extends Component {
                       {this.state.commodities}
                     </select>
                   </div>
-                </div><br/>
+                </div><br />
 
                 {/* entity dropdown */}
                 <div className="commodities-header">
@@ -285,17 +291,17 @@ export default class Dashboard extends Component {
                   </div>
                 </div>
 
-<br/>
+                <br />
                 <div className="selection-container">
                   <div>
-                    <strong>Selected commodity is :</strong> {this.state.selectedCommodity}<br/>
+                    <strong>Selected commodity is :</strong> {this.state.selectedCommodity}<br />
                     <strong>Selected geography is :</strong> {this.state.selectedEntity}
                   </div>
                 </div>
               </div>
 
 
-              
+
               <br />
 
               {/* submit button to begin query */}
@@ -303,82 +309,82 @@ export default class Dashboard extends Component {
                 <button type="button" id="submitSelectionsBtn" class="btn btn-dark btn-block" onClick={this.submitOptions}>Submit</button>
               </div>
             </div>
-            
+
             <div class="col-8">
               <div className="graph-container">
-              <h4><strong>Commodity Data</strong></h4>
-            <div class="row">
-               <div class="col-md-1-5">
-                 <div className="table-container">
-                 <LineChart
-            width={1000}
-            height={600}
-            responsive={true}
-            maintainAspectRatio={true}
-            data={this.state.comChart}
-            margin={{
-              top: 50,
-              right: 75,
-              left: 0,
-              bottom: 0
-            }}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="year" />
-            <YAxis />
-            <Tooltip />
-            <Line
-              type="monotone"
-              dataKey="production"
-              stackId="1"
-              stroke="#3B528BFF"
-              fill="#3B528BFF"
-            />
-            <Line
-              type="monotone"
-              dataKey="consumption"
-              stackId="1"
-              stroke="#21908CFF"
-              fill="#21908CFF"
-            />
-            <Line
-              type="monotone"
-              dataKey="ending_stocks"
-              stackId="1"
-              stroke="#440164FF"
-              fill="#440164FF"
-            />
-          </LineChart>
-          <br/>
+                <h4><strong>Commodity Data</strong></h4>
+                <div class="row">
+                  <div class="col-md-1-5">
+                    <div className="table-container">
+                      <LineChart
+                        width={1000}
+                        height={600}
+                        responsive={true}
+                        maintainAspectRatio={true}
+                        data={this.state.comChart}
+                        margin={{
+                          top: 50,
+                          right: 75,
+                          left: 0,
+                          bottom: 0
+                        }}
+                      >
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="year" />
+                        <YAxis />
+                        <Tooltip />
+                        <Line
+                          type="monotone"
+                          dataKey="production"
+                          stackId="1"
+                          stroke="#3B528BFF"
+                          fill="#3B528BFF"
+                        />
+                        <Line
+                          type="monotone"
+                          dataKey="consumption"
+                          stackId="1"
+                          stroke="#21908CFF"
+                          fill="#21908CFF"
+                        />
+                        <Line
+                          type="monotone"
+                          dataKey="ending_stocks"
+                          stackId="1"
+                          stroke="#440164FF"
+                          fill="#440164FF"
+                        />
+                      </LineChart>
+                      <br />
 
-                <div className="header"><strong>Year</strong></div>
-                 <div className="header"><strong>Production</strong></div>
-                 <div className="header"><strong>Consumption</strong></div>
-                 <div className="header"><strong>Ending Stocks</strong></div>
-                 </div>
-               </div>
-               <div class="col-sm">
+                      <div className="header"><strong>Year</strong></div>
+                      <div className="header"><strong>Production</strong></div>
+                      <div className="header"><strong>Consumption</strong></div>
+                      <div className="header"><strong>Ending Stocks</strong></div>
+                    </div>
+                  </div>
+                  <div class="col-sm">
 
-                 <div className="results-container" id="results">
-                   {this.state.searchYears}
-                 </div>
-               </div>
-             </div>
-             </div>
-              
+                    <div className="results-container" id="results">
+                      {this.state.searchYears}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
-          </div>
-          </div>
+        </div>
+      </div>
 
 
 
 
 
 
-   
 
- 
+
+
 
 
       //     <div className="commodities-header">
