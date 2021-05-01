@@ -315,7 +315,7 @@ export default class Dashboard extends Component {
               <div className="graph-container">
                 <h4><strong>Commodity Data</strong></h4>
                 <div class="row">
-                <div className="table-container">
+                  <div className="table-container">
                       <LineChart
                         width={1000}
                         height={600}
@@ -355,22 +355,25 @@ export default class Dashboard extends Component {
                           fill="#440164FF"
                         />
                       </LineChart>
-                      <br /></div>
-                  <div class="col-md-1-5">
-                    
-
-                      <div className="header"><strong>Year</strong></div>
-                      <div className="header"><strong>Production</strong></div>
-                      <div className="header"><strong>Consumption</strong></div>
-                      <div className="header"><strong>Ending Stocks</strong></div>
-                    </div>
+                      <br />
                   
-                  <div class="col-sm">
+                  </div>
+                  </div>
+                <div class="row">
+                  <div class="col-2">
+                    
+                    <div className="header"><strong>Year</strong></div>
+                    <div className="header"><strong>Production</strong></div>
+                    <div className="header"><strong>Consumption</strong></div>
+                    <div className="header"><strong>Ending Stocks</strong></div>
+                  </div>
+                  <div class="col-10">
 
                     <div className="results-container" id="results">
                       {this.state.searchYears}
                     </div>
-                  </div>
+                    </div>
+                
                 </div>
               </div>
 
