@@ -256,8 +256,19 @@ export default class Dashboard extends Component {
                 <div className="header-lg"><strong>Commodity</strong></div>
               </div>
 
-              <div class="dropdown" select value={this.state.selectedCommodity} onChange={this.handleChange} id="commoditiesDropdown">
+
+              <div className="commodities-container">
+			          <div className="dropdown-container">
+                  {/* <label class="btn btn-secondary dropdown-toggle"> */}
+			            <select value={this.state.selectedCommodity} onChange={this.handleChange} className="dropdown" id="commoditiesDropdown">
 			            	{this.state.commodities}
+			            </select>
+                  {/* </label> */}
+			          </div>
+			        </div>
+
+              {/* <div class="dropdown" select value={this.state.selectedCommodity} onChange={this.handleChange} id="commoditiesDropdown"> */}
+			            	{/* {this.state.commodities}
                   <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Choose a commodity
                   </a>
@@ -267,14 +278,14 @@ export default class Dashboard extends Component {
                   <a class="dropdown-item" href="#">Commodity 2</a>
                   <a class="dropdown-item" href="#">Commodity 3</a>
                 </div>
-              </div>
+              </div> */}
 
               {/* entity dropdown */}
               <div className="commodities-header">
                 <div className="header-lg"><strong>Entity: {this.state.entityType}</strong></div>
               </div>
 
-              <div class="dropdown" select-value={this.state.selectedEntity} onChange={this.entitySelection} id="entitiesDropdown">
+              {/* <div class="dropdown" select-value={this.state.selectedEntity} onChange={this.entitySelection} id="entitiesDropdown">
                 <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Select {this.state.entityType}
                 </a>
@@ -284,7 +295,14 @@ export default class Dashboard extends Component {
                   <a class="dropdown-item" href="#">Another action</a>
                   <a class="dropdown-item" href="#">Something else here</a>
                 </div>
+              </div> */}
+
+              <div className="dropdown-container">
+                <select value={this.state.selectedEntity} onChange={this.entitySelection} className="dropdown" id="entitiesDropdown">
+                  {this.state.entities}
+                </select>
               </div>
+
 
 
               {/* submission */}
