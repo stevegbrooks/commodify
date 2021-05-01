@@ -253,7 +253,7 @@ export default class Dashboard extends Component {
                   <div className="header-lg"><strong>US state or country?</strong></div>
                 </div>
 
-                <div onChange={this.radioButtonChange}>
+                <div className="commodities-options" onChange={this.radioButtonChange}>
                   <div class="row">
                     <div class="col">
                     <input type="radio" value="State" name="stateORcountry" /> US State
@@ -315,8 +315,7 @@ export default class Dashboard extends Component {
               <div className="graph-container">
                 <h4><strong>Commodity Data</strong></h4>
                 <div class="row">
-                  <div class="col-md-1-5">
-                    <div className="table-container">
+                <div className="table-container">
                       <LineChart
                         width={1000}
                         height={600}
@@ -356,14 +355,16 @@ export default class Dashboard extends Component {
                           fill="#440164FF"
                         />
                       </LineChart>
-                      <br />
+                      <br /></div>
+                  <div class="col-md-1-5">
+                    
 
                       <div className="header"><strong>Year</strong></div>
                       <div className="header"><strong>Production</strong></div>
                       <div className="header"><strong>Consumption</strong></div>
                       <div className="header"><strong>Ending Stocks</strong></div>
                     </div>
-                  </div>
+                  
                   <div class="col-sm">
 
                     <div className="results-container" id="results">

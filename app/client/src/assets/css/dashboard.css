@@ -341,6 +341,7 @@
     -o-transform: translateY(-17%);
     -ms-transform: translateY(-17%);
     transform: translateY(-17%);
+    width:100%;
 }
 
 .wrapper-full-page~.fixed-plugin .dropdown .dropdown-menu {
@@ -757,6 +758,7 @@
     padding-top: 128px;
     background-size: cover;
     background-position: center center;
+    
 }
 
 .components-page .title,

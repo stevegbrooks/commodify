@@ -111,6 +111,11 @@
   margin-top:0px;
   margin-bottom:5px;
   padding-top: 0rem;
+  font-size: 15px;
+}
+
+.commodities-options {
+  font-size: 15px;
 }
 
 .jumbotron-large {
@@ -139,6 +144,7 @@
   padding-bottom: 1rem;
   border-radius: .3rem;
   background-color:rgb(248, 245, 245);
+  font-size: 15px;
 
 }
 
