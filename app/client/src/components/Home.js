@@ -13,7 +13,7 @@ export default class Home extends Component {
                         Existing commodities databases deal with industry silos, like energy or agriculture. 
                         At Commodify, we collate data across the entire commodities space, and provide them in an 
                         interactive interface. Commodify proves to be an effective tool for trade houses, 
-                        banks and hedge funds in decision-making.
+                        banks and hedge funds for intuitive decision-making.
 
 
                     </div>
