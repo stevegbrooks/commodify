@@ -112,3 +112,17 @@
   border-radius:.3rem; 
   overflow:hidden;
 }
+
+.selection-container {
+  /* margin: 10px 0; */
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  border-top: 1px solid #ddd;
+  padding-left:1rem;
+  padding-top:1rem;
+  padding-bottom: 1rem;
+  border-radius: .3rem;
+  background-color:rgb(248, 245, 245);
+
+}

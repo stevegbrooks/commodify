@@ -209,37 +209,38 @@ export default class Dashboard extends Component {
 	}
 
 
-  render() {    
+  render() {
     return (
       <div className="Dashboard">
 
         <br></br>
         <div className="container searchYears-container">
           <div className="jumbotron-top">
-            <div className="h2"><strong>Which sector do you want to search?</strong></div>
+            <div className="h2"><strong>1. Which sector do you want to search?</strong></div>
             <div className="sectors-container">
               {this.state.sectors}
             </div>
-          </div>
+<br></br>
+
+            <div className="selection-container">
+              <div>
+                <strong>Selected sector is :</strong> {this.state.selectedSector}
+
+              </div>
+            </div></div>
 
           {/* selections section */}
           <br></br>
-          <div className="jumbotron">
+          <div className="h2"><strong>2. Select commodity and entity (state or country)</strong></div>
+          
+          <div className="jumbotron-top">
+          <div className="header-lg"><strong>State or Country?</strong></div>
             <div className="commodities-container">
 
-            <div>
-              Selected sector is : {this.state.selectedSector}
-            </div>
+
 
               {/* entity type radio buttons */}
-              <br></br>
-              <div className="entityType-header">
-                <div className="header-lg"><strong>State or Country?</strong></div>
-              </div>
-              {/* <div onChange={this.radioButtonChange}>
-                <input type="radio" value="State" name="stateORcountry" /> State 
-                <input type="radio" value="Country" name="stateORcountry" /> Country
-              </div> */}
+
 
               <div class="btn-group btn-group-toggle" data-toggle="buttons" onChange={this.radioButtonChange}>
 
@@ -267,42 +268,18 @@ export default class Dashboard extends Component {
 			          </div>
 			        </div>
 
-              {/* <div class="dropdown" select value={this.state.selectedCommodity} onChange={this.handleChange} id="commoditiesDropdown"> */}
-			            	{/* {this.state.commodities}
-                  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Choose a commodity
-                  </a>
-
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="#">Commodity 1</a>
-                  <a class="dropdown-item" href="#">Commodity 2</a>
-                  <a class="dropdown-item" href="#">Commodity 3</a>
-                </div>
-              </div> */}
 
               {/* entity dropdown */}
               <div className="commodities-header">
                 <div className="header-lg"><strong>Entity: {this.state.entityType}</strong></div>
               </div>
 
-              {/* <div class="dropdown" select-value={this.state.selectedEntity} onChange={this.entitySelection} id="entitiesDropdown">
-                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Select {this.state.entityType}
-                </a>
-
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="#">Action</a>
-                  <a class="dropdown-item" href="#">Another action</a>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-              </div> */}
 
               <div className="dropdown-container">
-                <select value={this.state.selectedEntity} onChange={this.entitySelection} className="dropdown" id="entitiesDropdown">
+                <select class="form-select" value={this.state.selectedEntity} onChange={this.entitySelection} className="dropdown" id="entitiesDropdown">
                   {this.state.entities}
                 </select>
               </div>
-
 
 
               {/* submission */}
