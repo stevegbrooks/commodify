@@ -22,24 +22,37 @@ export default class Home extends Component {
                                 {/* default image */}
                                 <div class="carousel-item active">
                                     <img src="home-1.jpg" class="img-fluid"></img>
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h3>Sheep wool farming in New Zealand</h3>
+                                        <h5>Photo by Wenhao Ji on Unsplash
+  </h5>
+                                    </div>
                                 </div>
 
                                 <div class="carousel-item">
                                     <img src="home-2.jpg" class="img-fluid"></img>
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h3>Cocoa beans in an Ivory Coast farm</h3>
+                                        <h5>Photo by Etty Fidele on Unsplash</h5>
+                                    </div>
                                 </div>
 
                                 <div class="carousel-item">
                                     <img src="home-3.jpg" class="img-fluid"></img>
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h3>Wind farm in Turlock, United States</h3>
+                                        <h5>Photo by American Public Power Association on Unsplash</h5>
+                                    </div>
                                 </div>
 
                                 <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
 
                             </div>
                         </div>
