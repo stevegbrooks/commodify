@@ -9,10 +9,10 @@ export default class Home extends Component {
                 <div class="row">
                     <div class="col-sm-4 my-auto">
                         <h2><strong>It has never been easier to understand the global commodities market.</strong></h2><br />
-                        Existing commodities databases deal with industry silos, like energy or agriculture. 
+                        <h5>Existing commodities databases deal with industry silos, like energy or agriculture. 
                         At Commodify, we collate data across the entire commodities space, and provide them in an 
                         interactive interface. Commodify proves to be an effective tool for trade houses, 
-                        banks and hedge funds for intuitive decision-making.
+                        banks and hedge funds for intuitive decision-making.</h5>
 
 
                     </div>
