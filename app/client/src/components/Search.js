@@ -214,15 +214,8 @@ export default class Dashboard extends Component {
       <div className="Dashboard">
 
         <br></br>
-        <div className="container">
-          <div class="row">
-            <div class="col">
-              1 of 2
-            </div>
-            <div class="col">
-              2 of 2
-            </div>
-          </div>
+        <div className="container searchYears-container">
+
           <div className="jumbotron-top">
             <div className="h2"><strong>1. Which sector do you want to search?</strong></div>
             <div className="sectors-container">

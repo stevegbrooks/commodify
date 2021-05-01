@@ -10,7 +10,10 @@ export default class Home extends Component {
                 <div class="row">
                     <div class="col-sm-4 my-auto">
                         <h2><strong>It has never been easier to understand the global commodities market.</strong></h2><br />
-                        Our project is an innovation because existing resources deal mostly with individual sectors like energy or agriculture, but not the the whole commodities space, and they are read only. Our project provides a useful resource for trade houses, banks and hedge funds.
+                        Existing commodities databases deal with industry silos, like energy or agriculture. 
+                        At Commodify, we collate data across the entire commodities space, and provide them in an 
+                        interactive interface. Commodify proves to be an effective tool for trade houses, 
+                        banks and hedge funds in decision-making.
 
 
                     </div>
