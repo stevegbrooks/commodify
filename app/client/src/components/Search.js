@@ -216,15 +216,17 @@ export default class Dashboard extends Component {
           <div class="row">
 
             {/* left panel, containing user input components */}
-            <div class="col-4">
+            <div class="col-4 border-right">
               <div className="search-intro">
-                Commodify makes accessing commodities data easy.<br/>Please fill in some information so that we can begin the search.
+                Commodify makes accessing commodities data easy.<br />Please fill in some information so that we can begin the search.
               </div>
 
               {/* commodity sector selection */}
               <div className="userInput-container">
-                <h4>1. Which sector are you interested in?</h4>
-
+                <div class="row">
+                  <div class="col-1"><h4>1.</h4></div>
+                  <div class="col-10"><h4>Which sector are you interested in?</h4></div>
+                </div>
                 <div className="sectors-container">
                   {this.state.sectors}
                 </div>
@@ -237,16 +239,20 @@ export default class Dashboard extends Component {
                 </div>
               </div>
 
+              {/* select commodity and geography */}
               <div className="userInput-container">
-                <h4>2. Select commodity and geography.</h4>
+                <div class="row">
+                  <div class="col-1"><h4>2.</h4></div>
+                  <div class="col-10"><h4>Select commodity and geography.</h4></div>
+                </div>
 
                 {/* entity type radio buttons */}
                 <div class="btn-group btn-group-toggle" data-toggle="buttons" onChange={this.radioButtonChange}>
                   <label class="btn btn-secondary">
-                    <input type="radio" value="State" name="stateORcountry" autocomplete="off" /> State
+                    <input type="radio" value="State" name="stateORcountry" /> State
                   </label>
                   <label class="btn btn-secondary">
-                    <input type="radio" value="Country" name="stateORcountry" autocomplete="off" /> Country
+                    <input type="radio" value="Country" name="stateORcountry" /> Country
                   </label>
                 </div>
 
@@ -256,127 +262,54 @@ export default class Dashboard extends Component {
                 </div>
 
                 <div className=".commodities-container .dropdown">
-                    <div className="dropdown-container">
-                      <select value={this.state.selectedCommodity} onChange={this.handleChange} className="dropdown" id="commoditiesDropdown">
-                        {this.state.commodities}
-                      </select>
-                      {/* </label> */}
-                    </div>
+                  <div className="dropdown-container">
+                    <select value={this.state.selectedCommodity} onChange={this.handleChange} className="dropdown" id="commoditiesDropdown">
+                      {this.state.commodities}
+                    </select>
                   </div>
+                </div>
 
+                {/* entity dropdown */}
+                <div className="commodities-header">
+                  <div className="header-lg"><strong>Geography</strong></div>
+                </div>
+
+                <div className=".commodities-container .dropdown">
+                  <div className="dropdown-container">
+                    <select value={this.state.selectedEntity} onChange={this.entitySelection} className="dropdown" id="entitiesDropdown">
+                      {this.state.entities}
+                    </select>
+                  </div>
+                </div>
+
+<br/>
+                <div className="selection-container">
+                  <div>
+                    <strong>Selected commodity is :</strong> {this.state.selectedCommodity}<br/>
+                    <strong>Selected geopgraphy is :</strong> {this.state.selectedEntity}
+                  </div>
+                </div>
               </div>
+
+
               
-
-
-
-            </div>
-
-            <div class="col-8">graphs and results</div>
-          </div>
-
-
-
-
-          
-          <div className="jumbotron-top">
-            <div className="h2"><strong>2. Select commodity and geography.</strong></div>
-
-
-
-            <div className="commodities-container">
-
-              <div class="row">
-                <div class="col-sm">
-                  <div className="commodities-header">
-                    <div className="header-lg"><strong>State or Country?</strong></div>
-                  </div>
-                  {/* entity type radio buttons */}
-                  <div class="btn-group btn-group-toggle" data-toggle="buttons" onChange={this.radioButtonChange}>
-
-                    <label class="btn btn-secondary">
-                      <input type="radio" value="State" name="stateORcountry" autocomplete="off" /> State
-</label>
-                    <label class="btn btn-secondary">
-                      <input type="radio" value="Country" name="stateORcountry" autocomplete="off" /> Country
-</label>
-                  </div>
-                </div>
-                <div class="col-sm">
-                  {/* commodity dropdown */}
-                  <div className="commodities-header">
-                    <div className="header-lg"><strong>Commodity</strong></div>
-                  </div>
-
-
-                  <div className=".commodities-container .dropdown">
-                    <div className="dropdown-container">
-                      <select value={this.state.selectedCommodity} onChange={this.handleChange} className="dropdown" id="commoditiesDropdown">
-                        {this.state.commodities}
-                      </select>
-                      {/* </label> */}
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm">
-                  {/* entity dropdown */}
-                  <div className="commodities-header">
-                    <div className="header-lg"><strong>Geography</strong></div>
-                  </div>
-
-                  <div className=".commodities-container .dropdown">
-                    <div className="dropdown-container">
-                      <select value={this.state.selectedEntity} onChange={this.entitySelection} className="dropdown" id="entitiesDropdown">
-                        {this.state.entities}
-                      </select>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <br /><br />
-              <div className="selection-container">
-                <div>
-                  <strong>Selected commodity is :</strong> {this.state.selectedCommodity}<br />
-                  <strong>Selected geography is :</strong> {this.state.selectedEntity}
-
-                </div>
-              </div>
               <br />
+
+              {/* submit button to begin query */}
+              <div className="userInput-container">
+                <button type="button" id="submitSelectionsBtn" class="btn btn-dark btn-block" onClick={this.submitOptions}>Submit</button>
+              </div>
             </div>
-          </div>
-          {/* submission */}
-          <br />
-          <button type="button" id="submitSelectionsBtn" class="btn btn-dark btn-block" onClick={this.submitOptions}>Submit</button>
-
-          <br></br>
-          <div className="h4"><strong>Commodity Data</strong></div>
-          <div className="jumbotron-large">
-
-
-
-
+            
+            <div class="col-8">
+              <div className="graph-container">
+              <h4><strong>Commodity Data</strong></h4>
             <div class="row">
-              <div class="col-md-1-5">
-
-                <div className="header"><strong>Year</strong></div>
-                <div className="header"><strong>Production</strong></div>
-                <div className="header"><strong>Consumption</strong></div>
-                <div className="header"><strong>Ending Stocks</strong></div>
-              </div>
-              <div class="col-sm">
-
-                <div className="results-container" id="results">
-                  {this.state.searchYears}
-                </div>
-              </div>
-            </div>
-
-
-
-          </div>
-
-          <LineChart
-            width={1200}
-            height={500}
+               <div class="col-md-1-5">
+                 <div className="table-container">
+                 <LineChart
+            width={1000}
+            height={600}
             responsive={true}
             maintainAspectRatio={true}
             data={this.state.comChart}
@@ -413,71 +346,101 @@ export default class Dashboard extends Component {
               fill="#440164FF"
             />
           </LineChart>
+          <br/>
 
+                <div className="header"><strong>Year</strong></div>
+                 <div className="header"><strong>Production</strong></div>
+                 <div className="header"><strong>Consumption</strong></div>
+                 <div className="header"><strong>Ending Stocks</strong></div>
+                 </div>
+               </div>
+               <div class="col-sm">
 
-          <div className="commodities-header">
-            <div className="h4"><strong>Climate Data</strong></div>
-          </div>
-          <div className="jumbotron-large">
-
-            <div className="row">
-              <div className="col-md-1-5">
-                <div className="header"><strong>Jan</strong></div>
-                <div className="header"><strong>Feb</strong></div>
-                <div className="header"><strong>Mar</strong></div>
-                <div className="header"><strong>Apr</strong></div>
-                <div className="header"><strong>May</strong></div>
-                <div className="header"><strong>Jun</strong></div>
-                <div className="header"><strong>Jul</strong></div>
-                <div className="header"><strong>Aug</strong></div>
-                <div className="header"><strong>Sep</strong></div>
-                <div className="header"><strong>Oct</strong></div>
-                <div className="header"><strong>Nov</strong></div>
-                <div className="header"><strong>Dec</strong></div>
-              </div>
-              <div class="col-sm">
-                <div className="results-container2" id="results2">
-                  {this.state.monthAvs}
-                </div></div>
+                 <div className="results-container" id="results">
+                   {this.state.searchYears}
+                 </div>
+               </div>
+             </div>
+             </div>
+              
             </div>
-
+          </div>
+          </div>
           </div>
 
 
 
-          <LineChart
-            width={1200}
-            height={500}
-            data={this.state.weatherChart}
-            margin={{
-              top: 50,
-              right: 75,
-              left: 50,
-              bottom: 0
-            }}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="year" />
-            <YAxis />
-            <Tooltip />
-            <Line
-              type="monotone"
-              dataKey="temp"
-              stackId="1"
-              stroke="#FDE725FF"
-              fill="#FDE725FF"
-            />
-            <Line
-              type="monotone"
-              dataKey="rainfall"
-              stackId="1"
-              stroke="#5DC863FF"
-              fill="#5DC863FF"
-            />
-          </LineChart>
 
-        </div>
-      </div>
+
+
+   
+
+ 
+
+
+      //     <div className="commodities-header">
+      //       <div className="h4"><strong>Climate Data</strong></div>
+      //     </div>
+      //     <div className="jumbotron-large">
+
+      //       <div className="row">
+      //         <div className="col-md-1-5">
+      //           <div className="header"><strong>Jan</strong></div>
+      //           <div className="header"><strong>Feb</strong></div>
+      //           <div className="header"><strong>Mar</strong></div>
+      //           <div className="header"><strong>Apr</strong></div>
+      //           <div className="header"><strong>May</strong></div>
+      //           <div className="header"><strong>Jun</strong></div>
+      //           <div className="header"><strong>Jul</strong></div>
+      //           <div className="header"><strong>Aug</strong></div>
+      //           <div className="header"><strong>Sep</strong></div>
+      //           <div className="header"><strong>Oct</strong></div>
+      //           <div className="header"><strong>Nov</strong></div>
+      //           <div className="header"><strong>Dec</strong></div>
+      //         </div>
+      //         <div class="col-sm">
+      //           <div className="results-container2" id="results2">
+      //             {this.state.monthAvs}
+      //           </div></div>
+      //       </div>
+
+      //     </div>
+
+
+
+      //     <LineChart
+      //       width={1200}
+      //       height={500}
+      //       data={this.state.weatherChart}
+      //       margin={{
+      //         top: 50,
+      //         right: 75,
+      //         left: 50,
+      //         bottom: 0
+      //       }}
+      //     >
+      //       <CartesianGrid strokeDasharray="3 3" />
+      //       <XAxis dataKey="year" />
+      //       <YAxis />
+      //       <Tooltip />
+      //       <Line
+      //         type="monotone"
+      //         dataKey="temp"
+      //         stackId="1"
+      //         stroke="#FDE725FF"
+      //         fill="#FDE725FF"
+      //       />
+      //       <Line
+      //         type="monotone"
+      //         dataKey="rainfall"
+      //         stackId="1"
+      //         stroke="#5DC863FF"
+      //         fill="#5DC863FF"
+      //       />
+      //     </LineChart>
+
+      //   </div>
+      // </div>
     );
 
   }
