@@ -5,6 +5,7 @@ import Dashboard from './Dashboard'
 import TopCommodities from './TopCommodities'
 import Search from './Search'
 import PageNavbar from './PageNavbar'
+import Home from './Home'
 
 class Main extends Component {
   render() {
@@ -12,10 +13,11 @@ class Main extends Component {
       <div>
         <PageNavbar />
         <Switch>
+          <Route path = "/Home" component={Home} />
           <Route path="/Dashboard" component={Dashboard} />
           <Route path="/Search" component={Search} />
           <Route path="/TopCommodities" component={TopCommodities} />
-          <Redirect from='*' to='/' />
+          <Redirect from='*' to='/Home' />
         </Switch>
         <Footer />
       </div>
