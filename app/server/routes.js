@@ -8,6 +8,25 @@ var connection = mysql.createPool(config);
 /* ------------------- Route Handlers --------------- */
 /* -------------------------------------------------- */
 
+function getMapChartData(req, res) {
+  var query = `
+    SELECT PE.geo_id,
+      ROUND(SUM(IF(C.name='Electricity', production, NULL ))/100000) AS elec_prod
+    FROM commodify.Commodity C 
+      JOIN commodify.Political_Entity PE ON C.pe_id = PE.id
+    WHERE PE.is_country = 0 
+    GROUP BY PE.geo_id
+    ORDER BY PE.geo_id;
+  `;
+  connection.query(query, function(err, rows, fields) {
+    if (err) console.log(err);
+    else {
+      console.log(rows);
+      res.json(rows);
+    }
+  });
+};
+
 function getAreaChartData(req, res) {
   var query = `
     SELECT C.year,
@@ -20,8 +39,7 @@ function getAreaChartData(req, res) {
       JOIN commodify.Political_Entity PE ON C.pe_id = PE.id
       JOIN commodify.Weather W ON PE.id = W.pe_id
     WHERE C.year < 2020 AND C.year >= 1990 AND PE.is_country = 0 
-    GROUP BY C.year
-    ORDER BY C.year;
+    GROUP BY C.year;
   `;
   connection.query(query, function(err, rows, fields) {
     if (err) console.log(err);
@@ -161,6 +179,7 @@ ORDER BY month ASC;
 
 // The exported functions, which can be accessed in index.js.
 module.exports = {
+  getMapChartData: getMapChartData,
 	getAreaChartData: getAreaChartData,
   getAllCommodityGroups: getAllCommodityGroups,
   getCommodityList: getCommodityList,

@@ -9,12 +9,24 @@ import {
   Legend,
   Label
 } from "recharts";
+import "../style/MapChart.css";
+import { ComposableMap, Geographies, Geography } from "react-simple-maps";
+import { scaleLinear } from "d3-scale";
+//import { schemeBlues, interpolateInferno }from "d3-scale-chromatic"
+
+const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
+
+const colorScale = scaleLinear()
+  .domain([41, 115376])
+  .range(["yellow", "red"])
+  .unknown("#ccc");
 
 export default class Dashboard extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      data: []
+      areaData: [],
+      mapData: []
     }
   }
 
@@ -27,8 +39,26 @@ export default class Dashboard extends PureComponent {
       console.log(err);
     }).then((response) => {
       this.setState({
-        data : response
+        areaData : response
       });
+    });
+    fetch("http://localhost:5000/mapChart", {
+      method: 'GET'
+    }).then(res => {
+      return res.json()
+    }, err => {
+      console.log(err);
+    }).then((responseList) => {
+        var stateData = [];
+        for (var i = 0; i < responseList.length; i++) {
+            var state = responseList[i];
+            stateData.push(state);
+        }
+        
+        this.setState({
+            mapData : stateData
+        });
+
     });
   }
 
@@ -36,16 +66,16 @@ export default class Dashboard extends PureComponent {
     return (
       <div className="Dashboard">
         <div className="AreaChart">
-          <h3>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          <h3>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             Trends in Commodities, Electricity, and Rainfall since 1990 in the United States</h3>
           <AreaChart
             width={1200}
             height={500}
-            data={this.state.data}
+            data={this.state.areaData}
             margin={{
               top: 50,
               right: 75,
-              left: 50,
+              left: 100,
               bottom: 0
             }}
           >
@@ -53,7 +83,7 @@ export default class Dashboard extends PureComponent {
             <XAxis dataKey="year" />
             <YAxis width={80} yAxisId="left" tick={{ fontSize: 10 }}>
               <Label
-                value='Commodity Production' 
+                value='Commodity/Electric Production' 
                 position='top' 
                 style={{textAnchor: 'middle'}}
                 fill='#676767'
@@ -84,8 +114,8 @@ export default class Dashboard extends PureComponent {
               type="monotone"
               dataKey="corn_prod"
               stackId="1"
-              stroke="#FDE725FF"
-              fill="#FDE725FF"
+              stroke="#EAD82B"
+              fill="#EAD82B"
             />
             <Area
               yAxisId="left"
@@ -115,8 +145,40 @@ export default class Dashboard extends PureComponent {
             />
           </AreaChart>
         </div>
-        <div className="Map">
-          <h3></h3>
+        <div className="MapChart">
+          
+          <h3>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            Electricty Production by State</h3>
+            <>
+                <ComposableMap 
+                    projection="geoAlbersUsa"
+                    projectionConfig={{ scale: 1000 }}
+                    width={980}
+                    height={551}
+                    style={{
+                        width: "100%",
+                        height: "auto",
+                    }}
+                >
+                    <Geographies geography={geoUrl}>
+                        {({ geographies }) =>
+                            geographies.map(geo => {
+                                const cur = this.state.mapData.find(s => s.geo_id === geo.id + "\r");
+                                if (typeof(cur) != "undefined") {
+                                  console.log(colorScale(cur.elec_prod));
+                                  return (
+                                    <Geography
+                                        key={geo.rsmKey}
+                                        geography={geo}
+                                        fill={colorScale(cur.elec_prod)}
+                                    />
+                                  );
+                                }
+                            })
+                        }
+                    </Geographies>
+                </ComposableMap>
+            </>
         </div>
       </div>
     );
