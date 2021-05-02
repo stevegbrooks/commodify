@@ -55,7 +55,7 @@ The search page allows the user to select a commodity sector, for example 'agric
 
 The datasets used in the application mainly agricultural commodities data, energy supply and demand data, as well as weather data obtained from public domains.
 
-### 1. [Current and historical agricultural commodities data from the USDA Foreign Agricultural Service](https://apps.fas.usda.gov/psdonline/app/index.html#/app/downloads)
+#### 1. [Current and historical agricultural commodities data from the USDA Foreign Agricultural Service](https://apps.fas.usda.gov/psdonline/app/index.html#/app/downloads)
 
   * Description: a dataset containing commodities and their prices around the world, including trading value at the beginning and end of each month.
 
@@ -103,7 +103,7 @@ The datasets used in the application mainly agricultural commodities data, energ
 
 
 
-### 2. For energy and electricty data: [Current and historical energy supply and demand data from the Energy Information Agency, part of the United States Department of Energy](https://www.eia.gov/petroleum/data.php), [Current and historical electricity supply and demand data from the Energy Information Agency, part of the United States Department of Energy](https://www.eia.gov/electricity/data/state/), and [Historical energy data from the Statistical Review of World Energy by BP](https://www.bp.com/en/global/corporate/energy-economics/statistical-review-of-world-energy/downloads.html)
+#### 2. For energy and electricty data: [Current and historical energy supply and demand data from the Energy Information Agency, part of the United States Department of Energy](https://www.eia.gov/petroleum/data.php), [Current and historical electricity supply and demand data from the Energy Information Agency, part of the United States Department of Energy](https://www.eia.gov/electricity/data/state/), and [Historical energy data from the Statistical Review of World Energy by BP](https://www.bp.com/en/global/corporate/energy-economics/statistical-review-of-world-energy/downloads.html)
 
   * Description: The EIA produces data sets released weekly and monthly which contain thousands of data points on US and global energy production and consumption. Two of the csv datasets which were used were: "Retail Sales of Electricity by State by Sector by Provider (EIA-861)" (analogous to consumption of electricity) and “Net Generation by State by Type of Producer by Energy Source (EIA-906, EIA-920, and EIA-923).” Total electricity consumption from "Sales to Ultimate Customers" in megawatthours by state by year was manually merged with total (from all energy sources) electricity production/generation into a single csv.
   
@@ -135,7 +135,7 @@ The datasets used in the application mainly agricultural commodities data, energ
 	|3rd Qu.:2010-11-30 00:00:00 |3rd Qu.:263536 |3rd Qu.:1518.0 |3rd Qu.: 542.5 |3rd Qu.:35.50 |
 	|Max.   :2020-11-15 00:00:00 |Max.   :396865 |Max.   :4243.0 |Max.   :3606.0 |Max.   :96.00 |
 
-### 3. [Current and historical weather data from the US National Oceanic and Atmospheric Administration (NOAA) National Center for Environmental Information (NCEI)](https://www.ncei.noaa.gov/data/global-summary-of-the-day/access/)
+#### 3. [Current and historical weather data from the US National Oceanic and Atmospheric Administration (NOAA) National Center for Environmental Information (NCEI)](https://www.ncei.noaa.gov/data/global-summary-of-the-day/access/)
 
   * Description: a dataset containing daily weather data for weather stations in the USA, including, from 1929 to the present (2021).
 
@@ -418,6 +418,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 - Frontend: React.js with [`react-chartist`](https://gionkunz.github.io/chartist-js/) for plots and charts and [`react-leaflet`](https://react-leaflet.js.org/) for maps.
 
 #### Client
+```
 "dependencies": {
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
@@ -439,8 +440,10 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
     "recharts": "^2.0.9",
     "web-vitals": "^1.1.0"
   },
+```
   
 #### Server
+```
 "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
@@ -448,5 +451,6 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
     "expresss": "^0.0.0",
     "mysql": "^2.18.1"
   }
+```
   
  
