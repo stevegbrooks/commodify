@@ -34,6 +34,8 @@ The web application was developed using React, a user interface framework develo
 
 Express server .... more elaboration
 
+We used Excel for organising some data.
+
 ### Description of System Architecture
 
 Commodify allows the user to search for raw data on commodity supply and demand and also presents visualisations of that data. Furthermore, since weather and climate are crucial determinants of the supply and demand of many commodities, it returns weather data and charts relevant to the commodity search. This illustrates not only trends in the commodities markets, but also the interaction between weather and climate. The site has a homepage and two functional pages, a "Dashboard" and a "Search" page.
