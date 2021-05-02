@@ -489,7 +489,7 @@ Rainfall (mm)
                 </div>
 
                 <div class="disclaimer">
-        Please note that information for some commodities are not yet available - contact us if you know of reliable data sources and we will incorporate them!
+        Please note that information for some commodities are not yet available - <a href="./Contact">contact us</a> if you know of reliable data sources and we will incorporate them!
                 </div>
               </div >
               </div>
