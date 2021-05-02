@@ -16,7 +16,7 @@ Commodify is an app to visualize and interact with commodity market and weather 
 
 ### The problem
 
-Existing resources deal mostly with individual sectors like energy or agriculture, but rarely with the whole commodities space, and often with little analysis or visualization. To get an overview of the entire market, one needs to manually integrate data from many different resources, which is time intensive and technically difficult for most traders. Commodify is the solution.
+Existing sources for commodity data deal mostly with individual sectors such as energy or agriculture, but rarely with the whole commodities space, and often with little analysis or interpretation. To get an overview of the entire market, one needs to manually integrate data from many different resources, which is time intensive and technically difficult for most traders and analysts. Commodify is the solution.
 
 ### The solution
 
