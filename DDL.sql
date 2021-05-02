@@ -208,10 +208,11 @@ ESCAPED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 LINES
 (
-	name, year, month, pe_id, 
+	name, year, @vmonth, pe_id, 
 	@vproduction, @vconsumption
 )
 SET 
+month = NULLIF(@vmonth,''),
 production = NULLIF(@vproduction,''),
 consumption = NULLIF(@vconsumption,'')
 ;
