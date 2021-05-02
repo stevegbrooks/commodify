@@ -30,7 +30,7 @@ Exploratory data analysis (EDA) was performed on the downloaded raw datasets to 
 
 The web application was developed using React, a user interface framework developed by Facebook. Using the Node package manager, a boilerplate application was set-up via the Node package create-react-app. A list of dependencies (required Node modules) for the client is outlined in the json file "commodify/app/client/package.json". The professional look-and-feel and responsiveness of the webpage was implemented using Bootstrap, an open-source CSS framework, which contains built-in templates for interface components such as navbars and grid layouts.
 
-On the backend we used Express and Node to write handlers for requests and to connect the web application with the database, so as to return results from user queries.
+On the backend we used Express and Node to write handlers for requests and to connect the web application with the database, so as to return results from user queries. A list of dependencies (required Node modules) for the server is outlined in the json file "commodify/app/server/package.json".
 
 
 ### Description of System Architecture
