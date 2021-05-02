@@ -258,10 +258,10 @@ export default class Dashboard extends Component {
                 <div className="commodities-options" onChange={this.radioButtonChange}>
                   <div class="row">
                     <div class="col">
-                      <input type="radio" value="State" name="stateORcountry" /> US State
+                      <input type="radio" value="State" name="stateORcountry" onChange={this.radioButtonChange}/> US State
                     </div>
                     <div class="col">
-                      <input type="radio" value="Country" name="stateORcountry" /> Country
+                      <input type="radio" value="Country" name="stateORcountry" onChange={this.radioButtonChange}/> Country
                     </div>
                   </div>
 
@@ -378,7 +378,7 @@ export default class Dashboard extends Component {
 
 
                 <h4>Monthly average temperature (°F) and rainfall (mm) in {this.state.selectedEntity}</h4>
-                <h6>*Weather data is available only for US states</h6>
+                <h6>*Weather data is currently only available for US states</h6>
                 <div class="row">
                   <ResponsiveContainer width="100%" height={600}>
                     <LineChart
@@ -484,7 +484,7 @@ Rainfall (mm)
                 </div>
 
                 <div class="disclaimer">
-        Please note that information for some commodities are not yet available - <a href="./Contact">contact us</a> if you know of reliable data sources and we will incorporate them!
+        Please note that information for some commodities is not yet available - <a href="./Contact">contact us</a> if you know of reliable data sources and we will incorporate them!
                 </div>
               </div >
               </div>
