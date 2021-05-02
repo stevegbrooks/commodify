@@ -357,4 +357,4 @@ Below is the profile table after making the optimization (average of 10 runs):
 
 ## Technical challenges
 
-Perhaps the greated challenge was formatting the website, including building the .css style files and getting user interfaces such as buttons and dropdown menus to function correctly. We struggled, for example, to to get data to render in rows rather than a single column. Without much experience of web design we resorted to a lot of googling (often unsuccesfully) and trial and error.
+Perhaps the greatest challenge was formatting the website, including building the .css style files and getting user interfaces such as buttons and dropdown menus to function correctly. We struggled, for example, to to get data to render in rows rather than a single column. Without much experience of web design or any obvious single resource for guidance we resorted to a lot of googling (often unsuccesfully) and trial and error.
