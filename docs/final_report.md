@@ -344,4 +344,4 @@ Below is the profile table after making the optimization (average of 10 runs):
 
 ## Technical challenges
 
-Different commodities have different characteristics, and furthermore the data available concerning supply and demand of commodities vary from place to place in terms of the attributes available, their frequency and so on. Our database and website had to handle this diversity.
+Perhaps the greated challenge was formatting the website, including building the .css style files and getting user interfaces such as buttons and dropdown menus to function correctly. We struggled, for example, to to get data to render in rows rather than a single column. Without much experience of web design we resorted to a lot of googling and trial and error.
