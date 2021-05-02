@@ -255,7 +255,6 @@ SHOW STATUS LIKE 'last_query_cost';
 
 Which showed us that there are around 200,000 page reads for this query.
 
-
 #### Optimization
 
 - Instead of using `Commodity.year` for the selection and grouping, we used `Weather.year`.
