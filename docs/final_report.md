@@ -12,17 +12,21 @@ Existing resources deal mostly with individual sectors like energy or agricultur
 
 Commodify provides a "one-stop-shop" for commodities and weather data, which can be a useful resource for trade houses, banks and hedge funds.
 
-![](commodify_home.png)
+![](commodify-home.png)
 
 Commodify allows for seeing not only trends in the commodities markets, but also the interaction between weather and climate and prices, which are crucial determinants of commodity supply and demand. The app is divided into two pages, a "Dashboard" and a "Search" page.
 
+#### Dashboard
+
 The dashboard page gives the user a overview of the commodities market in graphical display formats. For the purpose of the project, the information presented on this page is for the USA only, due to the fact the data is most complete and available for the USA. The page contains two charts: the first chart presents a broad overview of production levels of commodities (soy, corn and wheat are the major stocks in USA) and electricity. Total rainfall level is overlaid and presented on the same chart to illustrate the broad relationship between rainfall levels and commodity production levels, if any. The second chart presents the total electricity production of each of the 50 USA states, levels illustrated by the colors (with red being the highest, and light yellow being the lowest).
 
-![](commodify_dashboard.png)
+![](commodify-dashboard.png)
+
+#### Search
 
 The search page allows the user to select a commodity sector, for example 'agriculture', or 'renewables'. After selecting one of these options the user will be presented with the option to search for country or USA state level data, and will then be shown drop-down menus for the data available. Once the selections are made and the 'Submit' button is pressed, the user will see the commodity's production and consumption data in graphical display (line chart) and tabular form. Should the user select to view commodity data for a USA state (instead of country), an additional query is performed to retrieve weather information for the selected state. Monthly average rainfall and temperature data are then presented in a separate chart and tabular format below the first chart.
 
-![](commodify_search.png)
+![](commodify-search.png)
 
 ### Team Members
 
@@ -37,7 +41,7 @@ The search page allows the user to select a commodity sector, for example 'agric
 
 ## Data
 
-The datasets used in the application are below:
+The datasets used in the application mainly agricultural commodities data, energy supply and demand data, as well as weather data obtained from public domains.
 
 1. [Current and historical agricultural commodities data from the USDA Foreign Agricultural Service](https://apps.fas.usda.gov/psdonline/app/index.html#/app/downloads)
 
@@ -116,6 +120,24 @@ The datasets used in the application are below:
 	|Mean   :2000-12-14 11:43:27 |Mean   :223392 |Mean   :1171.7 |Mean   : 511.4 |Mean   :33.37 |
 	|3rd Qu.:2010-11-30 00:00:00 |3rd Qu.:263536 |3rd Qu.:1518.0 |3rd Qu.: 542.5 |3rd Qu.:35.50 |
 	|Max.   :2020-11-15 00:00:00 |Max.   :396865 |Max.   :4243.0 |Max.   :3606.0 |Max.   :96.00 |
+
+3. [Current and historical weather data from the US National Oceanic and Atmospheric Admistration (NOAA) National Centiers for Environmental Information (NCEI)]
+(https://www.ncei.noaa.gov/data/global-summary-of-the-day/access/)
+
+  * Description: a dataset containing daily weather data for weather stations in the USA, including, from 1929 to the present (2021).
+
+  * Size: ~ over 20 GB with 28 features, including temperature, dewpoint, surface elevation, rainfall, wind speed, etc. The full dataset was downloaded and relevant information was extracted. Only state, rainfall and temperature data were retained for simplicity and usefulness.
+  
+  * A quick peek at the first 5 rows of the data shows the following (column names changed for brevity; not all columns shown): 
+  
+
+  * Number of unique values for each column (selected useful column):
+  
+
+	
+  * Summary statistics for numeric columns:
+
+
 
 
 ## Database
