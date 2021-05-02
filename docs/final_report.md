@@ -354,3 +354,94 @@ Below is the profile table after making the optimization (average of 10 runs):
 ## Technical challenges
 
 Perhaps the greatest challenge was formatting the website, including building the .css style files and getting user interfaces such as buttons and dropdown menus to function correctly. We struggled, for example, to to get data to render in rows rather than a single column. Without much experience of web design or any obvious single resource for guidance we resorted to a lot of googling (often unsuccesfully) and trial and error.
+
+
+## Appendix
+
+### Instructions to Build Locally
+
+#### 1. Setup Connection to Database
+
+Follow these steps for connecting to "commodify-db" on AWS with READ ONLY access:
+
+Username: guest
+Password: wheat
+
+Port: 3306
+
+Endpoint: commodify-db.cn5sga8k6aq8.us-east-1.rds.amazonaws.com
+
+Run this line in your terminal:
+
+```
+mysql --host=commodify-db.cn5sga8k6aq8.us-east-1.rds.amazonaws.com --port=3306 --user=guest -p
+```
+
+Input password at prompt.
+
+#### 2. Launch client and server
+
+In the project directory, you can run:
+
+### `npm start`
+
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
+
+### `npm test`
+
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `npm run build`
+
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### List of Dependencies
+
+- Backend: Node.js server with MySQL database hosted on AWS.
+
+- Frontend: React.js with [`react-chartist`](https://gionkunz.github.io/chartist-js/) for plots and charts and [`react-leaflet`](https://react-leaflet.js.org/) for maps.
+
+#### Client
+"dependencies": {
+    "@testing-library/jest-dom": "^5.11.9",
+    "@testing-library/react": "^11.2.5",
+    "@testing-library/user-event": "^12.7.1",
+    "bootstrap": "^4.6.0",
+    "chartist": "^0.11.4",
+    "d3-fetch": "^2.0.0",
+    "d3-scale": "^3.3.0",
+    "d3-scale-chromatic": "^2.0.0",
+    "prop-types": "^15.7.2",
+    "raw-loader": "^4.0.2",
+    "react": "^17.0.1",
+    "react-chartist": "^0.14.4",
+    "react-dom": "^17.0.2",
+    "react-markdown": "^6.0.1",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^4.0.2",
+    "react-simple-maps": "^2.3.0",
+    "recharts": "^2.0.9",
+    "web-vitals": "^1.1.0"
+  },
+  
+#### Server
+"dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "expresss": "^0.0.0",
+    "mysql": "^2.18.1"
+  }
+  
+ 
