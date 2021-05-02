@@ -26,15 +26,12 @@ Commodify provides a "one-stop-shop" for commodities and weather data, and aims 
 
 ### List of Technologies
 
-Exploratory data analysis (EDA) was performed on the downloaded raw datasets to check data availability (presence of absence of null values), usefulness of data, units, and in general to summarize the data characteristics. Subsequently, only relevant data columns, identified to be useful to the project goal, were extracted from the full datasets. Python was used at this stage due to its easy-to-use libraries, including pandas and numpy, which are widely used in data science applications.
-
-The data was hosted on AWS.... more elaboration
+Exploratory data analysis (EDA) was performed on the downloaded raw datasets to check data availability (presence of absence of null values), usefulness of data, units, and in general to summarize the data characteristics. Subsequently, only relevant data columns, identified to be useful to the project goal, were extracted from the full datasets. Python was used at this stage due to its easy-to-use libraries, including pandas and numpy, which are widely used in data science applications. Microsoft Excel was also used for organizing some data. The processed datasets were hosted on AWS using MySQL.
 
 The web application was developed using React, a user interface framework developed by Facebook. Using the Node package manager, a boilerplate application was set-up via the Node package create-react-app. A list of dependencies (required Node modules) for the client is outlined in the json file "commodify/app/client/package.json". The professional look-and-feel and responsiveness of the webpage was implemented using Bootstrap, an open-source CSS framework, which contains built-in templates for interface components such as navbars and grid layouts.
 
-Express server .... more elaboration
+On the backend we used Express and Node to write handlers for requests and to connect the web application with the database, so as to return results from user queries.
 
-We used Excel for organising some data.
 
 ### Description of System Architecture
 
@@ -179,13 +176,13 @@ The datasets used in the application mainly agricultural commodities data, energ
 
 ## Database
 
-The commodities and weather data were sourced as txt and csv files and processed using python notebooks such as commodity_usda_state.ipynb in our submission. This removed problem values, made names and units consistent, dropped unwanted columns and so on. In particular, the massive weather dataset (over 20GB of csv files) provided information in terms of daily statistics collected across virtually all global weather stations, from the years 1929 to the present (2021). In order to render the dataset useful for the application, data aggregation was performed to obtain average monthly statistics in US states only. Further, the team also identified that rainfall and precipation were the most relevant weather parameters to study commodities trends, and hence, other weather data was omitted (e.g. wind speeds, haze) at this stage of the project to avoid unnecessary complexity of the dataset.
+The commodities and weather data were sourced as txt and csv files and processed using python notebooks such as commodity_usda_state.ipynb in our submission. This removed problem values, made names and units consistent, dropped unwanted columns and so on. In particular, the massive weather dataset (over 20GB of csv files) provided information in terms of daily statistics collected across virtually all global weather stations, from the years 1929 to the present (2021). In order to render the dataset useful for the application, data aggregation was performed to obtain average monthly statistics in US states only.
 
 The processed data were output as csv files and then uploaded to the database via MySQL. The database can be recreated using the DDL.sql file which links to the provided csv files.
 
 The major entity resolution questions conerned how to deal with the problem that different commodites have different attributes (for example corn has acreage but electricity does not), and different data are available at the country and state levels, for example wheat production data are available by country and by US state, but wheat consumption is only available at the country level. We decided that the best solution for the user was to include all the commodities supply and demand data in a single table, called **Commodity**, meaning we avoided having many different tables with different attributes at the cost of having many null values in the table. The table is in BCNF. We achieved this by placing metadata, such as the sector each commodity belongs to (e.g. agriculture for soybeans), to a separate table called **Commodity_Group**, and also the **Political_Entity** table, which contains information about countries and US states, including their names and the id used in the **Commodity** table. (It was necessary to use ids rather than names because there is a country called Georgia and also a state!) We determined which territories to include and which versions of their names to use, which abbreviations, and their ids, manually in Excel. The **Commodity_Group** and **Political_Entity** tables are also in BCNF. It was necessary to decide which countries and terrritories to include (for example we excluded the Netherlands Antilles from our list of political entities, although we had historic data for them, because that country was dissolved in 2010), which exact names to use for them, and which abbreviations.
 
-The weather data are held in a table called **Weather**, which is also in BCNF.
+The weather data are held in a table called **Weather**, which is also in BCNF. While a range of climate parameters were included in the raw dataset, the team identified that rainfall and precipation were the most relevant weather parameters to study commodities trends, and hence, other weather data was omitted (e.g. wind speeds, haze) at this stage of the project to avoid unnecessary complexity of the dataset.
 
 
 ![](CommodifyERD.png)
