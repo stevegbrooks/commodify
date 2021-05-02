@@ -24,12 +24,9 @@ Commodify provides a "one-stop-shop" for commodities and weather data, and aims 
 
 ## Architecture
 
-### List of Technologies
+The database was built in MySQL and hosted on AWS. The web application was developed using React, a user interface framework developed by Facebook. Using the Node package manager, a boilerplate application was swiftly set up via the Node package create-react-app. A list of dependencies (required Node modules) for the client is outlined in the json file "commodify/app/client/package.json". The professional look-and-feel anD responsivessness of the webpage was implemented using Bootstrap, an open-source CSS framework, which contains built-in templates for interface components such as navbars and grid layouts.
 
-Python was used to do initial EDA and data processing ...
-libraries used - pandas, numpy
-
-The web application was developed using React, a user interface framework developed by Facebook. Using the Node package manager, a boilerplate application was swiftly set up via the Node package create-react-app. A list of dependencies (required Node modules) for the client is outlined in the json file "commodify/app/client/package.json". The professional look-and-feel anD responsivessness of the webpage was implemented using Bootstrap, an open-source CSS framework, which contains built-in templates for interface components such as navbars and grid layouts.
+Python notebooks were used to do initial EDA and data processing. Libraries used included pandas and numpy.
 
 Express, AWS --- add more elaboration
 
