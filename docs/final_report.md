@@ -26,19 +26,17 @@ Commodify provides a "one-stop-shop" for commodities and weather data, and aims 
 
 ### List of Technologies
 
-Exploratory data analysis (EDA) was performed on the downloaded raw datasets to check data availability (presence of absence of null values), usefulness of data, units, and in general to summarize the data characteristics. Subsequently, only relevant data columns, identified to be useful to the project goal, were extracted from the full datasets. Python was used at this stage due to its easy-to-use libraries, including pandas and numpy, which are widely used in data science applications.
-
-The data was hosted on AWS.... more elaboration
+Exploratory data analysis (EDA) was performed on the downloaded raw datasets to check data availability (presence or absence of null values), usefulness of data, units, and in general to summarize the data characteristics. Subsequently, only relevant data columns, identified to be useful to the project goal, were extracted from the full datasets. Python was used at this stage due to its easy-to-use libraries, including pandas and numpy, which are widely used in data science applications. Microsoft Excel was also used for organizing some data. The processed datasets were hosted on AWS using MySQL.
 
 The web application was developed using React, a user interface framework developed by Facebook. Using the Node package manager, a boilerplate application was set-up via the Node package create-react-app. A list of dependencies (required Node modules) for the client is outlined in the json file "commodify/app/client/package.json". The professional look-and-feel and responsiveness of the webpage was implemented using Bootstrap, an open-source CSS framework, which contains built-in templates for interface components such as navbars and grid layouts.
 
-Express server .... more elaboration
+On the backend we used Express and Node to write handlers for requests and to connect the web application with the database, so as to return results from user queries. A list of dependencies (required Node modules) for the server is outlined in the json file "commodify/app/server/package.json".
 
-We used Excel for organising some data.
+Markdown was used to write the final report and other project documents. Markdown is a lightweight markup language used for creating formatted text using a plain-text editor.
 
 ### Description of System Architecture
 
-Commodify allows the user to search for raw data on commodity supply and demand and also presents visualisations of that data. Furthermore, since weather and climate are crucial determinants of the supply and demand of many commodities, it returns weather data and charts relevant to the commodity search. This illustrates not only trends in the commodities markets, but also the interaction between weather and climate. The site has a homepage and two functional pages, a "Dashboard" and a "Search" page, as well as a dummy "Contact" page designed for Commidify users to get in touch with the development team for any enquires, complaints, or suggestions.
+Commodify allows the user to search for raw data on commodity supply and demand and also presents visualisations of that data. Furthermore, since weather and climate are crucial determinants of the supply and demand of many commodities, it returns weather data and charts relevant to the commodity search. This illustrates not only trends in the commodities markets, but also the interaction between weather and climate. The site has a homepage and two functional pages, a "Dashboard" and a "Search" page, as well as a static "Contact" page designed for Commidify users to get in touch with the development team for any enquires, complaints, or suggestions.
 
 ![](commodify-home.png)
 
@@ -58,7 +56,7 @@ The search page allows the user to select a commodity sector, for example 'agric
 
 The datasets used in the application mainly agricultural commodities data, energy supply and demand data, as well as weather data obtained from public domains.
 
-1. [Current and historical agricultural commodities data from the USDA Foreign Agricultural Service](https://apps.fas.usda.gov/psdonline/app/index.html#/app/downloads)
+#### 1. [Current and historical agricultural commodities data from the USDA Foreign Agricultural Service](https://apps.fas.usda.gov/psdonline/app/index.html#/app/downloads)
 
   * Description: a dataset containing commodities and their prices around the world, including trading value at the beginning and end of each month.
 
@@ -106,7 +104,7 @@ The datasets used in the application mainly agricultural commodities data, energ
 
 
 
-2. For energy and electricty data: [Current and historical energy supply and demand data from the Energy Information Agency, part of the United States Department of Energy](https://www.eia.gov/petroleum/data.php), [Current and historical electricity supply and demand data from the Energy Information Agency, part of the United States Department of Energy](https://www.eia.gov/electricity/data/state/), and [Historical energy data from the Statistical Review of World Energy by BP](https://www.bp.com/en/global/corporate/energy-economics/statistical-review-of-world-energy/downloads.html)
+#### 2. For energy and electricty data: [Current and historical energy supply and demand data from the Energy Information Agency, part of the United States Department of Energy](https://www.eia.gov/petroleum/data.php), [Current and historical electricity supply and demand data from the Energy Information Agency, part of the United States Department of Energy](https://www.eia.gov/electricity/data/state/), and [Historical energy data from the Statistical Review of World Energy by BP](https://www.bp.com/en/global/corporate/energy-economics/statistical-review-of-world-energy/downloads.html)
 
   * Description: The EIA produces data sets released weekly and monthly which contain thousands of data points on US and global energy production and consumption. Two of the csv datasets which were used were: "Retail Sales of Electricity by State by Sector by Provider (EIA-861)" (analogous to consumption of electricity) and “Net Generation by State by Type of Producer by Energy Source (EIA-906, EIA-920, and EIA-923).” Total electricity consumption from "Sales to Ultimate Customers" in megawatthours by state by year was manually merged with total (from all energy sources) electricity production/generation into a single csv.
   
@@ -138,7 +136,7 @@ The datasets used in the application mainly agricultural commodities data, energ
 	|3rd Qu.:2010-11-30 00:00:00 |3rd Qu.:263536 |3rd Qu.:1518.0 |3rd Qu.: 542.5 |3rd Qu.:35.50 |
 	|Max.   :2020-11-15 00:00:00 |Max.   :396865 |Max.   :4243.0 |Max.   :3606.0 |Max.   :96.00 |
 
-3. [Current and historical weather data from the US National Oceanic and Atmospheric Administration (NOAA) National Center for Environmental Information (NCEI)](https://www.ncei.noaa.gov/data/global-summary-of-the-day/access/)
+#### 3. [Current and historical weather data from the US National Oceanic and Atmospheric Administration (NOAA) National Center for Environmental Information (NCEI)](https://www.ncei.noaa.gov/data/global-summary-of-the-day/access/)
 
   * Description: a dataset containing daily weather data for weather stations in the USA, including, from 1929 to the present (2021).
 
@@ -179,18 +177,19 @@ The datasets used in the application mainly agricultural commodities data, energ
 
 ## Database
 
-The commodities and weather data were sourced as txt and csv files and processed using python notebooks such as commodity_usda_state.ipynb in our submission. This removed problem values, made names and units consistent, dropped unwanted columns and so on. In particular, the massive weather dataset (over 20GB of csv files) provided information in terms of daily statistics collected across virtually all global weather stations, from the years 1929 to the present (2021). In order to render the dataset useful for the application, data aggregation was performed to obtain average monthly statistics in US states only. Further, the team also identified that rainfall and precipation were the most relevant weather parameters to study commodities trends, and hence, other weather data was omitted (e.g. wind speeds, haze) at this stage of the project to avoid unnecessary complexity of the dataset.
+The commodities and weather data were sourced as txt and csv files and processed using python notebooks such as commodity_usda_state.ipynb in our submission. This removed problem values, made names and units consistent, dropped unwanted columns and so on. In particular, the massive weather dataset (over 20GB of csv files) provided information in terms of daily statistics collected across virtually all global weather stations, from the years 1929 to the present (2021). In order to render the dataset useful for the application, data aggregation was performed to obtain average monthly statistics in US states only.
 
 The processed data were output as csv files and then uploaded to the database via MySQL. The database can be recreated using the DDL.sql file which links to the provided csv files.
 
-The major entity resolution questions conerned how to deal with the problem that different commodites have different attributes (for example corn has acreage but electricity does not), and different data are available at the country and state levels, for example wheat production data are available by country and by US state, but wheat consumption is only available at the country level. We decided that the best solution for the user was to include all the commodities supply and demand data in a single table, called **Commodity**, meaning we avoided having many different tables with different attributes at the cost of having many null values in the table. The table is in BCNF. We achieved this by placing metadata, such as the sector each commodity belongs to (e.g. agriculture for soybeans), to a separate table called **Commodity_Group**, and also the **Political_Entity** table, which contains information about countries and US states, including their names and the id used in the **Commodity** table. (It was necessary to use ids rather than names because there is a country called Georgia and also a state!) We determined which territories to include and which versions of their names to use, which abbreviations, and their ids, manually in Excel. The **Commodity_Group** and **Political_Entity** tables are also in BCNF. It was necessary to decide which countries and terrritories to include (for example we excluded the Netherlands Antilles from our list of political entities, although we had historic data for them, because that country was dissolved in 2010), which exact names to use for them, and which abbreviations.
+The major entity resolution questions concerned how to deal with the problem that different commodities have different attributes (for example corn has acreage but electricity does not), and different data are available at the country and state levels, for example wheat production data are available by country and by US state, but wheat consumption is only available at the country level. We decided that the best solution for the user was to include all the commodities supply and demand data in a single table, called **Commodity**, meaning we avoided having many different tables with different attributes at the cost of having many null values in the table. For example, Commodity was not split into Agriculture and Non-agriculture tables even though only production and consumption data is populated for Non-agriculture commodities (the rest of the non-primary key values are null).
 
-The weather data are held in a table called **Weather**, which is also in BCNF.
+The **Commodity** table is in BCNF. We achieved this by placing metadata, such as the sector each commodity belongs to (e.g. agriculture for soybeans), to a separate table called **Commodity_Group**, and also the **Political_Entity** table, which contains information about countries and US states, including their names and the id used in the **Commodity** table. (It was necessary to use ids rather than names because there is a country called Georgia and also a state!) We determined which territories to include and which versions of their names to use, which abbreviations, and their ids, manually in Excel. The **Commodity_Group** and **Political_Entity** tables are also in BCNF. It was necessary to decide which countries and territories to include (for example we excluded the Netherlands Antilles from our list of political entities, although we had historic data for them, because that country was dissolved in 2010), which exact names to use for them, and which abbreviations.
 
+The weather data are held in a table called **Weather**, which is also in BCNF. While a range of climate parameters were included in the raw dataset, the team identified that rainfall and precipitation were the most relevant weather parameters to study commodities trends, and hence, other weather data was omitted (e.g. wind speeds, haze) at this stage of the project to avoid unnecessary complexity of the dataset.
 
 ![](CommodifyERD.png)
 
-Relation schema: 
+### Relation schema: 
 
   * Commodity (<ins>name</ins>, <ins>year</ins>, <ins>month</ins>, <ins>pe_id</ins>, beginning_stocks, ending_stocks, imports, exports, acreage, yield, production, consumption)
 
@@ -210,23 +209,21 @@ Total instances in Weather: 50,136
 
 Political Entity (pe_id) provides the foreign key between Commodity and Weather.
 
-Normal form and justification: These five tables were chosen to minimize the number of joins needed in common queries of the database. For example, Commodity was not split into Agriculture and Non-agriculture tables even though only production and consumption data is populated for Non-agriculture commodities (the rest of the non-primary key values are null). 
-
-[more to be added here]
-
 
 ## Queries
 
-Building the search function involved devising numerous complex searches to ensure that at each stage of the selection process the user sees only options which will result in non-null results. For example, the following query ensures that once the user has selected a commodity sector and whether they want state or country-level data, they will only be able to choose from commodities for which the database holds data for some of the relevants attributes in 2019 (the last year with full data available):
-
+Building the search function involved devising numerous complex searches to ensure that at each stage of the selection process the user sees only options which will result in non-null results. For example, the following query ensures that once the user has selected a commodity sector and whether they want state or country-level data, they will only be able to choose from commodities for which the database holds data for some of the relevant attributes in 2019 (the last year with full data available):
+```
   SELECT DISTINCT C.name
   FROM Commodity C JOIN Political_Entity P ON C.pe_id=P.id JOIN Commodity_Group G ON C.name = G.name
   WHERE P.is_country='${eT}' AND C.year=2019 AND G.group_name='${sector}' AND ((C.production != 0 OR C.production != null)
     OR (C.consumption != 0 OR C.consumption != null) OR (C.ending_stocks != 0 OR C.ending_stocks != null))
   ORDER BY C.name ASC;
+```
     
- Likewise, the below query returns a list of only those states or countries for which there is data for 2019 for one of the relevent attributes for the commodity previously selected:
- 
+ Likewise, the below query returns a list of only those states or countries for which there is data for 2019 for one of the relevant attributes for the commodity previously selected:
+
+```
   SELECT name
   FROM Political_Entity
   WHERE is_country = '${eT}' and name IN (
@@ -234,26 +231,29 @@ Building the search function involved devising numerous complex searches to ensu
     FROM Commodity C JOIN Political_Entity P ON C.pe_id=P.id
     WHERE C.name = '${commodity}' AND ((C.production != 0 OR C.production != null)
       OR (C.consumption != 0 OR C.consumption != null) OR (C.ending_stocks != 0 OR C.ending_stocks != null)));
- 
+``` 
  
  Once a commodity and state or country have been selected, the below query returns the relevant production, consumption and ending stock data for recent years:
- 
+
+```
   SELECT C.year, C.production, C.consumption, C.ending_stocks
   FROM Commodity C JOIN Political_Entity P on C.pe_id = P.id
   WHERE C.name = '${commodity}' and P.name = '${entity}' AND C.year > 2012;
-  
-Finally, if the user selected a state, the below query returns climate data for that state, specifically average tempereature and rainfall for each month, based on data for the last fifty years:
+```
 
+Finally, if the user selected a state, the below query returns climate data for that state, specifically average temperature and rainfall for each month, based on data for the last fifty years:
+
+```
   SELECT month, AVG(temp) AS temp, AVG(rainfall) AS rainfall
   FROM Weather W JOIN Political_Entity P ON W.pe_id=P.id
   WHERE P.name = '${state}' and W.Year > 1970
   GROUP BY month
   ORDER BY month ASC;
+```
 
 The above queries completed in a satisfactory time.
 
 The Dashboard page used the following queries to obtain the data needed for the chart:
-
 
 ```
 SELECT C.year,
@@ -357,3 +357,98 @@ Below is the profile table after making the optimization (average of 10 runs):
 ## Technical challenges
 
 Perhaps the greatest challenge was formatting the website, including building the .css style files and getting user interfaces such as buttons and dropdown menus to function correctly. We struggled, for example, to to get data to render in rows rather than a single column. Without much experience of web design or any obvious single resource for guidance we resorted to a lot of googling (often unsuccesfully) and trial and error.
+
+
+## Appendix
+
+### Instructions to Build Locally
+
+#### 1. Setup Connection to Database
+
+Follow these steps for connecting to "commodify-db" on AWS with READ ONLY access:
+
+Username: guest
+Password: wheat
+
+Port: 3306
+
+Endpoint: commodify-db.cn5sga8k6aq8.us-east-1.rds.amazonaws.com
+
+Run this line in your terminal:
+
+```
+mysql --host=commodify-db.cn5sga8k6aq8.us-east-1.rds.amazonaws.com --port=3306 --user=guest -p
+```
+
+Input password at prompt.
+
+#### 2. Launch client and server
+
+In the project directory, you can run:
+
+### `npm start`
+
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
+
+### `npm test`
+
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `npm run build`
+
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### List of Dependencies
+
+- Backend: Node.js server with MySQL database hosted on AWS.
+
+- Frontend: React.js with [`react-chartist`](https://gionkunz.github.io/chartist-js/) for plots and charts and [`react-leaflet`](https://react-leaflet.js.org/) for maps.
+
+#### Client
+```
+"dependencies": {
+    "@testing-library/jest-dom": "^5.11.9",
+    "@testing-library/react": "^11.2.5",
+    "@testing-library/user-event": "^12.7.1",
+    "bootstrap": "^4.6.0",
+    "chartist": "^0.11.4",
+    "d3-fetch": "^2.0.0",
+    "d3-scale": "^3.3.0",
+    "d3-scale-chromatic": "^2.0.0",
+    "prop-types": "^15.7.2",
+    "raw-loader": "^4.0.2",
+    "react": "^17.0.1",
+    "react-chartist": "^0.14.4",
+    "react-dom": "^17.0.2",
+    "react-markdown": "^6.0.1",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^4.0.2",
+    "react-simple-maps": "^2.3.0",
+    "recharts": "^2.0.9",
+    "web-vitals": "^1.1.0"
+  },
+```
+  
+#### Server
+```
+"dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "expresss": "^0.0.0",
+    "mysql": "^2.18.1"
+  }
+```
+  
+ 
