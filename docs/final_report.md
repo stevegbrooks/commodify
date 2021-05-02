@@ -166,6 +166,33 @@ The datasets used in the application mainly agricultural commodities data, energ
 
 ## Database
 
+Data ingestion procedures: [insert PANDAS work here]. See specifics in the application code.
+The database can be recreated using the DDL.sql file which links to the provided csv files.
+
+Entity resolution for the political entities was done manually within Excel to determine which countries/territories would be included, how to spell them, and how to match them together using the pe_id as the foreign key.
+
+[insert ER Diagram as in milestone here]
+
+Relation schema: 
+Commodity (<ins>name</ins>, <ins>year</ins>, <ins>month</ins>, <ins>pe_id</ins>, beginning_stocks, ending_stocks, imports, exports, acreage, yield, production, consumption)
+Total instances in Commodity: 177,457
+
+Commodity_Group (<ins>name</ins>, group_name)
+Total instances in Commodity_Group: 68
+
+Political_Entity (<ins>id</ins>, name, is_country, abbrev, geo_id)
+Total instances in Political_Entity: 269
+
+Weather (<ins>pe_id</ins>, <ins>year</ins>,<ins> month</ins>, temp, rainfall)
+Total instances in Weather: 50,136
+
+Political Entity (pe_id) provides the foreign key between Commodity and Weather.
+
+Normal form and justification: These five tables were chosen to minimize the number of joins needed in common queries of the database. For example, Commodity was not split into Agriculture and Non-agriculture tables even though only production and consumption data is populated for Non-agriculture commodities (the rest of the non-primary key values are null). 
+
+[more to be added here]
+
+
 ## Queries
 
 Building the search function involved devising numerous complex searches to ensure that at each stage of the selection process the user sees only options which will result in non-null results. For example, the following query ensures that once the user has selected a commodity sector and whether they want state or country-level data, they will only be able to choose from commodities for which the database holds data for some of the relevants attributes in 2019 (the last year with full data available):
