@@ -55,7 +55,7 @@ The search page allows the user to select a commodity sector, for example 'agric
 
 The datasets used in the application mainly agricultural commodities data, energy supply and demand data, as well as weather data obtained from public domains.
 
-1. [Current and historical agricultural commodities data from the USDA Foreign Agricultural Service](https://apps.fas.usda.gov/psdonline/app/index.html#/app/downloads)
+### 1. [Current and historical agricultural commodities data from the USDA Foreign Agricultural Service](https://apps.fas.usda.gov/psdonline/app/index.html#/app/downloads)
 
   * Description: a dataset containing commodities and their prices around the world, including trading value at the beginning and end of each month.
 
@@ -103,7 +103,7 @@ The datasets used in the application mainly agricultural commodities data, energ
 
 
 
-2. For energy and electricty data: [Current and historical energy supply and demand data from the Energy Information Agency, part of the United States Department of Energy](https://www.eia.gov/petroleum/data.php), [Current and historical electricity supply and demand data from the Energy Information Agency, part of the United States Department of Energy](https://www.eia.gov/electricity/data/state/), and [Historical energy data from the Statistical Review of World Energy by BP](https://www.bp.com/en/global/corporate/energy-economics/statistical-review-of-world-energy/downloads.html)
+### 2. For energy and electricty data: [Current and historical energy supply and demand data from the Energy Information Agency, part of the United States Department of Energy](https://www.eia.gov/petroleum/data.php), [Current and historical electricity supply and demand data from the Energy Information Agency, part of the United States Department of Energy](https://www.eia.gov/electricity/data/state/), and [Historical energy data from the Statistical Review of World Energy by BP](https://www.bp.com/en/global/corporate/energy-economics/statistical-review-of-world-energy/downloads.html)
 
   * Description: The EIA produces data sets released weekly and monthly which contain thousands of data points on US and global energy production and consumption. Two of the csv datasets which were used were: "Retail Sales of Electricity by State by Sector by Provider (EIA-861)" (analogous to consumption of electricity) and “Net Generation by State by Type of Producer by Energy Source (EIA-906, EIA-920, and EIA-923).” Total electricity consumption from "Sales to Ultimate Customers" in megawatthours by state by year was manually merged with total (from all energy sources) electricity production/generation into a single csv.
   
@@ -135,7 +135,7 @@ The datasets used in the application mainly agricultural commodities data, energ
 	|3rd Qu.:2010-11-30 00:00:00 |3rd Qu.:263536 |3rd Qu.:1518.0 |3rd Qu.: 542.5 |3rd Qu.:35.50 |
 	|Max.   :2020-11-15 00:00:00 |Max.   :396865 |Max.   :4243.0 |Max.   :3606.0 |Max.   :96.00 |
 
-3. [Current and historical weather data from the US National Oceanic and Atmospheric Administration (NOAA) National Center for Environmental Information (NCEI)](https://www.ncei.noaa.gov/data/global-summary-of-the-day/access/)
+### 3. [Current and historical weather data from the US National Oceanic and Atmospheric Administration (NOAA) National Center for Environmental Information (NCEI)](https://www.ncei.noaa.gov/data/global-summary-of-the-day/access/)
 
   * Description: a dataset containing daily weather data for weather stations in the USA, including, from 1929 to the present (2021).
 
@@ -187,7 +187,7 @@ The weather data are held in a table called **Weather**, which is also in BCNF. 
 
 ![](CommodifyERD.png)
 
-Relation schema: 
+### Relation schema: 
 
   * Commodity (<ins>name</ins>, <ins>year</ins>, <ins>month</ins>, <ins>pe_id</ins>, beginning_stocks, ending_stocks, imports, exports, acreage, yield, production, consumption)
 
@@ -215,15 +215,17 @@ Normal form and justification: These five tables were chosen to minimize the num
 ## Queries
 
 Building the search function involved devising numerous complex searches to ensure that at each stage of the selection process the user sees only options which will result in non-null results. For example, the following query ensures that once the user has selected a commodity sector and whether they want state or country-level data, they will only be able to choose from commodities for which the database holds data for some of the relevants attributes in 2019 (the last year with full data available):
-
+```
   SELECT DISTINCT C.name
   FROM Commodity C JOIN Political_Entity P ON C.pe_id=P.id JOIN Commodity_Group G ON C.name = G.name
   WHERE P.is_country='${eT}' AND C.year=2019 AND G.group_name='${sector}' AND ((C.production != 0 OR C.production != null)
     OR (C.consumption != 0 OR C.consumption != null) OR (C.ending_stocks != 0 OR C.ending_stocks != null))
   ORDER BY C.name ASC;
+```
     
  Likewise, the below query returns a list of only those states or countries for which there is data for 2019 for one of the relevent attributes for the commodity previously selected:
- 
+
+```
   SELECT name
   FROM Political_Entity
   WHERE is_country = '${eT}' and name IN (
@@ -231,26 +233,29 @@ Building the search function involved devising numerous complex searches to ensu
     FROM Commodity C JOIN Political_Entity P ON C.pe_id=P.id
     WHERE C.name = '${commodity}' AND ((C.production != 0 OR C.production != null)
       OR (C.consumption != 0 OR C.consumption != null) OR (C.ending_stocks != 0 OR C.ending_stocks != null)));
- 
+``` 
  
  Once a commodity and state or country have been selected, the below query returns the relevant production, consumption and ending stock data for recent years:
- 
+
+```
   SELECT C.year, C.production, C.consumption, C.ending_stocks
   FROM Commodity C JOIN Political_Entity P on C.pe_id = P.id
   WHERE C.name = '${commodity}' and P.name = '${entity}' AND C.year > 2012;
-  
+```
+
 Finally, if the user selected a state, the below query returns climate data for that state, specifically average tempereature and rainfall for each month, based on data for the last fifty years:
 
+```
   SELECT month, AVG(temp) AS temp, AVG(rainfall) AS rainfall
   FROM Weather W JOIN Political_Entity P ON W.pe_id=P.id
   WHERE P.name = '${state}' and W.Year > 1970
   GROUP BY month
   ORDER BY month ASC;
+```
 
 The above queries completed in a satisfactory time.
 
 The Dashboard page used the following queries to obtain the data needed for the chart:
-
 
 ```
 SELECT C.year,
