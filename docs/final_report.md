@@ -30,9 +30,6 @@ Python notebooks were used to do initial EDA and data processing. Libraries used
 
 Express, AWS --- add more elaboration
 
-
-### Description of System Architecture
-
 #### Homepage
 
 ![](commodify-home.png)
