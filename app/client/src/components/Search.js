@@ -191,10 +191,11 @@ export default class Dashboard extends Component {
         }).then(weatherList => {
           let weatherDivs = weatherList.map((weatherObj, i) =>
             <WeatherResultRow month={weatherObj.year}
-              temp={weatherObj.temp}
-              rainfall={weatherObj.rainfall}
+              temp={weatherObj.temp.toFixed(1)}
+              rainfall={weatherObj.rainfall.toFixed(1)}
             />
           );
+
 
           this.setState({
             monthAvs: weatherDivs
@@ -302,8 +303,6 @@ export default class Dashboard extends Component {
                 </div>
               </div>
 
-
-
               <br />
 
               {/* submit button to begin query */}
@@ -359,110 +358,142 @@ export default class Dashboard extends Component {
                     <br />
 
                   </div>
-                </div><br/>
+                </div><br />
                 <div class="selection-container">
-              
-                    <div class="col-md-1-5">
 
-                      <div className="header"><strong>Year</strong></div>
-                      <div className="header"><strong>Production</strong></div>
-                      <div className="header"><strong>Consumption</strong></div>
-                      <div className="header"><strong>Ending Stocks</strong></div>
-                    </div>
-                    <div class="col-sm">
-                      <div class="searchYears-container">
-                        <div className="results-container" id="results">
-                          {this.state.searchYears}
-                        </div>
+                  <div class="col-md-1-5">
+
+                    <div className="header"><strong>Year</strong></div>
+                    <div className="header"><strong>Production</strong></div>
+                    <div className="header"><strong>Consumption</strong></div>
+                    <div className="header"><strong>Ending Stocks</strong></div>
+                  </div>
+                  <div class="col-sm">
+                    <div class="searchYears-container">
+                      <div className="results-container" id="results">
+                        {this.state.searchYears}
                       </div>
-                 
+                    </div>
+
+                  </div>
+                </div>
+
+
+                <h4><strong>Climate Data</strong></h4>
+                <div class="row">
+                  <div className="table-container">
+                    <LineChart
+                      width={800}
+                      height={600}
+                      data={this.state.weatherChart}
+                      margin={{
+                        top: 50,
+                        right: 75,
+                        left: 0,
+                        bottom: 0
+                      }}
+                    >
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="year" />
+                      <YAxis />
+                      <Tooltip />
+                      <Line
+                        type="monotone"
+                        dataKey="temp"
+                        stackId="1"
+                        stroke="#FDE725FF"
+                        fill="#FDE725FF"
+                      />
+                      <Line
+                        type="monotone"
+                        dataKey="rainfall"
+                        stackId="1"
+                        stroke="#5DC863FF"
+                        fill="#5DC863FF"
+                      />
+                    </LineChart>
+                    <br />
+
+                  </div>
+                </div><br />
+
+                
+                <div class="selection-container">
+<div class="col-2">
+Month<br/>
+Temp (F)<br/>
+Rainfall (mm)
+</div>
+<div class="col-9">
+
+
+                  <div class="col-md-1-5">
+                    <div class="row">
+                      <div class="col-1">
+                      <div className="header"><strong>Jan</strong></div>
+                      {this.state.monthAvs[0]}
+                      </div>
+                      <div class="col-1">
+                      <div className="header"><strong>Feb</strong></div>
+                      {this.state.monthAvs[1]}
+                      </div>
+                      <div class="col-1">
+                      <div className="header"><strong>Mar</strong></div>
+                      {this.state.monthAvs[2]}
+                      </div>
+                      <div class="col-1">
+                      <div className="header"><strong>Apr</strong></div>
+                      {this.state.monthAvs[3]}
+                      </div>
+                      <div class="col-1">
+                      <div className="header"><strong>May</strong></div>
+                      {this.state.monthAvs[4]}
+                      </div>
+                      <div class="col-1">
+                      <div className="header"><strong>Jun</strong></div>
+                      {this.state.monthAvs[5]}
+                      </div>
+                      <div class="col-1">
+                      <div className="header"><strong>Jul</strong></div>
+                      {this.state.monthAvs[6]}
+                      </div>
+                      <div class="col-1">
+                      <div className="header"><strong>Aug</strong></div>
+                      {this.state.monthAvs[7]}
+                      </div>
+                      <div class="col-1">
+                      <div className="header"><strong>Sep</strong></div>
+                      {this.state.monthAvs[8]}
+                      </div>
+                      <div class="col-1">
+                      <div className="header"><strong>Oct</strong></div>
+                      {this.state.monthAvs[9]}
+                      </div>
+                      <div class="col-1">
+                      <div className="header"><strong>Nov</strong></div>
+                      {this.state.monthAvs[10]}
+                      </div>
+                      <div class="col-1">
+                      <div className="header"><strong>Dec</strong></div>
+                      {this.state.monthAvs[11]}
+                      </div>
+                    </div>
+                    </div>
+                    
+                    
+
+                  </div>
+
                   </div>
                 </div>
 
                 <div class="disclaimer">
-                  Please note that information for some commodities are not yet available - contact us if you know of reliable data sources and we will incorporate them!
+        Please note that information for some commodities are not yet available - contact us if you know of reliable data sources and we will incorporate them!
                 </div>
+              </div >
               </div>
+</div></div>
 
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-
-
-
-
-
-
-
-
-
-      //     <div className="commodities-header">
-      //       <div className="h4"><strong>Climate Data</strong></div>
-      //     </div>
-      //     <div className="jumbotron-large">
-
-      //       <div className="row">
-      //         <div className="col-md-1-5">
-      //           <div className="header"><strong>Jan</strong></div>
-      //           <div className="header"><strong>Feb</strong></div>
-      //           <div className="header"><strong>Mar</strong></div>
-      //           <div className="header"><strong>Apr</strong></div>
-      //           <div className="header"><strong>May</strong></div>
-      //           <div className="header"><strong>Jun</strong></div>
-      //           <div className="header"><strong>Jul</strong></div>
-      //           <div className="header"><strong>Aug</strong></div>
-      //           <div className="header"><strong>Sep</strong></div>
-      //           <div className="header"><strong>Oct</strong></div>
-      //           <div className="header"><strong>Nov</strong></div>
-      //           <div className="header"><strong>Dec</strong></div>
-      //         </div>
-      //         <div class="col-sm">
-      //           <div className="results-container2" id="results2">
-      //             {this.state.monthAvs}
-      //           </div></div>
-      //       </div>
-
-      //     </div>
-
-
-
-      //     <LineChart
-      //       width={1200}
-      //       height={500}
-      //       data={this.state.weatherChart}
-      //       margin={{
-      //         top: 50,
-      //         right: 75,
-      //         left: 50,
-      //         bottom: 0
-      //       }}
-      //     >
-      //       <CartesianGrid strokeDasharray="3 3" />
-      //       <XAxis dataKey="year" />
-      //       <YAxis />
-      //       <Tooltip />
-      //       <Line
-      //         type="monotone"
-      //         dataKey="temp"
-      //         stackId="1"
-      //         stroke="#FDE725FF"
-      //         fill="#FDE725FF"
-      //       />
-      //       <Line
-      //         type="monotone"
-      //         dataKey="rainfall"
-      //         stackId="1"
-      //         stroke="#5DC863FF"
-      //         fill="#5DC863FF"
-      //       />
-      //     </LineChart>
-
-      //   </div>
-      // </div>
-    );
-
-  }
-}
+    )
+  
+}}
