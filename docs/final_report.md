@@ -6,17 +6,17 @@ Commodify is an app to visualize and interact with commodity market and weather 
 
 ### The problem
 
-Existing resources deal mostly with individual sectors like energy or agriculture, but not the the whole commodities space, and they are read only. In order to get an overview of the entire market, one needs to manually integrate data from many different resources, which is time intensive and technically difficult for most traders.
+Existing resources deal mostly with individual sectors like energy or agriculture, but not the the whole commodities space, and often with little analysis or visualisation. To get an overview of the entire market, one needs to manually integrate data from many different resources, which is time intensive and technically difficult for most traders. Commodify is the solution.
 
 ### The solution
 
-Commodify provides a "one-stop-shop" for commodities and weather data, which can be a useful resource for trade houses, banks and hedge funds.
+Commodify provides a "one-stop-shop" for commodities and weather data, be a useful resource for trade houses, banks and hedge funds analysing and trading commodities - and the many other markets influenced by commodities.
 
 #### Homepage
 
 ![](commodify-home.png)
 
-Commodify allows for seeing not only trends in the commodities markets, but also the interaction between weather and climate and prices, which are crucial determinants of commodity supply and demand. The app is divided into two pages, a "Dashboard" and a "Search" page.
+Commodify allows the user to search for raw data on commodity supply and demand and also presents visualisations of that data. Furthermore, since weather and climate are crucial determinants of the supply and demand of many commodities, it returns weather data and charts relevant to the commodity search. This illustrates not only trends in the commodities markets, but also the interaction between weather and climate. The site has a homepage and two functional pages, a "Dashboard" and a "Search" page.
 
 #### Dashboard
 
