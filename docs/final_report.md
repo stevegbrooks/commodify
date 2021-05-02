@@ -32,10 +32,11 @@ The web application was developed using React, a user interface framework develo
 
 On the backend we used Express and Node to write handlers for requests and to connect the web application with the database, so as to return results from user queries. A list of dependencies (required Node modules) for the server is outlined in the json file "commodify/app/server/package.json".
 
+Markdown was used to write the final report and other project documents. Markdown is a lightweight markup language used for creating formatted text using a plain-text editor.
 
 ### Description of System Architecture
 
-Commodify allows the user to search for raw data on commodity supply and demand and also presents visualisations of that data. Furthermore, since weather and climate are crucial determinants of the supply and demand of many commodities, it returns weather data and charts relevant to the commodity search. This illustrates not only trends in the commodities markets, but also the interaction between weather and climate. The site has a homepage and two functional pages, a "Dashboard" and a "Search" page, as well as a dummy "Contact" page designed for Commidify users to get in touch with the development team for any enquires, complaints, or suggestions.
+Commodify allows the user to search for raw data on commodity supply and demand and also presents visualisations of that data. Furthermore, since weather and climate are crucial determinants of the supply and demand of many commodities, it returns weather data and charts relevant to the commodity search. This illustrates not only trends in the commodities markets, but also the interaction between weather and climate. The site has a homepage and two functional pages, a "Dashboard" and a "Search" page, as well as a static "Contact" page designed for Commidify users to get in touch with the development team for any enquires, complaints, or suggestions.
 
 ![](commodify-home.png)
 
@@ -180,10 +181,11 @@ The commodities and weather data were sourced as txt and csv files and processed
 
 The processed data were output as csv files and then uploaded to the database via MySQL. The database can be recreated using the DDL.sql file which links to the provided csv files.
 
-The major entity resolution questions conerned how to deal with the problem that different commodites have different attributes (for example corn has acreage but electricity does not), and different data are available at the country and state levels, for example wheat production data are available by country and by US state, but wheat consumption is only available at the country level. We decided that the best solution for the user was to include all the commodities supply and demand data in a single table, called **Commodity**, meaning we avoided having many different tables with different attributes at the cost of having many null values in the table. The table is in BCNF. We achieved this by placing metadata, such as the sector each commodity belongs to (e.g. agriculture for soybeans), to a separate table called **Commodity_Group**, and also the **Political_Entity** table, which contains information about countries and US states, including their names and the id used in the **Commodity** table. (It was necessary to use ids rather than names because there is a country called Georgia and also a state!) We determined which territories to include and which versions of their names to use, which abbreviations, and their ids, manually in Excel. The **Commodity_Group** and **Political_Entity** tables are also in BCNF. It was necessary to decide which countries and terrritories to include (for example we excluded the Netherlands Antilles from our list of political entities, although we had historic data for them, because that country was dissolved in 2010), which exact names to use for them, and which abbreviations.
+The major entity resolution questions concerned how to deal with the problem that different commodities have different attributes (for example corn has acreage but electricity does not), and different data are available at the country and state levels, for example wheat production data are available by country and by US state, but wheat consumption is only available at the country level. We decided that the best solution for the user was to include all the commodities supply and demand data in a single table, called **Commodity**, meaning we avoided having many different tables with different attributes at the cost of having many null values in the table. For example, Commodity was not split into Agriculture and Non-agriculture tables even though only production and consumption data is populated for Non-agriculture commodities (the rest of the non-primary key values are null).
 
-The weather data are held in a table called **Weather**, which is also in BCNF. While a range of climate parameters were included in the raw dataset, the team identified that rainfall and precipation were the most relevant weather parameters to study commodities trends, and hence, other weather data was omitted (e.g. wind speeds, haze) at this stage of the project to avoid unnecessary complexity of the dataset.
+The **Commodity** table is in BCNF. We achieved this by placing metadata, such as the sector each commodity belongs to (e.g. agriculture for soybeans), to a separate table called **Commodity_Group**, and also the **Political_Entity** table, which contains information about countries and US states, including their names and the id used in the **Commodity** table. (It was necessary to use ids rather than names because there is a country called Georgia and also a state!) We determined which territories to include and which versions of their names to use, which abbreviations, and their ids, manually in Excel. The **Commodity_Group** and **Political_Entity** tables are also in BCNF. It was necessary to decide which countries and territories to include (for example we excluded the Netherlands Antilles from our list of political entities, although we had historic data for them, because that country was dissolved in 2010), which exact names to use for them, and which abbreviations.
 
+The weather data are held in a table called **Weather**, which is also in BCNF. While a range of climate parameters were included in the raw dataset, the team identified that rainfall and precipitation were the most relevant weather parameters to study commodities trends, and hence, other weather data was omitted (e.g. wind speeds, haze) at this stage of the project to avoid unnecessary complexity of the dataset.
 
 ![](CommodifyERD.png)
 
@@ -207,14 +209,10 @@ Total instances in Weather: 50,136
 
 Political Entity (pe_id) provides the foreign key between Commodity and Weather.
 
-Normal form and justification: These five tables were chosen to minimize the number of joins needed in common queries of the database. For example, Commodity was not split into Agriculture and Non-agriculture tables even though only production and consumption data is populated for Non-agriculture commodities (the rest of the non-primary key values are null). 
-
-[more to be added here]
-
 
 ## Queries
 
-Building the search function involved devising numerous complex searches to ensure that at each stage of the selection process the user sees only options which will result in non-null results. For example, the following query ensures that once the user has selected a commodity sector and whether they want state or country-level data, they will only be able to choose from commodities for which the database holds data for some of the relevants attributes in 2019 (the last year with full data available):
+Building the search function involved devising numerous complex searches to ensure that at each stage of the selection process the user sees only options which will result in non-null results. For example, the following query ensures that once the user has selected a commodity sector and whether they want state or country-level data, they will only be able to choose from commodities for which the database holds data for some of the relevant attributes in 2019 (the last year with full data available):
 ```
   SELECT DISTINCT C.name
   FROM Commodity C JOIN Political_Entity P ON C.pe_id=P.id JOIN Commodity_Group G ON C.name = G.name
@@ -223,7 +221,7 @@ Building the search function involved devising numerous complex searches to ensu
   ORDER BY C.name ASC;
 ```
     
- Likewise, the below query returns a list of only those states or countries for which there is data for 2019 for one of the relevent attributes for the commodity previously selected:
+ Likewise, the below query returns a list of only those states or countries for which there is data for 2019 for one of the relevant attributes for the commodity previously selected:
 
 ```
   SELECT name
@@ -243,7 +241,7 @@ Building the search function involved devising numerous complex searches to ensu
   WHERE C.name = '${commodity}' and P.name = '${entity}' AND C.year > 2012;
 ```
 
-Finally, if the user selected a state, the below query returns climate data for that state, specifically average tempereature and rainfall for each month, based on data for the last fifty years:
+Finally, if the user selected a state, the below query returns climate data for that state, specifically average temperature and rainfall for each month, based on data for the last fifty years:
 
 ```
   SELECT month, AVG(temp) AS temp, AVG(rainfall) AS rainfall
