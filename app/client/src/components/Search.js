@@ -214,6 +214,7 @@ export default class Dashboard extends Component {
     return (
       <div className="Dashboard">
         <div className="container-fluid">
+
           <div class="row">
 
 
@@ -256,16 +257,16 @@ export default class Dashboard extends Component {
                 <div className="commodities-options" onChange={this.radioButtonChange}>
                   <div class="row">
                     <div class="col">
-                    <input type="radio" value="State" name="stateORcountry" /> US State
+                      <input type="radio" value="State" name="stateORcountry" /> US State
                     </div>
                     <div class="col">
-                    <input type="radio" value="Country" name="stateORcountry" /> Country
+                      <input type="radio" value="Country" name="stateORcountry" /> Country
                     </div>
                   </div>
-                
-                
-              </div>
-<br/>
+
+
+                </div>
+                <br />
                 {/* commodity dropdown */}
                 <div className="commodities-header">
                   <div className="header-lg"><strong>Commodity</strong></div>
@@ -316,64 +317,70 @@ export default class Dashboard extends Component {
                 <h4><strong>Commodity Data</strong></h4>
                 <div class="row">
                   <div className="table-container">
-                      <LineChart
-                        width={1000}
-                        height={600}
-                        responsive={true}
-                        maintainAspectRatio={true}
-                        data={this.state.comChart}
-                        margin={{
-                          top: 50,
-                          right: 75,
-                          left: 0,
-                          bottom: 0
-                        }}
-                      >
-                        <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis dataKey="year" />
-                        <YAxis />
-                        <Tooltip />
-                        <Line
-                          type="monotone"
-                          dataKey="production"
-                          stackId="1"
-                          stroke="#3B528BFF"
-                          fill="#3B528BFF"
-                        />
-                        <Line
-                          type="monotone"
-                          dataKey="consumption"
-                          stackId="1"
-                          stroke="#21908CFF"
-                          fill="#21908CFF"
-                        />
-                        <Line
-                          type="monotone"
-                          dataKey="ending_stocks"
-                          stackId="1"
-                          stroke="#440164FF"
-                          fill="#440164FF"
-                        />
-                      </LineChart>
-                      <br />
-                  
-                  </div>
-                  </div>
-                <div class="row">
-                  <div class="col-2">
-                    
-                    <div className="header"><strong>Year</strong></div>
-                    <div className="header"><strong>Production</strong></div>
-                    <div className="header"><strong>Consumption</strong></div>
-                    <div className="header"><strong>Ending Stocks</strong></div>
-                  </div>
-                  <div class="col-10">
+                    <LineChart
+                      width={800}
+                      height={600}
+                      responsive={true}
+                      maintainAspectRatio={true}
+                      data={this.state.comChart}
+                      margin={{
+                        top: 50,
+                        right: 75,
+                        left: 0,
+                        bottom: 0
+                      }}
+                    >
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="year" />
+                      <YAxis />
+                      <Tooltip />
+                      <Line
+                        type="monotone"
+                        dataKey="production"
+                        stackId="1"
+                        stroke="#3B528BFF"
+                        fill="#3B528BFF"
+                      />
+                      <Line
+                        type="monotone"
+                        dataKey="consumption"
+                        stackId="1"
+                        stroke="#21908CFF"
+                        fill="#21908CFF"
+                      />
+                      <Line
+                        type="monotone"
+                        dataKey="ending_stocks"
+                        stackId="1"
+                        stroke="#440164FF"
+                        fill="#440164FF"
+                      />
+                    </LineChart>
+                    <br />
 
-                    <div className="results-container" id="results">
-                      {this.state.searchYears}
+                  </div>
+                </div><br/>
+                <div class="selection-container">
+              
+                    <div class="col-md-1-5">
+
+                      <div className="header"><strong>Year</strong></div>
+                      <div className="header"><strong>Production</strong></div>
+                      <div className="header"><strong>Consumption</strong></div>
+                      <div className="header"><strong>Ending Stocks</strong></div>
                     </div>
-                    </div>
-                
+                    <div class="col-sm">
+                      <div class="searchYears-container">
+                        <div className="results-container" id="results">
+                          {this.state.searchYears}
+                        </div>
+                      </div>
+                 
+                  </div>
+                </div>
+
+                <div class="disclaimer">
+                  Please note that information for some commodities are not yet available - contact us if you know of reliable data sources and we will incorporate them!
                 </div>
               </div>
 

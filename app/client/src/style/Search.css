@@ -45,6 +45,7 @@
 .searchYears-container .searchYears-header, .results-container .searchYear {
   align-items: center;
   height: 40px;
+  display:inline-block;
 
 }
 
@@ -177,6 +178,18 @@
   padding-right: 1rem;
 }
 
-.searchResults {
-
+.disclaimer {
+  padding-top: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: .5px solid rgb(219, 218, 218);
+  font-size:12px;
+  font-style:italic;
+  color: rgb(112, 104, 104);
+  border-radius: .3rem;
+  margin-top: 2rem;
+  /* margin-left:1rem;
+  margin-right:1rem; */
+  background-color: rgb(237, 238, 241);
 }
