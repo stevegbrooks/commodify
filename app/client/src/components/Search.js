@@ -258,10 +258,10 @@ export default class Dashboard extends Component {
                 <div className="commodities-options" onChange={this.radioButtonChange}>
                   <div class="row">
                     <div class="col">
-                      <input type="radio" value="State" name="stateORcountry" /> US State
+                      <input type="radio" value="State" name="stateORcountry" onChange={this.radioButtonChange}/> US State
                     </div>
                     <div class="col">
-                      <input type="radio" value="Country" name="stateORcountry" /> Country
+                      <input type="radio" value="Country" name="stateORcountry" onChange={this.radioButtonChange}/> Country
                     </div>
                   </div>
 
