@@ -165,7 +165,6 @@ export default class Dashboard extends PureComponent {
                             geographies.map(geo => {
                                 const cur = this.state.mapData.find(s => s.geo_id === geo.id + "\r");
                                 if (typeof(cur) != "undefined") {
-                                  console.log(colorScale(cur.elec_prod));
                                   return (
                                     <Geography
                                         key={geo.rsmKey}
