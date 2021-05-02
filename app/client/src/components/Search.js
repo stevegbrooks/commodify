@@ -313,7 +313,7 @@ export default class Dashboard extends Component {
 
             <div class="col-8">
               <div className="graph-container">
-                <h4>Production and Consumption of Selected Commodity in {this.state.selectedEntity}</h4>
+                <h4>Production and consumption of {this.state.selectedCommodity.toLowerCase()} in {this.state.selectedEntity}</h4>
                 <div class="row">
                   <div className="table-container">
                     <LineChart
@@ -379,7 +379,7 @@ export default class Dashboard extends Component {
                 </div>
 
 
-                <h4>Monthly average temperature and rainfall in {this.state.selectedEntity}</h4>
+                <h4>Monthly average temperature (°F) and rainfall (mm) in {this.state.selectedEntity}</h4>
                 <h6>*Weather data is available only for US states</h6>
                 <div class="row">
                   <div className="table-container">
