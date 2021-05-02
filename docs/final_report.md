@@ -174,16 +174,21 @@ Entity resolution for the political entities was done manually within Excel to d
 [insert ER Diagram as in milestone here]
 
 Relation schema: 
-Commodity (<ins>name</ins>, <ins>year</ins>, <ins>month</ins>, <ins>pe_id</ins>, beginning_stocks, ending_stocks, imports, exports, acreage, yield, production, consumption)
+
+  * Commodity (<ins>name</ins>, <ins>year</ins>, <ins>month</ins>, <ins>pe_id</ins>, beginning_stocks, ending_stocks, imports, exports, acreage, yield, production, consumption)
+
 Total instances in Commodity: 177,457
 
-Commodity_Group (<ins>name</ins>, group_name)
+  * Commodity_Group (<ins>name</ins>, group_name)
+
 Total instances in Commodity_Group: 68
 
-Political_Entity (<ins>id</ins>, name, is_country, abbrev, geo_id)
+  * Political_Entity (<ins>id</ins>, name, is_country, abbrev, geo_id)
+
 Total instances in Political_Entity: 269
 
-Weather (<ins>pe_id</ins>, <ins>year</ins>,<ins> month</ins>, temp, rainfall)
+  * Weather (<ins>pe_id</ins>, <ins>year</ins>,<ins> month</ins>, temp, rainfall)
+
 Total instances in Weather: 50,136
 
 Political Entity (pe_id) provides the foreign key between Commodity and Weather.
