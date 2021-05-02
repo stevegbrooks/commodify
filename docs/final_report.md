@@ -26,21 +26,19 @@ Commodify provides a "one-stop-shop" for commodities and weather data, and aims 
 
 ### List of Technologies
 
-Python was used to do initial EDA and data processing ...
-libraries used - pandas, numpy
+Exploratory data analysis (EDA) was performed on the downloaded raw datasets to check data availability (presence of absence of null values), usefulness of data, units, and in general to summarize the data characteristics. Subsequently, only relevant data columns, identified to be useful to the project goal, were extracted from the full datasets. Python was used at this stage due to its easy-to-use libraries, including pandas and numpy, which are widely used in data science applications.
 
-The web application was developed using React, a user interface framework developed by Facebook. Using the Node package manager, a boilerplate application was swiftly set up via the Node package create-react-app. A list of dependencies (required Node modules) for the client is outlined in the json file "commodify/app/client/package.json". The professional look-and-feel anD responsivessness of the webpage was implemented using Bootstrap, an open-source CSS framework, which contains built-in templates for interface components such as navbars and grid layouts.
+The data was hosted on AWS.... more elaboration
 
-Express, AWS --- add more elaboration
+The web application was developed using React, a user interface framework developed by Facebook. Using the Node package manager, a boilerplate application was set-up via the Node package create-react-app. A list of dependencies (required Node modules) for the client is outlined in the json file "commodify/app/client/package.json". The professional look-and-feel and responsiveness of the webpage was implemented using Bootstrap, an open-source CSS framework, which contains built-in templates for interface components such as navbars and grid layouts.
 
+Express server .... more elaboration
 
 ### Description of System Architecture
 
-#### Homepage
+Commodify allows the user to search for raw data on commodity supply and demand and also presents visualisations of that data. Furthermore, since weather and climate are crucial determinants of the supply and demand of many commodities, it returns weather data and charts relevant to the commodity search. This illustrates not only trends in the commodities markets, but also the interaction between weather and climate. The site has a homepage and two functional pages, a "Dashboard" and a "Search" page.
 
 ![](commodify-home.png)
-
-Commodify allows the user to search for raw data on commodity supply and demand and also presents visualisations of that data. Furthermore, since weather and climate are crucial determinants of the supply and demand of many commodities, it returns weather data and charts relevant to the commodity search. This illustrates not only trends in the commodities markets, but also the interaction between weather and climate. The site has a homepage and two functional pages, a "Dashboard" and a "Search" page.
 
 #### Dashboard
 
