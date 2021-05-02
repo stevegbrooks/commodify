@@ -11,7 +11,7 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend
+  ResponsiveContainer
 } from "recharts";
 
 export default class Dashboard extends Component {
@@ -315,49 +315,47 @@ export default class Dashboard extends Component {
               <div className="graph-container">
                 <h4>Production and consumption of {this.state.selectedCommodity.toLowerCase()} in {this.state.selectedEntity}</h4>
                 <div class="row">
-                  <div className="table-container">
-                    <LineChart
-                      width={1000}
-                      height={600}
-                      responsive={true}
-                      maintainAspectRatio={true}
-                      data={this.state.comChart}
-                      margin={{
-                        top: 50,
-                        right: 75,
-                        left: 0,
-                        bottom: 0
-                      }}
-                    >
-                      <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="year" />
-                      <YAxis />
-                      <Tooltip />
-                      <Line
-                        type="monotone"
-                        dataKey="production"
-                        stackId="1"
-                        stroke="#3B528BFF"
-                        fill="#3B528BFF"
-                      />
-                      <Line
-                        type="monotone"
-                        dataKey="consumption"
-                        stackId="1"
-                        stroke="#21908CFF"
-                        fill="#21908CFF"
-                      />
-                      <Line
-                        type="monotone"
-                        dataKey="ending_stocks"
-                        stackId="1"
-                        stroke="#440164FF"
-                        fill="#440164FF"
-                      />
-                    </LineChart>
+                    <ResponsiveContainer width="100%" height={600}>
+                      <LineChart
+                        responsive={true}
+                        maintainAspectRatio={true}
+                        data={this.state.comChart}
+                        margin={{
+                          top: 50,
+                          right: 75,
+                          left: 0,
+                          bottom: 0
+                        }}
+                      >
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="year" />
+                        <YAxis />
+                        <Tooltip />
+                        <Line
+                          type="monotone"
+                          dataKey="production"
+                          stackId="1"
+                          stroke="#3B528BFF"
+                          fill="#3B528BFF"
+                        />
+                        <Line
+                          type="monotone"
+                          dataKey="consumption"
+                          stackId="1"
+                          stroke="#21908CFF"
+                          fill="#21908CFF"
+                        />
+                        <Line
+                          type="monotone"
+                          dataKey="ending_stocks"
+                          stackId="1"
+                          stroke="#440164FF"
+                          fill="#440164FF"
+                        />
+                      </LineChart>
+                      </ResponsiveContainer>
                     <br />
 
-                  </div>
                 </div><br />
                 <div class="selection-container">
 
@@ -382,10 +380,8 @@ export default class Dashboard extends Component {
                 <h4>Monthly average temperature (°F) and rainfall (mm) in {this.state.selectedEntity}</h4>
                 <h6>*Weather data is available only for US states</h6>
                 <div class="row">
-                  <div className="table-container">
+                  <ResponsiveContainer width="100%" height={600}>
                     <LineChart
-                      width={1000}
-                      height={600}
                       data={this.state.weatherChart}
                       margin={{
                         top: 50,
@@ -413,9 +409,8 @@ export default class Dashboard extends Component {
                         fill="#5DC863FF"
                       />
                     </LineChart>
+                    </ResponsiveContainer>
                     <br />
-
-                  </div>
                 </div><br />
 
                 
