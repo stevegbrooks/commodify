@@ -1,16 +1,40 @@
 # Commodify
 
+### Team Members
+
+|       Name       |        Email          |   GitHub   |
+|:-----------------|:----------------------|:-----------|
+|Iris Tiong        |iristyx@seas.upenn.edu |iristyx     |
+|Francis Featherby |ffrancis@seas.upenn.edu|ffeatherby  |
+|Peter Brice       |pbrice@seas.upenn.edu  |briceybrit  |
+|Steven Brooks     |sbr@seas.upenn.edu     |stevegbrooks|
+
+
 ## Introduction
 
 Commodify is an app to visualize and interact with commodity market and weather data.
 
 ### The problem
 
-Existing resources deal mostly with individual sectors like energy or agriculture, but not the the whole commodities space, and often with little analysis or visualisation. To get an overview of the entire market, one needs to manually integrate data from many different resources, which is time intensive and technically difficult for most traders. Commodify is the solution.
+Existing resources deal mostly with individual sectors like energy or agriculture, but rarely with the whole commodities space, and often with little analysis or visualization. To get an overview of the entire market, one needs to manually integrate data from many different resources, which is time intensive and technically difficult for most traders. Commodify is the solution.
 
 ### The solution
 
-Commodify provides a "one-stop-shop" for commodities and weather data, be a useful resource for trade houses, banks and hedge funds analysing and trading commodities - and the many other markets influenced by commodities.
+Commodify provides a "one-stop-shop" for commodities and weather data, and aims to be a useful resource for trade houses, banks and hedge funds analysing and trading commodities - and the many other markets influenced by commodities.
+
+## Architecture
+
+### List of Technologies
+
+Python was used to do initial EDA and data processing ...
+libraries used - pandas, numpy
+
+The web application was developed using React, a user interface framework developed by Facebook. Using the Node package manager, a boilerplate application was swiftly set up via the Node package create-react-app. A list of dependencies (required Node modules) for the client is outlined in the json file "commodify/app/client/package.json". The professional look-and-feel anD responsivessness of the webpage was implemented using Bootstrap, an open-source CSS framework, which contains built-in templates for interface components such as navbars and grid layouts.
+
+Express, AWS --- add more elaboration
+
+
+### Description of System Architecture
 
 #### Homepage
 
@@ -29,17 +53,6 @@ The dashboard page gives the user a overview of the commodities market in graphi
 The search page allows the user to select a commodity sector, for example 'agriculture', or 'renewables'. After selecting one of these options the user will be presented with the option to search for country or USA state level data, and will then be shown drop-down menus for the data available. Once the selections are made and the 'Submit' button is pressed, the user will see the commodity's production and consumption data in graphical display (line chart) and tabular form. Should the user select to view commodity data for a USA state (instead of country), an additional query is performed to retrieve weather information for the selected state. Monthly average rainfall and temperature data are then presented in a separate chart and tabular format below the first chart.
 
 ![](commodify-search.png)
-
-### Team Members
-
-|       Name       |        Email          |   GitHub   |
-|:-----------------|:----------------------|:-----------|
-|Iris Tiong        |iristyx@seas.upenn.edu |iristyx     |
-|Francis Featherby |ffrancis@seas.upenn.edu|ffeatherby  |
-|Peter Brice       |pbrice@seas.upenn.edu  |briceybrit  |
-|Steven Brooks     |sbr@seas.upenn.edu     |stevegbrooks|
-
-## Architecture
 
 ## Data
 
