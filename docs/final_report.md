@@ -166,8 +166,11 @@ The datasets used in the application mainly agricultural commodities data, energ
 
 ## Database
 
-Data ingestion procedures: [insert PANDAS work here]. See specifics in the application code.
+The commodities data were sourced as txt and csv files and processed using python notebooks such as commodity_usda_state.ipynb in our submission. This removed problem values, made names and units consistent, dropped unwanted columns and so on. The processed data were output as csv files and then uploaded to the database via MySQL.
+
 The database can be recreated using the DDL.sql file which links to the provided csv files.
+
+The major entity resolution questions conerned how to deal with the problem that different commodites have different attributes (for example corn has acreage but electricity does not), and different data are available at the country and state levels, for example wheat production data are available by country and by US state, but wheat consumption is only available at the country level. We decided that the best solution for the user was to include all the commodities supply and demand data in a single table, called **commodity**, meaning we avoided having many different tables with different attributes at the cost of having many null values in the table. The table is in BCNF. We achieved this by placing metadata, such as the sector each commodity belongs to (e.g. agriculture for soybeans), to a separate table called **commodity_group**, and also the **political entity** table, which contains information about countries and US states, including their names and the id used in the **commodity** table. (It was necessary to use ids rather than names because there is a country called Georgia and also a state!)
 
 Entity resolution for the political entities was done manually within Excel to determine which countries/territories would be included, how to spell them, and how to match them together using the pe_id as the foreign key.
 
