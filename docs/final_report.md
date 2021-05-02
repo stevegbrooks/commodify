@@ -12,6 +12,8 @@ Existing resources deal mostly with individual sectors like energy or agricultur
 
 Commodify provides a "one-stop-shop" for commodities and weather data, which can be a useful resource for trade houses, banks and hedge funds.
 
+#### Homepage
+
 ![](commodify-home.png)
 
 Commodify allows for seeing not only trends in the commodities markets, but also the interaction between weather and climate and prices, which are crucial determinants of commodity supply and demand. The app is divided into two pages, a "Dashboard" and a "Search" page.
@@ -53,13 +55,13 @@ The datasets used in the application mainly agricultural commodities data, energ
   
   * A quick peek at the first 5 rows of the data shows the following (column names changed for brevity; not all columns shown): 
   
-| ccode | comm | cntry | mrkt_yr | year | month | attr_id | attr | unit_id | unit_desc | val |
-|:----------|:----------|:-----------|:--------|:-----|:------|:--------|:----------|:---|:-----|:--|
-| 577400    | Almonds   | AF         | 2010    | 2018 | 10    | 20      | Beginning Stocks     | 21 | (MT) | 0 |
-| 577400    | Almonds   | AF         | 2010    | 2018 | 10    | 125     | Domestic Consumption | 21 | (MT) | 0 |
-| 577400    | Almonds   | AF         | 2010    | 2018 | 10    | 176     | Ending Stocks        | 21 | (MT) | 0 |
-| 577400    | Almonds   | AF         | 2010    | 2018 | 10    | 88      | Exports              | 21 | (MT) | 0 |
-| 577400    | Almonds   | AF         | 2010    | 2018 | 10    | 57      | Imports              | 21 | (MT) | 0 |
+	| ccode | comm | cntry | mrkt_yr | year | month | attr_id | attr | unit_id | unit_desc | val |
+	|:----------|:----------|:-----------|:--------|:-----|:------|:--------|:----------|:---|:-----|:--|
+	| 577400    | Almonds   | AF         | 2010    | 2018 | 10    | 20      | Beginning Stocks     | 21 | (MT) | 0 |
+	| 577400    | Almonds   | AF         | 2010    | 2018 | 10    | 125     | Domestic Consumption | 21 | (MT) | 0 |
+	| 577400    | Almonds   | AF         | 2010    | 2018 | 10    | 176     | Ending Stocks        | 21 | (MT) | 0 |
+	| 577400    | Almonds   | AF         | 2010    | 2018 | 10    | 88      | Exports              | 21 | (MT) | 0 |
+	| 577400    | Almonds   | AF         | 2010    | 2018 | 10    | 57      | Imports              | 21 | (MT) | 0 |
 
   * Number of unique values for each column (original column names):
   
@@ -121,8 +123,7 @@ The datasets used in the application mainly agricultural commodities data, energ
 	|3rd Qu.:2010-11-30 00:00:00 |3rd Qu.:263536 |3rd Qu.:1518.0 |3rd Qu.: 542.5 |3rd Qu.:35.50 |
 	|Max.   :2020-11-15 00:00:00 |Max.   :396865 |Max.   :4243.0 |Max.   :3606.0 |Max.   :96.00 |
 
-3. [Current and historical weather data from the US National Oceanic and Atmospheric Admistration (NOAA) National Centiers for Environmental Information (NCEI)]
-(https://www.ncei.noaa.gov/data/global-summary-of-the-day/access/)
+3. [Current and historical weather data from the US National Oceanic and Atmospheric Administration (NOAA) National Center for Environmental Information (NCEI)](https://www.ncei.noaa.gov/data/global-summary-of-the-day/access/)
 
   * Description: a dataset containing daily weather data for weather stations in the USA, including, from 1929 to the present (2021).
 
@@ -130,14 +131,35 @@ The datasets used in the application mainly agricultural commodities data, energ
   
   * A quick peek at the first 5 rows of the data shows the following (column names changed for brevity; not all columns shown): 
   
+	| Entity_id | Year | Month | Temperature | Precipitation | 
+	|:----------|:-----|:------|:------------|:--------------|
+	| 108       | 1931 | 1     | 30.35       | 70.96         | 
+	| 108       | 1931 | 2     | 35.96       | 46.42         | 
+	| 108       | 1931 | 3     | 43.77       | 35.48.        | 
+	| 108       | 1931 | 4     | 10.00       | 10.00.        | 
+	| 108       | 1931 | 5     | 12.90       | 12.90         | 
 
   * Number of unique values for each column (selected useful column):
-  
+
+	| col_name              |unique |
+	|:----------------------|------:|
+	| Entity_id	        |    53 |
+	| Year		        |    91 |
+	| Month                 |    12 |
+	| Temperature           |  7524 |
+	| Precipitation         |  5985 |
 
 	
   * Summary statistics for numeric columns:
 
-
+	|Entity_id   |   Year      | Temperature  |Precipitation  |
+	|:-----------|:------------|:-------------|:-------------|
+	|Min.   :1   |Min.   :1931 |Min.   :-10.2 |Min.   :0     |
+	|1st Qu.:109 |1st Qu.:1960 |1st Qu.:41.06 |1st Qu.:2.9   |
+	|Median :159 |Median :1981 |Median :56.54 |Median :10.58 |
+	|Mean   :152 |Mean   :1980 |Mean   :54.82 |Mean   :17.84 |
+	|3rd Qu.:197 |3rd Qu.:2001 |3rd Qu.:70.25 |3rd Qu.:30.35 |
+	|Max.   :262 |Max.   :2021 |Max.   :94.20 |Max.   :87.55 |
 
 
 ## Database
@@ -177,8 +199,7 @@ Finally, if the user selected a state, the below query returns climate data for 
   GROUP BY month
   ORDER BY month ASC;
  
- 
- 
+  
 
 ## Performance evaluation
 
