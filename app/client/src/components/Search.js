@@ -24,13 +24,13 @@ export default class Dashboard extends Component {
       sectors: [],
       commodities: [],
       entities: [],
-      selectedCommodity: "",
-      selectedEntity: "",
+      selectedCommodity: "________",
+      selectedEntity: "________",
       searchYears: [],
-      entityType: "",
+      entityType: "________",
       name: "React",
       monthAvs: [],
-      selectedSector: "",
+      selectedSector: "________",
       comChart: [],
       weatherChart: []
     }
@@ -313,11 +313,11 @@ export default class Dashboard extends Component {
 
             <div class="col-8">
               <div className="graph-container">
-                <h4><strong>Commodity Data</strong></h4>
+                <h4>Production and Consumption of Selected Commodity in {this.state.selectedEntity}</h4>
                 <div class="row">
                   <div className="table-container">
                     <LineChart
-                      width={800}
+                      width={1000}
                       height={600}
                       responsive={true}
                       maintainAspectRatio={true}
@@ -379,11 +379,12 @@ export default class Dashboard extends Component {
                 </div>
 
 
-                <h4><strong>Climate Data</strong></h4>
+                <h4>Monthly average temperature and rainfall in {this.state.selectedEntity}</h4>
+                <h6>*Weather data is available only for US states</h6>
                 <div class="row">
                   <div className="table-container">
                     <LineChart
-                      width={800}
+                      width={1000}
                       height={600}
                       data={this.state.weatherChart}
                       margin={{
