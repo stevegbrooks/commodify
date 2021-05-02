@@ -1,22 +1,46 @@
 # Commodify
 
+### Team Members
+
+|       Name       |        Email          |   GitHub   |
+|:-----------------|:----------------------|:-----------|
+|Iris Tiong        |iristyx@seas.upenn.edu |iristyx     |
+|Francis Featherby |ffrancis@seas.upenn.edu|ffeatherby  |
+|Peter Brice       |pbrice@seas.upenn.edu  |briceybrit  |
+|Steven Brooks     |sbr@seas.upenn.edu     |stevegbrooks|
+
+
 ## Introduction
 
 Commodify is an app to visualize and interact with commodity market and weather data.
 
 ### The problem
 
-Existing resources deal mostly with individual sectors like energy or agriculture, but not the the whole commodities space, and often with little analysis or visualisation. To get an overview of the entire market, one needs to manually integrate data from many different resources, which is time intensive and technically difficult for most traders. Commodify is the solution.
+Existing sources for commodity data deal mostly with individual sectors such as energy or agriculture, but rarely with the whole commodities space, and often with little analysis or interpretation. To get an overview of the entire market, one needs to manually integrate data from many different resources, which is time intensive and technically difficult for most traders and analysts. Commodify is the solution.
 
 ### The solution
 
-Commodify provides a "one-stop-shop" for commodities and weather data, be a useful resource for trade houses, banks and hedge funds analysing and trading commodities - and the many other markets influenced by commodities.
+Commodify provides a "one-stop-shop" for commodities and weather data, and aims to be a useful resource for trade houses, banks and hedge funds analysing and trading commodities - and the many other markets influenced by commodities.
 
-#### Homepage
+## Architecture
+
+### List of Technologies
+
+Exploratory data analysis (EDA) was performed on the downloaded raw datasets to check data availability (presence of absence of null values), usefulness of data, units, and in general to summarize the data characteristics. Subsequently, only relevant data columns, identified to be useful to the project goal, were extracted from the full datasets. Python was used at this stage due to its easy-to-use libraries, including pandas and numpy, which are widely used in data science applications.
+
+The data was hosted on AWS.... more elaboration
+
+The web application was developed using React, a user interface framework developed by Facebook. Using the Node package manager, a boilerplate application was set-up via the Node package create-react-app. A list of dependencies (required Node modules) for the client is outlined in the json file "commodify/app/client/package.json". The professional look-and-feel and responsiveness of the webpage was implemented using Bootstrap, an open-source CSS framework, which contains built-in templates for interface components such as navbars and grid layouts.
+
+Express server .... more elaboration
+
+We used Excel for organising some data.
+
+### Description of System Architecture
+
+Commodify allows the user to search for raw data on commodity supply and demand and also presents visualisations of that data. Furthermore, since weather and climate are crucial determinants of the supply and demand of many commodities, it returns weather data and charts relevant to the commodity search. This illustrates not only trends in the commodities markets, but also the interaction between weather and climate. The site has a homepage and two functional pages, a "Dashboard" and a "Search" page, as well as a dummy "Contact" page designed for Commidify users to get in touch with the development team for any enquires, complaints, or suggestions.
 
 ![](commodify-home.png)
-
-Commodify allows the user to search for raw data on commodity supply and demand and also presents visualisations of that data. Furthermore, since weather and climate are crucial determinants of the supply and demand of many commodities, it returns weather data and charts relevant to the commodity search. This illustrates not only trends in the commodities markets, but also the interaction between weather and climate. The site has a homepage and two functional pages, a "Dashboard" and a "Search" page.
 
 #### Dashboard
 
@@ -29,17 +53,6 @@ The dashboard page gives the user a overview of the commodities market in graphi
 The search page allows the user to select a commodity sector, for example 'agriculture', or 'renewables'. After selecting one of these options the user will be presented with the option to search for country or USA state level data, and will then be shown drop-down menus for the data available. Once the selections are made and the 'Submit' button is pressed, the user will see the commodity's production and consumption data in graphical display (line chart) and tabular form. Should the user select to view commodity data for a USA state (instead of country), an additional query is performed to retrieve weather information for the selected state. Monthly average rainfall and temperature data are then presented in a separate chart and tabular format below the first chart.
 
 ![](commodify-search.png)
-
-### Team Members
-
-|       Name       |        Email          |   GitHub   |
-|:-----------------|:----------------------|:-----------|
-|Iris Tiong        |iristyx@seas.upenn.edu |iristyx     |
-|Francis Featherby |ffrancis@seas.upenn.edu|ffeatherby  |
-|Peter Brice       |pbrice@seas.upenn.edu  |briceybrit  |
-|Steven Brooks     |sbr@seas.upenn.edu     |stevegbrooks|
-
-## Architecture
 
 ## Data
 
@@ -166,6 +179,42 @@ The datasets used in the application mainly agricultural commodities data, energ
 
 ## Database
 
+The commodities and weather data were sourced as txt and csv files and processed using python notebooks such as commodity_usda_state.ipynb in our submission. This removed problem values, made names and units consistent, dropped unwanted columns and so on. In particular, the massive weather dataset (over 20GB of csv files) provided information in terms of daily statistics collected across virtually all global weather stations, from the years 1929 to the present (2021). In order to render the dataset useful for the application, data aggregation was performed to obtain average monthly statistics in US states only. Further, the team also identified that rainfall and precipation were the most relevant weather parameters to study commodities trends, and hence, other weather data was omitted (e.g. wind speeds, haze) at this stage of the project to avoid unnecessary complexity of the dataset.
+
+The processed data were output as csv files and then uploaded to the database via MySQL. The database can be recreated using the DDL.sql file which links to the provided csv files.
+
+The major entity resolution questions conerned how to deal with the problem that different commodites have different attributes (for example corn has acreage but electricity does not), and different data are available at the country and state levels, for example wheat production data are available by country and by US state, but wheat consumption is only available at the country level. We decided that the best solution for the user was to include all the commodities supply and demand data in a single table, called **Commodity**, meaning we avoided having many different tables with different attributes at the cost of having many null values in the table. The table is in BCNF. We achieved this by placing metadata, such as the sector each commodity belongs to (e.g. agriculture for soybeans), to a separate table called **Commodity_Group**, and also the **Political_Entity** table, which contains information about countries and US states, including their names and the id used in the **Commodity** table. (It was necessary to use ids rather than names because there is a country called Georgia and also a state!) We determined which territories to include and which versions of their names to use, which abbreviations, and their ids, manually in Excel. The **Commodity_Group** and **Political_Entity** tables are also in BCNF. It was necessary to decide which countries and terrritories to include (for example we excluded the Netherlands Antilles from our list of political entities, although we had historic data for them, because that country was dissolved in 2010), which exact names to use for them, and which abbreviations.
+
+The weather data are held in a table called **Weather**, which is also in BCNF.
+
+
+![](CommodifyERD.png)
+
+Relation schema: 
+
+  * Commodity (<ins>name</ins>, <ins>year</ins>, <ins>month</ins>, <ins>pe_id</ins>, beginning_stocks, ending_stocks, imports, exports, acreage, yield, production, consumption)
+
+Total instances in Commodity: 177,457
+
+  * Commodity_Group (<ins>name</ins>, group_name)
+
+Total instances in Commodity_Group: 68
+
+  * Political_Entity (<ins>id</ins>, name, is_country, abbrev, geo_id)
+
+Total instances in Political_Entity: 269
+
+  * Weather (<ins>pe_id</ins>, <ins>year</ins>,<ins> month</ins>, temp, rainfall)
+
+Total instances in Weather: 50,136
+
+Political Entity (pe_id) provides the foreign key between Commodity and Weather.
+
+Normal form and justification: These five tables were chosen to minimize the number of joins needed in common queries of the database. For example, Commodity was not split into Agriculture and Non-agriculture tables even though only production and consumption data is populated for Non-agriculture commodities (the rest of the non-primary key values are null). 
+
+[more to be added here]
+
+
 ## Queries
 
 Building the search function involved devising numerous complex searches to ensure that at each stage of the selection process the user sees only options which will result in non-null results. For example, the following query ensures that once the user has selected a commodity sector and whether they want state or country-level data, they will only be able to choose from commodities for which the database holds data for some of the relevants attributes in 2019 (the last year with full data available):
@@ -201,9 +250,10 @@ Finally, if the user selected a state, the below query returns climate data for 
   GROUP BY month
   ORDER BY month ASC;
 
-## Performance evaluation
+The above queries completed in a satisfactory time.
 
-### Area Chart Original Query
+The Dashboard page used the following queries to obtain the data needed for the chart:
+
 
 ```
 SELECT C.year,
@@ -306,4 +356,4 @@ Below is the profile table after making the optimization (average of 10 runs):
 
 ## Technical challenges
 
-Different commodities have different characteristics, and furthermore the data available concerning supply and demand of commodities vary from place to place in terms of the attributes available, their frequency and so on. Our database and website had to handle this diversity.
+Perhaps the greatest challenge was formatting the website, including building the .css style files and getting user interfaces such as buttons and dropdown menus to function correctly. We struggled, for example, to to get data to render in rows rather than a single column. Without much experience of web design or any obvious single resource for guidance we resorted to a lot of googling (often unsuccesfully) and trial and error.
