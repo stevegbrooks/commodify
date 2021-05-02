@@ -382,8 +382,6 @@ export default class Dashboard extends Component {
                 <div class="row">
                   <ResponsiveContainer width="100%" height={600}>
                     <LineChart
-                      width={1000}
-                      height={600}
                       data={this.state.weatherChart}
                       margin={{
                         top: 50,
