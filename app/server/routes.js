@@ -29,16 +29,21 @@ function getMapChartData(req, res) {
 
 function getAreaChartData(req, res) {
   var query = `
-    SELECT C.year,
-      SUM(IF(C.name ='Oilseed, Soybean', production, NULL )) AS soy_prod,
-      SUM(IF(C.name='Corn', production, NULL )) AS corn_prod,
-      SUM(IF(C.name='Wheat', production, NULL )) AS wheat_prod,
-      ROUND(SUM(IF(C.name='Electricity', production, NULL ))/100000) AS elec_prod,
-      ROUND(SUM(W.rainfall)) AS rainfall
-    FROM commodify.Commodity C 
-      JOIN commodify.Political_Entity PE ON C.pe_id = PE.id
-      JOIN commodify.Weather W ON PE.id = W.pe_id
-    WHERE C.year < 2020 AND C.year >= 1990 AND PE.is_country = 0 
+      SELECT W.year,
+      SUM(IF(C.name ='Oilseed, Soybean', C.production, NULL )) AS soy_prod,
+      SUM(IF(C.name='Corn', C.production, NULL )) AS corn_prod,
+      SUM(IF(C.name='Wheat', C.production, NULL )) AS wheat_prod,
+      ROUND(SUM(IF(C.name='Electricity', C.production, NULL ))/100000) AS elec_prod,
+      W.rainfall AS rainfall
+      FROM (SELECT * FROM (
+          SELECT year, ROUND(SUM(rainfall)) AS rainfall
+          FROM commodify.Weather
+          GROUP BY year
+          ) AS wby
+      ) AS W
+      JOIN commodify.Commodity C ON W.year = C.year
+      JOIN commodify.Political_Entity PE ON PE.id = C.pe_id
+    WHERE PE.is_country = 0 AND C.year >= 1990 AND C.year < 2020
     GROUP BY C.year;
   `;
   connection.query(query, function(err, rows, fields) {

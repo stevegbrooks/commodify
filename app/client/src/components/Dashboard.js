@@ -55,7 +55,6 @@ export default class Dashboard extends PureComponent {
             var state = responseList[i];
             stateData.push(state);
         }
-        
         this.setState({
             mapData : stateData
         });
