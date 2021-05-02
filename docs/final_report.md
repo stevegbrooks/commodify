@@ -238,9 +238,10 @@ Finally, if the user selected a state, the below query returns climate data for 
   GROUP BY month
   ORDER BY month ASC;
 
-## Performance evaluation
+The above queries completed in a satisfactory time.
 
-### Area Chart Original Query
+The Dashboard page used the following queries to obtain the data needed for the chart:
+
 
 ```
 SELECT C.year,
